@@ -1,0 +1,435 @@
+.mdcConfig {
+  position: relative;
+  padding-left: 160px;
+  .mdcAddIcon {
+    margin-left: 5px;
+    color: #2b63c4;
+    font-size: 21px;
+    font-weight: bolder;
+    cursor: pointer;
+    margin-top: 9px;
+  }
+  .sideBar {
+    position: absolute;
+    left: 0;
+    width: 160px;
+    height: 100%;
+    .configBtn {
+      margin-left: 50px;
+      width: 50px;
+      text-align: center;
+      padding: 0px;
+      height: 24px;
+      font-family: '微软雅黑';
+      font-weight: 400;
+      font-size: 12px;
+      background-color: #d1f0ff;
+      border: 1px solid #d1f0ff;
+      color: #4183D7;
+      &:hover {
+        background-color: #c1e4fb;
+      }
+    }
+    .mdcConfig {
+      width: 50px;
+      height: 24px;
+      font-family: '微软雅黑';
+      font-weight: 400;
+      font-size: 12px;
+      background-color: #d1f0ff;
+      border: 1px solid #d1f0ff;
+      color: #4183D7;
+      &:hover {
+        background-color: #c1e4fb;
+      }
+    }
+  }
+  .runningDot {
+    border-radius: 5px;
+    width: 10px;
+    display: inline-block;
+    height: 10px;
+    background-color: #63fe1e;
+    margin-right: 7px;
+  }
+  .stopDot {
+    border-radius: 5px;
+    width: 10px;
+    display: inline-block;
+    height: 10px;
+    background-color: #cbcbcb;
+    margin-right: 7px;
+  }
+  .right_content {
+    padding-left: 10px;
+    position: relative;
+    overflow: auto;
+    width: 100%;
+    background-color: #f0f2f5;
+    height: 100%;
+    .iconHover {
+      &:hover {
+        color: red;
+      }
+    }
+    .panel {
+      background-color: #f0f2f5;
+      .flowMonitorTitle {
+        height: 26px;
+        padding: 0px;
+        background-color: #d3ecfa;
+        line-height: 26px;
+        padding-left: 12px;
+      }
+      .flowTable {
+        margin-bottom: 10px;
+        .ant-table-fixed-right {
+          overflow: visible;
+        }
+        .ant-table-fixed-left {
+          overflow: visible;
+        }
+        .ant-table-fixed-left {
+          .ant-table-body-inner {
+            &::-webkit-scrollbar {
+              width: 0px;
+              height: 8px;
+            }
+            &::-webkit-scrollbar-button:horizontal {
+              display: none;
+            }
+            &::-webkit-scrollbar-button:vertical {
+              display: none;
+            }
+            &::-webkit-scrollbar-track-piece {
+              background-color: rgba(0, 0, 0, 0);
+            }
+            &::-webkit-scrollbar-thumb {
+              border-radius: 5px;
+              background-color: rgba(0, 0, 0, .2);
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background-color: #6c6e71;
+            }
+          }
+          .ant-table-body-outer {
+            &::-webkit-scrollbar {
+              width: 8px;
+              height: 8px;
+            }
+            &::-webkit-scrollbar-button:horizontal {
+              display: none;
+            }
+            &::-webkit-scrollbar-button:vertical {
+              display: none;
+            }
+            &::-webkit-scrollbar-track-piece {
+              background-color: rgba(0, 0, 0, 0);
+            }
+            &::-webkit-scrollbar-thumb {
+              border-radius: 5px;
+              background-color: rgba(0, 0, 0, .2);
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background-color: #6c6e71;
+            }
+          }
+        }
+        .ant-table-fixed-right {
+          .ant-table-body-inner {
+            &::-webkit-scrollbar {
+              width: 8px;
+              height: 8px;
+            }
+            &::-webkit-scrollbar-button:horizontal {
+              display: none;
+            }
+            &::-webkit-scrollbar-track-piece {
+              background-color: rgba(0, 0, 0, 0);
+            }
+            &::-webkit-scrollbar-thumb {
+              border-radius: 5px;
+              background-color: rgba(0, 0, 0, .2);
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background-color: #6c6e71;
+            }
+          }
+          .ant-table-body-outer {
+            &::-webkit-scrollbar {
+              width: 8px;
+              height: 8px;
+            }
+            &::-webkit-scrollbar-button:horizontal {
+              display: none;
+            }
+            &::-webkit-scrollbar-track-piece {
+              background-color: rgba(0, 0, 0, 0);
+            }
+            &::-webkit-scrollbar-thumb {
+              border-radius: 5px;
+              background-color: rgba(0, 0, 0, .2);
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background-color: #6c6e71;
+            }
+          }
+        }
+        .ant-table-body {
+          &::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+          }
+          &::-webkit-scrollbar-button:vertical {
+            display: none;
+          }
+          &::-webkit-scrollbar-button:horizontal {
+            display: none;
+          }
+          &::-webkit-scrollbar-track-piece {
+            background-color: rgba(0, 0, 0, 0);
+          }
+          &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, .2);
+          }
+          &::-webkit-scrollbar-thumb:hover {
+            background-color: #6c6e71;
+          }
+        }
+      }
+
+      .fileTable {
+        .ant-table-fixed-right {
+          overflow: visible;
+        }
+        .ant-table-fixed-left {
+          overflow: visible;
+        }
+        .ant-table-fixed-left {
+          .ant-table-body-inner {
+            &::-webkit-scrollbar {
+              width: 0px;
+              height: 8px;
+            }
+            &::-webkit-scrollbar-button:horizontal {
+              display: none;
+            }
+            &::-webkit-scrollbar-button:vertical {
+              display: none;
+            }
+            &::-webkit-scrollbar-track-piece {
+              background-color: rgba(0, 0, 0, 0);
+            }
+            &::-webkit-scrollbar-thumb {
+              border-radius: 5px;
+              background-color: rgba(0, 0, 0, .2);
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background-color: #6c6e71;
+            }
+          }
+          .ant-table-body-outer {
+            &::-webkit-scrollbar {
+              width: 8px;
+              height: 8px;
+            }
+            &::-webkit-scrollbar-button:horizontal {
+              display: none;
+            }
+            &::-webkit-scrollbar-button:vertical {
+              display: none;
+            }
+            &::-webkit-scrollbar-track-piece {
+              background-color: rgba(0, 0, 0, 0);
+            }
+            &::-webkit-scrollbar-thumb {
+              border-radius: 5px;
+              background-color: rgba(0, 0, 0, .2);
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background-color: #6c6e71;
+            }
+          }
+        }
+        .ant-table-fixed-right {
+          .ant-table-body-inner {
+            &::-webkit-scrollbar {
+              width: 8px;
+              height: 8px;
+            }
+            &::-webkit-scrollbar-button:horizontal {
+              display: none;
+            }
+            &::-webkit-scrollbar-track-piece {
+              background-color: rgba(0, 0, 0, 0);
+            }
+            &::-webkit-scrollbar-thumb {
+              border-radius: 5px;
+              background-color: rgba(0, 0, 0, .2);
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background-color: #6c6e71;
+            }
+          }
+          .ant-table-body-outer {
+            &::-webkit-scrollbar {
+              width: 8px;
+              height: 8px;
+            }
+            &::-webkit-scrollbar-button:horizontal {
+              display: none;
+            }
+            &::-webkit-scrollbar-track-piece {
+              background-color: rgba(0, 0, 0, 0);
+            }
+            &::-webkit-scrollbar-thumb {
+              border-radius: 5px;
+              background-color: rgba(0, 0, 0, .2);
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background-color: #6c6e71;
+            }
+          }
+        }
+        .ant-table-body {
+          &::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+          }
+          &::-webkit-scrollbar-button:vertical {
+            display: none;
+          }
+          &::-webkit-scrollbar-button:horizontal {
+            display: none;
+          }
+          &::-webkit-scrollbar-track-piece {
+            background-color: rgba(0, 0, 0, 0);
+          }
+          &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, .2);
+          }
+          &::-webkit-scrollbar-thumb:hover {
+            background-color: #6c6e71;
+          }
+        }
+      }
+      .ant-table td {
+        height: 26px;
+        padding: 0 16px;
+      }
+      .ant-table th {
+        height: 26px;
+        padding: 0 16px;
+        background-color: #ebf1fa;
+      }
+      .ant-table-title {
+        height: 26px;
+        padding: 0px;
+        background-color: #d3ecfa;
+        line-height: 26px;
+        padding-left: 7px;
+      }
+      .ant-table-footer {
+        height: 26px;
+        padding: 0px;
+        background-color: #d3ecfa;
+        line-height: 26px;
+        padding-left: 12px;
+      }
+    }
+    .warn {
+      height: 33px;
+      width: 100%;
+      color: #333333;
+      font-size: 12px;
+      text-align: left;
+      line-height: 30px;
+      font-family: 'Arial Normal', 'Arial';
+      font-weight: 400;
+      background-color: #fdf7e8;
+      border: 1px solid #f4e3a2;
+      padding-top: 3px;
+      padding-left: 17px;
+    }
+    .versionInfo {
+      background-color: #fff;
+      height: 35px;
+      width: 100%;
+      color: #333333;
+      font-size: 12px;
+      text-align: left;
+      line-height: 30px;
+      font-family: 'Arial Normal', 'Arial';
+      font-weight: 400;
+      padding-left: 17px;
+      span {
+        margin-right: 50px;
+      }
+      border-bottom: 5px solid #f0f2f5;
+    }
+    .operate {
+      height: 45px;
+      background-color: #fff;
+      width: 100%;
+      color: #333333;
+      font-size: 12px;
+      text-align: left;
+      line-height: 40px;
+      padding-left: 17px;
+      span {
+        margin-right: 50px;
+      }
+      border-bottom: 5px solid #f0f2f5;
+      .operate_btn {
+        width: 120px;
+        height: 24px;
+        font-family: '微软雅黑';
+        font-weight: 400;
+        font-size: 12px;
+        margin-right: 10px;
+      }
+      .delete_btn {
+        width: 120px;
+        height: 24px;
+        font-family: '微软雅黑';
+        font-weight: 400;
+        font-size: 12px;
+        background-color: #d1f0ff;
+        border: 1px solid #d1f0ff;
+        color: #4183D7;
+        &:hover {
+          background-color: #c1e4fb;
+        }
+      }
+    }
+
+    .card {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .card-container > .ant-tabs-card > .ant-tabs-content {
+      margin-top: -16px;
+    }
+
+    .card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
+      background: #fff;
+    }
+
+    .card-container > .ant-tabs-card > .ant-tabs-bar {
+      border-color: #fff;
+    }
+
+    .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+      border-color: #fff;
+      background: #fff;
+    }
+  }
+}
