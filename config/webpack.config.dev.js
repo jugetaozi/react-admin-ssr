@@ -166,13 +166,13 @@ module.exports = {
           // In production, we use a plugin to extract that CSS to a file, but
           // in development "style" loader enables hot editing of CSS.
           {
-            test: /\.css$/,
+						test: /\.css$/,
             use: [
               require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
                 options: {
-                  importLoaders: 1,
+									importLoaders: 1,
                 },
               },
               {
@@ -196,15 +196,18 @@ module.exports = {
                 },
               }
             ],
-          },
+					},
           {
-            test: /\.less$/,
+						test: /\.less$/,
+						include: paths.appSrc,
             use: [
               require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
                 options: {
-                  importLoaders: 1,
+									importLoaders: 1,
+									modules: true,//开启css 模块化
+									localIdentName: '[path][name]__[local]--[hash:base64:5]'
                 },
               },
               {
@@ -231,7 +234,45 @@ module.exports = {
                 options: { javascriptEnabled: true }
               }
             ],
-          },
+					},
+					{
+						test: /\.less$/,
+						exclude: paths.appSrc,
+						use: [
+							require.resolve('style-loader'),
+							{
+								loader: require.resolve('css-loader'),
+								options: {
+									importLoaders: 1,
+									//modules: true,//开启css 模块化
+									//	localIdentName: '[path][name]__[local]--[hash:base64:5]'
+								},
+							},
+							{
+								loader: require.resolve('postcss-loader'),
+								options: {
+									// Necessary for external CSS imports to work
+									// https://github.com/facebookincubator/create-react-app/issues/2677
+									ident: 'postcss',
+									plugins: () => [
+										require('postcss-flexbugs-fixes'),
+										autoprefixer({
+											browsers: [
+												'>1%',
+												'last 4 versions',
+												'Firefox ESR',
+												'not ie < 9', // React doesn't support IE8 anyway
+											],
+											flexbox: 'no-2009',
+										}),
+									],
+								},
+							}, {
+								loader: require.resolve('less-loader'),
+								options: { javascriptEnabled: true }
+							}
+						],
+					},
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.

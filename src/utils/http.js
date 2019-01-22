@@ -1,12 +1,10 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = '/amd';
+axios.defaults.baseURL = '/xcentz';
 
-export function get(url, params) {
+export function get (url, options) {
   return new Promise((resolve, reject) => {
-    axios.get(url, {
-      params: params
-    }).then(res => {
+    axios.get(url, options).then(res => {
       resolve(res.data)
     }).catch(err => {
       reject(err)
