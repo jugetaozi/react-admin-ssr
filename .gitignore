@@ -2,7 +2,6 @@ node_modules
 build
 .idea
 dist
-.vscode
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies

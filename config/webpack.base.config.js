@@ -3,7 +3,6 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // const prodMode = process.env.NODE_ENV === 'production';
 
@@ -21,12 +20,12 @@ const distResolve = function (file) {
 
 module.exports = {
 	entry: {
-		'index': srcResolve('index.js'),
-		'admin': srcResolve('admin.js'),
+		index: srcResolve('index.js'),
+		admin: srcResolve('admin.js'),
 	},
 	output: {
 		path: distResolve(''),
-		filename: 'js/[name].js'
+		filename: 'js/[name].js',
 	},
 	module: {
 		rules: [
@@ -46,6 +45,12 @@ module.exports = {
 			//   include: srcResolve(),
 			// },
 			{
+				test: /\.(js|jsx|mjs)$/,
+				include: srcResolve(),
+				loader: require.resolve('babel-loader'),
+				//不能再这里加option 否则会覆盖.babelrc
+			},
+			{
 				// "oneOf" will traverse all following loaders until one will
 				// match the requirements. When no loader matches it will fall
 				// back to the "file" loader at the end of the loader list.
@@ -62,23 +67,16 @@ module.exports = {
 						},
 					},
 					{
-						test: /\.(js|jsx|mjs)$/,
-						include: srcResolve(),
-						loader: require.resolve('babel-loader')
-						//不能再这里加option 否则会覆盖.babelrc
-					},
-					{
 						test: /\.(css|less)$/,
 						include: srcResolve(),
 						use: [
 							require.resolve('style-loader'),
-							// MiniCssExtractPlugin.loader,
 							{
 								loader: require.resolve('css-loader'),
 								options: {
 									importLoaders: 1,
-									modules: true,//开启css 模块化
-									localIdentName: '[path][name]__[local]--[hash:base64:5]'
+									modules: true, //开启css 模块化
+									localIdentName: '[path][name]__[local]--[hash:base64:5]',
 								},
 							},
 							{
@@ -103,8 +101,8 @@ module.exports = {
 							},
 							{
 								loader: require.resolve('less-loader'),
-								options: { javascriptEnabled: true }
-							}
+								options: {javascriptEnabled: true},
+							},
 						],
 					},
 					{
@@ -112,7 +110,6 @@ module.exports = {
 						exclude: srcResolve(),
 						use: [
 							require.resolve('style-loader'),
-							// MiniCssExtractPlugin.loader,
 							{
 								loader: require.resolve('css-loader'),
 								options: {
@@ -143,8 +140,8 @@ module.exports = {
 							},
 							{
 								loader: require.resolve('less-loader'),
-								options: { javascriptEnabled: true }
-							}
+								options: {javascriptEnabled: true},
+							},
 						],
 					},
 					// "file" loader makes sure those assets get served by WebpackDevServer.
@@ -176,22 +173,19 @@ module.exports = {
 		// extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
 		alias: {
 			'react-native': 'react-native-web',
-			'utils': path.resolve(__dirname, '../src/utils'),
-			'api': path.resolve(__dirname, '../src/api'),
-			'assets': path.resolve(__dirname, '../src/assets'),
-			'components': path.resolve(__dirname, '../src/components'),
-			'layouts': path.resolve(__dirname, '../src/layouts'),
-			'pages': path.resolve(__dirname, '../src/pages'),
-			'router': path.resolve(__dirname, '../src/router')
+			utils: path.resolve(__dirname, '../src/utils'),
+			api: path.resolve(__dirname, '../src/api'),
+			assets: path.resolve(__dirname, '../src/assets'),
+			components: path.resolve(__dirname, '../src/components'),
+			layouts: path.resolve(__dirname, '../src/layouts'),
+			pages: path.resolve(__dirname, '../src/pages'),
+			router: path.resolve(__dirname, '../src/router'),
 		},
 		// plugins: [
 		//   new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
 		// ],
 	},
 	plugins: [
-		new MiniCssExtractPlugin({
-			filename: 'css/[name].css'
-		})
 	],
 	optimization: {
 		splitChunks: {
@@ -199,9 +193,9 @@ module.exports = {
 				commons: {
 					test: /[\\/]node_modules[\\/]/,
 					name: 'vendor',
-					chunks: 'all'
-				}
-			}
-		}
-	}
-};
+					chunks: 'all',
+				},
+			},
+		},
+	},
+}

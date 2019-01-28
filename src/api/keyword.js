@@ -1,11 +1,11 @@
 import {get, post} from 'utils/http'
 
 export function getNewList() {
-	const result = get('/work/ad');
-  return result;
+	const result = get('/work/ad')
+	return result
 }
 
-export function postDate (params) {
-	const result = post('/work/adpost');
-	return result;
+export function getList(params) {
+	const result = post('/api/getList')
+	return result
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Icon, Alert, Tabs, Button, Table } from 'antd';
 import styles from './coolpad.less'
-import { getNewList, postDate } from "api/keyword";
+import {getNewList, getList} from 'api/keyword'
 
 const TabPane = Tabs.TabPane;
 const { SubMenu } = Menu;
@@ -17,9 +17,9 @@ class mdcMonitor extends Component {
 		// getNewList().then((data) => {
 		// 	console.log(data)
 		// })
-		// postDate().then((data) => {
-		// 	console.log(data)
-		// })
+		getList().then(data => {
+			console.log(data)
+		})
 	}
 
 

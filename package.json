@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "init_sql": "node ./server/init/index.js",
     "s_start": "nodemon --harmony ./server/app.js",
     "c_start": "webpack --watch --config ./config/webpack.dev.config.js",
     "c_build": "webpack --config ./config/webpack.prod.config.js",
@@ -15,9 +16,12 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "mime": "^2.4.0",
+    "mysql": "^2.16.0",
     "mz": "^2.7.0",
     "nunjucks": "2.4.2",
-    "react": "^16.7.0"
+    "react": "^16.7.0",
+    "sequelize": "^4.42.0",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
