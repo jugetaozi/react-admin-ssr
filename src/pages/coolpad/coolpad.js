@@ -26,8 +26,8 @@ class mdcMonitor extends Component {
 	render () {
 		return (
 			<div className="coolpad">
-				<Button>sdaf</Button>
-				<div className={styles.kk}>{this.state.title}</div>
+				<Button className = {styles['kk']}>sdaf</Button>
+				<div className={styles['kk']}>{this.state.title}</div>
 			</div>
 		)
 	}

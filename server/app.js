@@ -1,10 +1,31 @@
 const path = require('path')
 const Koa = require('koa')
-
+const koaLogger = require('koa-logger')
+const views = require('koa-views')
+const koaStatic = require('koa-static')
 const config = require('./../config')
 const routers = require('./routers/index')
 
 const app = new Koa()
+
+// 配置控制台日志中间件
+app.use(koaLogger())
+// 配置服务端模板渲染引擎中间件
+// const isProduction = process.env.NODE_ENV === 'production'
+// app.use(templating('views', {
+// 	noCache: !isProduction,
+// 	watch: !isProduction
+// }))
+
+// 配置静态资源加载中间件
+app.use(koaStatic(
+	path.join(__dirname, './../build')
+))
+
+// 配置服务端模板渲染引擎中间件
+app.use(views(path.join(__dirname, './views'), {
+	extension: 'ejs'
+}))
 
 // 初始化路由中间件
 app.use(routers.routes()).use(routers.allowedMethods())

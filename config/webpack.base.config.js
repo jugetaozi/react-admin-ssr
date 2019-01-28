@@ -65,47 +65,14 @@ module.exports = {
 						test: /\.(js|jsx|mjs)$/,
 						include: srcResolve(),
 						loader: require.resolve('babel-loader')
-						//不能再这里加option 会覆盖.babelrc
+						//不能再这里加option 否则会覆盖.babelrc
 					},
 					{
-						test: /\.css$/,
-						use: [
-							MiniCssExtractPlugin.loader,
-							require.resolve('style-loader'),
-							{
-								loader: require.resolve('css-loader'),
-								options: {
-									importLoaders: 1,
-								},
-							},
-							{
-								loader: require.resolve('postcss-loader'),
-								options: {
-									// Necessary for external CSS imports to work
-									// https://github.com/facebookincubator/create-react-app/issues/2677
-									ident: 'postcss',
-									plugins: () => [
-										require('postcss-flexbugs-fixes'),
-										autoprefixer({
-											browsers: [
-												'>1%',
-												'last 4 versions',
-												'Firefox ESR',
-												'not ie < 9', // React doesn't support IE8 anyway
-											],
-											flexbox: 'no-2009',
-										}),
-									],
-								},
-							}
-						],
-					},
-					{
-						test: /\.less$/,
+						test: /\.(css|less)$/,
 						include: srcResolve(),
 						use: [
 							require.resolve('style-loader'),
-							MiniCssExtractPlugin.loader,
+							// MiniCssExtractPlugin.loader,
 							{
 								loader: require.resolve('css-loader'),
 								options: {
@@ -133,24 +100,25 @@ module.exports = {
 										}),
 									],
 								},
-							}, {
+							},
+							{
 								loader: require.resolve('less-loader'),
 								options: { javascriptEnabled: true }
 							}
 						],
 					},
 					{
-						test: /\.less$/,
+						test: /\.(css|less)$/,
 						exclude: srcResolve(),
 						use: [
 							require.resolve('style-loader'),
-							MiniCssExtractPlugin.loader,
+							// MiniCssExtractPlugin.loader,
 							{
 								loader: require.resolve('css-loader'),
 								options: {
 									importLoaders: 1,
-									//modules: true,//开启css 模块化
-									//	localIdentName: '[path][name]__[local]--[hash:base64:5]'
+									// modules: true,//开启css 模块化
+									// localIdentName: '[path][name]__[local]--[hash:base64:5]'
 								},
 							},
 							{
@@ -172,7 +140,8 @@ module.exports = {
 										}),
 									],
 								},
-							}, {
+							},
+							{
 								loader: require.resolve('less-loader'),
 								options: { javascriptEnabled: true }
 							}

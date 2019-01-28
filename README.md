@@ -1,0 +1,1 @@
+- webpack4 mini-css-extract-plugin 会导致class失效

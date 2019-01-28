@@ -19,7 +19,7 @@ class Home extends Component {
 			<Router>
 				<Layout className={styles['layout']}>
 					<Header className={classnames(styles['Menu'])}>
-						<p className={classnames(styles['title'], styles['kk'])} onClick={this.redirectTo.bind(this)}>xCentz</p>
+						<p className={classnames(styles['title'])} onClick={this.redirectTo.bind(this)}>xCentz{}</p>
 						<Menu
 							theme="dark"
 							mode="horizontal"
