@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Icon, Alert, Tabs, Button, Table } from 'antd';
-import styles from './coolpad.less'
+import styles from './xcentz.less'
 import { getNewList, postDate } from "api/keyword";
 
 const TabPane = Tabs.TabPane;
@@ -9,7 +9,7 @@ const { SubMenu } = Menu;
 class mdcMonitor extends Component {
 
 	state = {
-		title: 'coolpad',
+		title: 'xcentz',
 		form: ''
 	}
 

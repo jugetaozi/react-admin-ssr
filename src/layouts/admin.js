@@ -3,36 +3,29 @@ import { Layout, Menu,Button, Icon, Avatar } from 'antd';
 import classnames from 'classnames';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import styles from './home.less';
-import Coolpad from '../pages/coolpad/coolpad.js'
-import MdcMonitor from '../pages/mdcMonitor/mdcMonitor.js'
-import imgSrc from "../assets/logo.png"
+import Xcentz from '../pages/coolpad/xcentz.js'
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
-class Home extends Component {
-	redirectTo(){
-		console.log(window.location);
-		window.location.pathname="/admin"
-	}
+class Admin extends Component {
 	render () {
 		return (
 			<Router>
 				<Layout className={styles['layout']}>
 					<Header className={classnames(styles['Menu'])}>
-						<p className={classnames(styles['title'], styles['kk'])} onClick={this.redirectTo.bind(this)}>xCentz</p>
+						<p className={classnames(styles['title'], styles['kk'])}>xCentz admin</p>
 						<Menu
 							theme="dark"
 							mode="horizontal"
 							defaultSelectedKeys={['1']}
 							style={{ lineHeight: '64px' }}
 						>
-							<Menu.Item key="1"><Link to='/'>coolpad</Link></Menu.Item>
-							<Menu.Item key="2"><Link to='/admin'>admin</Link></Menu.Item>
+							<Menu.Item key="1"><Link to='/'>xcentz admin</Link></Menu.Item>
 						</Menu>
 					</Header>
 					<Content style={{ margin: '0 10px', backgroundColor: '#fff' }}>
 						<Switch>
-							<Route path="/" exact component={Coolpad} />
+							<Route path="/" exact component={Xcentz} />
 						</Switch>
 					</Content>
 				</Layout>
@@ -41,4 +34,4 @@ class Home extends Component {
 	}
 }
 
-export default Home;
+export default Admin;

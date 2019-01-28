@@ -1,14 +1,15 @@
 {
-  "presets": [
-    "react-app"
-  ],
-  "plugins": [
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "style": true
-      }
-    ]
-  ]
+	"presets": [
+		"react-app"
+	],
+	"plugins": [
+		[
+			"import",
+			{
+				"libraryDirectory": "es",
+				"libraryName": "antd",
+				"style": true
+			}
+		]
+	]
 }
