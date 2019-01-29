@@ -3,11 +3,11 @@ const config = {
 	port: 8888,
 
 	database: {
-		DATABASE: 'xcentz',
-		USERNAME: 'google', //google
-		PASSWORD: 'Xcentz_1', //Xcentz_1
+		DATABASE: 'kai',
+		USERNAME: 'root', 
+		PASSWORD: 'Aa123456', //Xcentz_1
 		PORT: '3306',
-		HOST: '47.88.50.243'
+		HOST: 'localhost'//47.88.50.243
 	}
 }
 
