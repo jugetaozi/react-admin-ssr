@@ -1,35 +1,43 @@
 import React, { Component } from 'react';
-import { Menu, Icon, Alert, Tabs, Button, Table } from 'antd';
 import styles from './coolpad.less'
-import {getNewList, getList} from 'api/keyword'
+import { getList } from 'api/keyword'
+import { Table } from 'antd';
 
-const TabPane = Tabs.TabPane;
-const { SubMenu } = Menu;
-
-class mdcMonitor extends Component {
-
+class coolpadList extends Component {
 	state = {
-		title: 'coolpad',
-		form: ''
+		data: [],
 	}
 
-	componentDidMount = () => {
-		// getNewList().then((data) => {
-		// 	console.log(data)
-		// })
-		getList().then(data => {
-			console.log(data)
+	componentDidMount () {
+		getList().then((res) => {
+			this.setState({
+				data: res.data,
+			});
 		})
 	}
 
-
 	render () {
+		const columns = [{
+			title: 'asin',
+			dataIndex: 'asin',
+		}, {
+			title: 'title',
+			dataIndex: 'title',
+		}, {
+			title: 'author',
+			dataIndex: 'author',
+		}, {
+			title: 'review',
+			dataIndex: 'review',
+		}, {
+			title: 'url',
+			dataIndex: 'url',
+			render: text => <a href={text.url}>{text}</a>,
+		}];
 		return (
-			<div className="coolpad">
-				<Button className = {styles['kk']}>sdaf</Button>
-				<div className={styles['kk']}>{this.state.title}</div>
-			</div>
+			<Table rowKey={(record, index) => `${record.reviewDate + index}`} columns={columns} dataSource={this.state.data} />
 		)
 	}
 }
-export default mdcMonitor
+
+export default coolpadList
