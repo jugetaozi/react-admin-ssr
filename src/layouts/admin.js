@@ -1,8 +1,8 @@
+//多页应用另外一个入口
 import React, { Component } from 'react';
 import { Layout, Menu,Button, Icon, Avatar } from 'antd';
 import classnames from 'classnames';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import styles from './home.less';
+import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Xcentz from '../pages/coolpad/xcentz.js'
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;

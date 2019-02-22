@@ -6,7 +6,7 @@ import { getNewList, postDate } from "api/keyword";
 const TabPane = Tabs.TabPane;
 const { SubMenu } = Menu;
 
-class mdcMonitor extends Component {
+class xcentZ extends Component {
 
 	state = {
 		title: 'xcentz',
@@ -32,4 +32,4 @@ class mdcMonitor extends Component {
 		)
 	}
 }
-export default mdcMonitor
+export default xcentZ

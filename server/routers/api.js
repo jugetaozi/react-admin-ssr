@@ -3,9 +3,13 @@
  */
 
 const router = require('koa-router')()
-const newList = require('./../controllers/newList')
+const XcentzList = require('./../controllers/xcentz-list')
+const UserInfo = require('./../controllers/user-info')
 
-const routers = router.post('/getList', newList.getNewList)
+const routers = router
+	.post('/getList', XcentzList.getNewList)
+	.post('/createUser', XcentzList.createUser)
+	.post('/loginIn', UserInfo.loginIn)
 
 
 module.exports = routers

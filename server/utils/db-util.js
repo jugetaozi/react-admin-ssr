@@ -17,13 +17,12 @@ let query = function( sql, values ) {
         resolve( err )
       } else {
         connection.query(sql, values, ( err, rows) => {
-
           if ( err ) {
             reject( err )
           } else {
             resolve( rows )
           }
-          connection.release()
+          connection.release()//release将连接返回池中  供他们再次调用
         })
       }
     })

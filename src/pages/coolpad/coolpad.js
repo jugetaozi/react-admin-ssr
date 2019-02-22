@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './coolpad.less'
-import { getList } from 'api/keyword'
+import { getList, newCustomer} from 'api/keyword'
 import { Table } from 'antd';
 
 class coolpadList extends Component {
@@ -9,11 +9,13 @@ class coolpadList extends Component {
 	}
 
 	componentDidMount () {
-		getList().then((res) => {
-			this.setState({
-				data: res.data,
-			});
-		})
+		// getList().then((res) => {
+		// 	this.setState({
+		// 		data: res.data,
+		// 	});
+		// })
+		// newCustomer().then((res) => {
+		// })
 	}
 
 	render () {

@@ -5,6 +5,7 @@ const views = require('koa-views')
 const koaStatic = require('koa-static')
 const config = require('./../config')
 const routers = require('./routers/index')
+const bodyParser = require('koa-bodyparser');
 
 const app = new Koa()
 
@@ -27,7 +28,10 @@ app.use(views(path.join(__dirname, './views'), {
 	extension: 'ejs'
 }))
 
-// 初始化路由中间件
+//处理post请求 将form json解析
+app.use(bodyParser())
+
+// 初始化路由中间件和对于的allowedMethods
 app.use(routers.routes()).use(routers.allowedMethods())
 
 // 监听启动端口
