@@ -15,7 +15,7 @@ module.exports = {
 		if (_data) {
 			result.data = _data
 			result.code = 0
-			result.message = success
+			result.message = 'success'
 		} else {
 			result.message = 'no-message'
 			// TODO

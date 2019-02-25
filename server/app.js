@@ -6,6 +6,8 @@ const koaStatic = require('koa-static')
 const config = require('./../config')
 const routers = require('./routers/index')
 const bodyParser = require('koa-bodyparser');
+const koajwt = require('koa-jwt');
+const codes = require('./codes/users.js');
 
 const app = new Koa()
 
@@ -32,8 +34,32 @@ app.use(views(path.join(__dirname, './views'), {
 //处理post请求 将form json解析
 app.use(bodyParser())
 
+// 401错误处理
+// app.use((ctx, next) => {
+// 	return next().catch((err) => {
+// 		console.log(err,'err');
+// 		if (err.status === 401) {
+// 			// let result = {}
+// 			// result.code = '400000'
+// 			// result.data = null
+// 			// result.message = codes.FAIL_USER_NO_LOGIN
+// 			// ctx.body = result;
+// 		} else {
+// 			throw err;
+// 		}
+// 	})
+// })
+
+
 // 初始化路由中间件和对于的allowedMethods
 app.use(routers.routes()).use(routers.allowedMethods())
+
+// 需要放在路由前面 否则渲染请求已经返回
+// app.use(koajwt({
+// 	secret: config.secretkey
+// }).unless({
+// 	//path: [/^\//]  // ^唯一匹配/login  由于前段是hash路由 故此处设置无效
+// }))
 
 // 监听启动端口
 app.listen(config.port)

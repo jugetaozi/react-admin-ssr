@@ -17,10 +17,15 @@ const Login = Form.create()(class extends Component {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
+				//本地加密
 				values.name = aesEncrypt(values.name)
 				values.password = aesEncrypt(values.password)
-				console.log(values);
-				login(values).then(() => {
+
+				login(values).then((res) => {
+					if(res.data){
+						//如果有data token 则存到本地localStorage
+						window.localStorage.setItem("_token", res.data)
+					}
 					this.props.history.push('/')
 				}).catch((err) => {
 					console.log(err, err.data.message);

@@ -13,7 +13,7 @@ const getList = {
 		//   where first_name="${options.first_name}" or last_name="${options.last_name}"
 		// 	limit 1`
 		// console.log(_sql)
-		let _sql = `SELECT * FROM v_detail_review `
+		let _sql = `SELECT * FROM v_amz_asin_review `
 		let result = await dbUtils.query(_sql)
 		console.log(result);
 		if (Array.isArray(result) && result.length > 0) {

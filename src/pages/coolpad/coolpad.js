@@ -23,21 +23,21 @@ class coolpadList extends Component {
 			title: 'asin',
 			dataIndex: 'asin',
 		}, {
-			title: 'title',
-			dataIndex: 'title',
+			title: 'review_author',
+			dataIndex: 'review_author',
 		}, {
-			title: 'author',
-			dataIndex: 'author',
+				title: 'review_data',
+				dataIndex: 'review_data',
 		}, {
-			title: 'review',
-			dataIndex: 'review',
+			title: 'review_title',
+			dataIndex: 'review_title',
 		}, {
-			title: 'url',
-			dataIndex: 'url',
-			render: text => <a href={text.url}>{text}</a>,
+			title: 'review_body',
+			dataIndex: 'review_body',
+			// render: text => <a href={text.url}>{text}</a>,
 		}];
 		return (
-			<Table rowKey={(record, index) => `${record.reviewDate + index}`} columns={columns} dataSource={this.state.data} />
+			<Table rowKey={(record, index) => `${record.review_data + record.review_body+ index}`} columns={columns} dataSource={this.state.data} />
 		)
 	}
 }

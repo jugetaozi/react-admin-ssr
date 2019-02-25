@@ -2,13 +2,13 @@ import axios from 'axios'
 import qs from 'qs'
 axios.defaults.baseURL = '/xcentz';
 
-if (window.localStorage.getItem('token')) { //默认取localStorage里面的 token
-	Axios.defaults.headers.common['Authorization'] = `Bearer ` + window.localStorage.getItem('token')
-}
 
 axios.interceptors.request.use(config => {
 	//发送请求操作，统一再请求里加上userId 
 	// config.headers['userId'] = window.sessionStorage.getItem("userId");
+	if (window.localStorage.getItem('_token')){
+		config.headers.common['Authorization'] = `Bearer ` + window.localStorage.getItem('_token')
+	}
 	return config;
 }, error => {
 	//发送请求错误操作
@@ -18,11 +18,16 @@ axios.interceptors.request.use(config => {
 
 axios.interceptors.response.use(response => {
 	// window.location.hash = '#/login'
-	// console.log(window.location);
+	console.log(response,'response');
 	//对响应数据做操作
 	if (parseInt(response.data.code, 10) === 0) {
 		//console.log('请求成功');
 		return Promise.resolve(response)
+	}
+	if (parseInt(response.data.code, 10) === 400000) {
+		console.log('未登录', response.data.code);
+		window.location.href = '/login';
+		return Promise.reject(response);
 	}
 	if (response.data.code === '2000401' || response.data.code === 2000401) {
 		console.log('已过期重新登陆', response.data.code);

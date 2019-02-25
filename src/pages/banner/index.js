@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import classnames from 'classnames';
 import styles from './banner.less';
 import "../../utils/crypto";
+import { getList } from 'api/keyword'
 const { Header, Content } = Layout;
 
 class Banner extends Component {
@@ -25,7 +26,8 @@ class Banner extends Component {
 		})
 	}
 	linkToDoc () {
-		window.location.href = window.location.protocol + "//" + window.location.host + '/AppDoc/_book/'
+		// window.location.href = window.location.protocol + "//" + window.location.host + '/AppDoc/_book/'
+		getList()
 	}
 
 
