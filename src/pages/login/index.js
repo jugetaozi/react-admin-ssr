@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import styles from './login.less';
 import { login } from 'api/keyword'
 import canvasJS from '../../libs/canvasJs/zhihu-like'
+import { aesEncrypt } from "../../utils/crypto";
 
 const Login = Form.create()(class extends Component {
 	state = {
@@ -16,6 +17,8 @@ const Login = Form.create()(class extends Component {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
+				values.name = aesEncrypt(values.name)
+				values.password = aesEncrypt(values.password)
 				console.log(values);
 				login(values).then(() => {
 					this.props.history.push('/')

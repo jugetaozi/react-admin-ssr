@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "init_sql": "node ./server/init/index.js",
-    "s_start": "nodemon --harmony ./server/app.js",
+    "s_start": "node ./config/openBrowser & nodemon --harmony ./server/app.js",
     "c_start": "webpack --watch --config ./config/webpack.dev.config.js",
     "c_build": "webpack --config ./config/webpack.prod.config.js",
+    "doc": "cd ./build/AppDoc && gitbook build",
     "test": "node scripts/test.js test"
   },
   "dependencies": {
     "antd": "^3.13.0",
     "axios": "^0.18.0",
+    "crypto": "^1.0.1",
     "koa": "^2.6.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",

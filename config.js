@@ -13,15 +13,28 @@
 
 const config = {
 
-	port: 8888,
-
+	port: 8868,
+	secretkey : '4b32f3166d1de8fd8f89e775aee33f255adf443d9ceefda4f576987b7486d37fdf46f73086cf28846024475d066ea048',//密钥
 	database: {
-		DATABASE: 'xcentz_local',
-		USERNAME: 'root',
-		PASSWORD: 'Aa123456', 
+		DATABASE: 'xcentz',
+		USERNAME: 'userroot',
+		PASSWORD: '1qaz2wsx!@#',
 		PORT: '3306',
-		HOST: 'localhost'
+		HOST: '10.10.1.60'
 	}
 }
+
+// const config = {
+
+// 	port: 8888,
+
+// 	database: {
+// 		DATABASE: 'xcentz_local',
+// 		USERNAME: 'root',
+// 		PASSWORD: 'Aa123456', 
+// 		PORT: '3306',
+// 		HOST: 'localhost'
+// 	}
+// }
 
 module.exports = config

@@ -18,7 +18,8 @@ app.use(koaLogger())
 // 	watch: !isProduction
 // }))
 
-// 配置静态资源加载中间件
+
+// 配置静态资源加载中间件   //注意 防止与路由冲突
 app.use(koaStatic(
 	path.join(__dirname, './../build')
 ))

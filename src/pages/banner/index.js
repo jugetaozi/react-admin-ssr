@@ -3,6 +3,7 @@ import { Layout, Menu } from 'antd';
 import { Link, withRouter } from "react-router-dom";
 import classnames from 'classnames';
 import styles from './banner.less';
+import "../../utils/crypto";
 const { Header, Content } = Layout;
 
 class Banner extends Component {
@@ -23,6 +24,9 @@ class Banner extends Component {
 			isRender: this.props.history.location.pathname !== "/login"
 		})
 	}
+	linkToDoc () {
+		window.location.href = window.location.protocol + "//" + window.location.host + '/AppDoc/_book/'
+	}
 
 
 
@@ -38,6 +42,7 @@ class Banner extends Component {
 				<Menu.Item key="1"><Link to='/home'>coolpad</Link></Menu.Item>
 				<Menu.Item key="2"><Link to='/admin'>admin</Link></Menu.Item>
 				<Menu.Item key="3"><Link to='/login'>login</Link></Menu.Item>
+				<Menu.Item key="4" onClick={this.linkToDoc.bind(this)}>AppDoc</Menu.Item>
 			</Menu>
 		</Header>
 		const { isRender } = this.state

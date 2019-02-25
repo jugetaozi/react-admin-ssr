@@ -1,3 +1,5 @@
+# Xcentz-系统介绍 Introduction
+
 ## client
 - react 16.7 + antd 13.3+ webpack 4.29
 
@@ -8,9 +10,9 @@
 ```
 npm i
 配置config
-npm init_sql // 执行mysql建表语句
 npm run s_start //启动服务端
 npm run c_start //启动客户端
+npm init_sql //测试数据库链接
 
 打开 http://localhost:8888/
 ```
