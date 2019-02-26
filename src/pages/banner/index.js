@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Avatar } from 'antd';
 import { Link, withRouter } from "react-router-dom";
 import classnames from 'classnames';
 import styles from './banner.less';

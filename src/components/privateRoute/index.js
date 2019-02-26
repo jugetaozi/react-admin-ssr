@@ -38,7 +38,6 @@ class privateRoute extends Component {
 		// }
 	}
 	static getDerivedStateFromProps (props, state) {
-		console.log(props, state);
 		if (getStorage("_token")) {
 			return {
 				hasAuth: true
