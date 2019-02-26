@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import classnames from 'classnames';
 import styles from './banner.less';
 import "../../utils/crypto";
+import { hrefTo } from '../../utils/utils'
 import { getList } from 'api/keyword'
 const { Header, Content } = Layout;
 
@@ -12,7 +13,7 @@ class Banner extends Component {
 		isRender: true
 	}
 	componentDidMount = () => {
-		console.log(this.props, this.state, this.props.history.location.pathname !== "/login");
+		// console.log(this.props, this.state, this.props.history.location.pathname !== "/login");
 		this.setState({
 			isRender: this.props.history.location.pathname !== "/login"
 		})
@@ -26,8 +27,8 @@ class Banner extends Component {
 		})
 	}
 	linkToDoc () {
-		// window.location.href = window.location.protocol + "//" + window.location.host + '/AppDoc/_book/'
-		getList()
+		hrefTo('/AppDoc/_book/')
+		// getList()
 	}
 
 

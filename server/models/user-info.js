@@ -25,7 +25,7 @@ const userInfo = {
 		if (Array.isArray(result) && result.length > 0) {
 			const token = jwt.sign({
 				name: result.name,
-				_id: result._id
+				id: result.id
 			}, config.secretkey, { expiresIn: '2h' });
 			_obj.data = token
 			_obj.message = "登录成功"

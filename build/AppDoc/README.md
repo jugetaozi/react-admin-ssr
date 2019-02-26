@@ -1,25 +1,25 @@
-# Xcentz-系统介绍 Introduction
+# Xcentz-系统使用介绍 Introduction
 
-## client
+## client 浏览器端
 - react 16.7 + antd 13.3+ webpack 4.29
 
-## server
+## server  服务侧
 - koa 2.6 + koa-router + mysql +ejs模板引擎
 
-## start
+## start 启动方式
 ```
 npm i
 配置config
+npm init_sql // 执行数据库建表语句
 npm run s_start //启动服务端
 npm run c_start //启动客户端
-npm init_sql //测试数据库链接
 
 打开 http://localhost:8888/
 ```
 
 
 
-##待解决问题 
+## 待解决问题 ( ToDoList )
 * 前端HMR还未实现 目前实现了hot-watch
 * 后台错误统计还未实现
 * webpack4 mini-css-extract-plugin 会导致class失效 

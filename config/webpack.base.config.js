@@ -173,13 +173,13 @@ module.exports = {
 		// extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
 		alias: {
 			'react-native': 'react-native-web',
-			utils: path.resolve(__dirname, '../src/utils'),
 			api: path.resolve(__dirname, '../src/api'),
 			assets: path.resolve(__dirname, '../src/assets'),
 			components: path.resolve(__dirname, '../src/components'),
 			layouts: path.resolve(__dirname, '../src/layouts'),
 			pages: path.resolve(__dirname, '../src/pages'),
 			router: path.resolve(__dirname, '../src/router'),
+			utils: path.resolve(__dirname, '../src/utils'),
 		},
 		// plugins: [
 		//   new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),

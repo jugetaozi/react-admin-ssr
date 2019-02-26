@@ -35,31 +35,33 @@ app.use(views(path.join(__dirname, './views'), {
 app.use(bodyParser())
 
 // 401错误处理
-// app.use((ctx, next) => {
-// 	return next().catch((err) => {
-// 		console.log(err,'err');
-// 		if (err.status === 401) {
-// 			// let result = {}
-// 			// result.code = '400000'
-// 			// result.data = null
-// 			// result.message = codes.FAIL_USER_NO_LOGIN
-// 			// ctx.body = result;
-// 		} else {
-// 			throw err;
-// 		}
-// 	})
-// })
+app.use((ctx, next) => {
+	return next().catch((err) => {
+		console.log(err,'err');
+		if (err.status === 401) {
+			let result = {}
+			result.code = '400000'
+			result.data = null
+			result.message = codes.FAIL_USER_NO_LOGIN
+			ctx.status = 401
+			ctx.body = result;
+		} else {
+			throw err;
+		}
+	})
+})
+
+// 需要放在路由前面 否则渲染请求已经返回
+app.use(koajwt({
+	secret: config.secretkey
+}).unless({
+	path: [/^\/$/,/^\/xcentz\/api\/loginIn$/]  // ^$唯一匹配/  由于前端是hash路由  故拦截除静态服务器以外的其他api  需要放到静态资源之后 路由之前
+}))
 
 
 // 初始化路由中间件和对于的allowedMethods
 app.use(routers.routes()).use(routers.allowedMethods())
 
-// 需要放在路由前面 否则渲染请求已经返回
-// app.use(koajwt({
-// 	secret: config.secretkey
-// }).unless({
-// 	//path: [/^\//]  // ^唯一匹配/login  由于前段是hash路由 故此处设置无效
-// }))
 
 // 监听启动端口
 app.listen(config.port)

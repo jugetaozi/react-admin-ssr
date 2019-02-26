@@ -5,6 +5,7 @@ import styles from './login.less';
 import { login } from 'api/keyword'
 import canvasJS from '../../libs/canvasJs/zhihu-like'
 import { aesEncrypt } from "../../utils/crypto";
+import { removeStorage } from "../../utils/utils";
 
 const Login = Form.create()(class extends Component {
 	state = {
@@ -20,11 +21,18 @@ const Login = Form.create()(class extends Component {
 				//本地加密
 				values.name = aesEncrypt(values.name)
 				values.password = aesEncrypt(values.password)
-
 				login(values).then((res) => {
-					if(res.data){
+					if (res.data) {
 						//如果有data token 则存到本地localStorage
-						window.localStorage.setItem("_token", res.data)
+						removeStorage("_token")
+						if (values.remember) {
+							//存进session
+							window.localStorage.setItem("_token", res.data)
+						} else {
+							//存进localStorage
+							window.sessionStorage.setItem("_token", res.data)
+						}
+
 					}
 					this.props.history.push('/')
 				}).catch((err) => {

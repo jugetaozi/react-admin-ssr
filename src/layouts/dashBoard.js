@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
 import Banner from '../pages/banner'
-import styles from './layoutIndex.less';
 import Coolpad from '../pages/coolpad/coolpad.js'
 import Xcentz from '../pages/coolpad/xcentz.js'
 import ErrorPage from '../pages/errorPage'
