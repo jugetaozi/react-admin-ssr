@@ -4,11 +4,8 @@ import promiseMiddleware from 'redux-promise-middleware'
 import rootReducer from '../reducers'
 
 const middlewares = [
-	thunkMiddleware
-	//promiseMiddleware({})
+	thunkMiddleware,
+	promiseMiddleware
 ]
 
-export default function configStore () {
-	const store = createStore(rootReducer, applyMiddleware(...middlewares))
-	return store
-}
+export default createStore(rootReducer, applyMiddleware(...middlewares))

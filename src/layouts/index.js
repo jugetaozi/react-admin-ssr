@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter as Router } from "react-router-dom";
 import LayoutIndex from './layoutIndex.js'
-import configstore from '../redux/store';
-const store = configstore()
+import store from '../store/store';
 
 class Index extends Component {
 	render () {

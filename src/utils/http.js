@@ -7,7 +7,7 @@ axios.defaults.baseURL = '/xcentz';
 axios.interceptors.request.use(config => {
 	//发送请求操作，统一再请求里加上userId 
 	// config.headers['userId'] = window.sessionStorage.getItem("userId");
-	console.log(getStorage('_token'), "getStorage('_token')");
+	// console.log(getStorage('_token'), "getStorage('_token')");
 	if (getStorage('_token')) {
 		config.headers.common['Authorization'] = `Bearer ` + getStorage('_token')
 	}
@@ -19,7 +19,7 @@ axios.interceptors.request.use(config => {
 })
 
 axios.interceptors.response.use(response => {
-	console.log(response, 'response');
+	// console.log(response, 'response');
 	//对响应数据做操作
 	if (parseInt(response.data.code, 10) === 0) {
 		//console.log('请求成功');

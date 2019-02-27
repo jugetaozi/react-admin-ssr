@@ -7,3 +7,4 @@
   * [2.1  请求拦截策略](note/intercept-strategy.md)
   * [2.2  node-自动打开浏览器方式](note/node-openDefaultBrowser.md)
   * [2.3  接口文档](note/api.md)
+  * [2.4  项目依赖](note/package.md)

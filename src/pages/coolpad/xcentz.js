@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Icon, Alert, Tabs, Button, Table } from 'antd';
 import styles from './xcentz.less'
 import { getNewList, postDate } from "api/keyword";
+import store from "../../store/store";
 
 const TabPane = Tabs.TabPane;
 const { SubMenu } = Menu;
@@ -14,6 +15,11 @@ class xcentZ extends Component {
 	}
 
 	componentDidMount = () => {
+		// store.dispatch({
+		// 	type: 'API_GET_USER_ADDR_FULFILLED',
+		// 	payload: 'payload123123'
+		// });
+		console.log(store,'store.getState()');
 		// getNewList().then((data) => {
 		// 	console.log(data)
 		// })

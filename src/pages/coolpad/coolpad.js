@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import styles from './coolpad.less'
-import { getList, newCustomer} from 'api/keyword'
+import { getList, newCustomer } from 'api/keyword'
 import { Table } from 'antd';
+import { connect } from 'react-redux'
+import { getUserInfo } from 'store/reducers/userReducer';
 
+@connect(
+	state => {
+		changeReducer: state.changeReducer
+	},
+	{ getUserInfo }
+)
 class coolpadList extends Component {
 	state = {
 		data: [],
 	}
 
-	componentDidMount () {
+	async componentDidMount () {
 		// getList().then((res) => {
 		// 	this.setState({
 		// 		data: res.data,
 		// 	});
 		// })
+		const res = await this.props.getUserInfo()
+		console.log(res);
 		// newCustomer().then((res) => {
 		// })
 	}
@@ -26,8 +36,8 @@ class coolpadList extends Component {
 			title: 'review_author',
 			dataIndex: 'review_author',
 		}, {
-				title: 'review_data',
-				dataIndex: 'review_data',
+			title: 'review_data',
+			dataIndex: 'review_data',
 		}, {
 			title: 'review_title',
 			dataIndex: 'review_title',
@@ -37,7 +47,7 @@ class coolpadList extends Component {
 			// render: text => <a href={text.url}>{text}</a>,
 		}];
 		return (
-			<Table rowKey={(record, index) => `${record.review_data + record.review_body+ index}`} columns={columns} dataSource={this.state.data} />
+			<Table rowKey={(record, index) => `${record.review_data + record.review_body + index}`} columns={columns} dataSource={this.state.data} />
 		)
 	}
 }
