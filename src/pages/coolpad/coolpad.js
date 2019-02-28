@@ -48,10 +48,7 @@ class coolpadList extends Component {
 			// render: text => <a href={text.url}>{text}</a>,
 		}];
 		return (
-			<div>
-				{/* <p>{this.props.userReducer}</p> */}
-				<Table rowKey={(record, index) => `${record.review_data + record.review_body + index}`} columns={columns} dataSource={this.state.data} />
-			</div>
+			<Table rowKey={(record, index) => `${record.review_data + record.review_body + index}`} columns={columns} dataSource={this.state.data} />
 		)
 	}
 }
