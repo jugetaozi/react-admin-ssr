@@ -6,9 +6,9 @@ import { connect } from 'react-redux'
 import { getUserInfo } from 'store/reducers/userReducer';
 
 @connect(
-	state => {
-		changeReducer: state.changeReducer
-	},
+	state => ({
+		userReducer: state.userReducer
+	}),
 	{ getUserInfo }
 )
 class coolpadList extends Component {
@@ -23,7 +23,8 @@ class coolpadList extends Component {
 		// 	});
 		// })
 		const res = await this.props.getUserInfo()
-		console.log(res);
+		console.log(res, 'res');
+		console.log(this.props, 'this.props');
 		// newCustomer().then((res) => {
 		// })
 	}
@@ -47,7 +48,10 @@ class coolpadList extends Component {
 			// render: text => <a href={text.url}>{text}</a>,
 		}];
 		return (
-			<Table rowKey={(record, index) => `${record.review_data + record.review_body + index}`} columns={columns} dataSource={this.state.data} />
+			<div>
+				{/* <p>{this.props.userReducer}</p> */}
+				<Table rowKey={(record, index) => `${record.review_data + record.review_body + index}`} columns={columns} dataSource={this.state.data} />
+			</div>
 		)
 	}
 }

@@ -15,7 +15,7 @@ const userInfo = {
 
 		// let _sql = `SELECT * FROM user_info where name="${options.name}" and password="${options.password}"`
 		let _sql = `SELECT * FROM user_info where name="${options.name}" and password="${options.password}"`
-		console.log(_sql);
+		// console.log(_sql);
 		let result = await dbUtils.query(_sql)
 		let _obj = {
 			data: null,

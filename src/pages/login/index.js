@@ -45,7 +45,6 @@ const Login = Form.create()(class extends Component {
 		});
 	}
 	componentDidMount = () => {
-		console.log('mount');
 		canvasJS(window)//加载粒子效果
 	}
 

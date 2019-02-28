@@ -8,11 +8,9 @@
 ## Xcentz 系统启动方式
 ```
 npm i
-配置config
-npm init_sql // 执行数据库建表语句
-npm run s_start //启动服务端
-npm run c_start //启动客户端
-
+配置config // 填写mysql数据库配置
+npm init //数据库初始化 DOC初始化
+npm run dev //启动服务侧 客户侧 打开浏览器
 打开 http://localhost:8888/
 ```
 

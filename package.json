@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "node ./config/openBrowser & npm run c_start | npm run s_start",
+    "init": "npm run init_sql | npm run doc",
+    "test": "node scripts/test.js test",
     "init_sql": "node ./server/init/index.js",
-    "s_start": "node ./config/openBrowser & nodemon --harmony ./server/app.js",
-    "c_start": "webpack --watch --config ./config/webpack.dev.config.js",
-    "c_build": "webpack --config ./config/webpack.prod.config.js",
     "doc": "cd ./build/AppDoc && gitbook build",
-    "test": "node scripts/test.js test"
+    "s_start": "nodemon --harmony ./server/app.js",
+    "c_start": "webpack --watch --config ./config/webpack.dev.config.js",
+    "c_build": "webpack --config ./config/webpack.prod.config.js"
   },
   "dependencies": {
     "antd": "^3.13.0",

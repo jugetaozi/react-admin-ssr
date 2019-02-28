@@ -15,7 +15,7 @@ const getList = {
 		// console.log(_sql)
 		let _sql = `SELECT * FROM v_amz_asin_review `
 		let result = await dbUtils.query(_sql)
-		console.log(result);
+		// console.log(result);
 		if (Array.isArray(result) && result.length > 0) {
 			// result = result[0]
 		} else {

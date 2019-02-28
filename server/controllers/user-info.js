@@ -1,5 +1,4 @@
 const UserInfo = require('./../services/user-info')
-
 module.exports = {
 	/**
 	 * user-info
@@ -8,5 +7,5 @@ module.exports = {
 	async loginIn (ctx) {
 		const result = await UserInfo.loginIn(ctx.request.body)
 		ctx.body = result
-	},
+	}
 }
