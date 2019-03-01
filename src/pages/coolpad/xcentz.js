@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Icon, Alert, Tabs, Button, Table } from 'antd';
+import { Menu, Icon, Tabs, Button, Upload, message } from 'antd';
 import styles from './xcentz.less'
 import { getNewList, postDate } from "api/keyword";
 import store from "../../store/store";
@@ -10,30 +10,85 @@ const { SubMenu } = Menu;
 class xcentZ extends Component {
 
 	state = {
-		title: 'xcentz',
-		form: ''
+		fileList: [],
+		uploading: false,
 	}
 
 	componentDidMount = () => {
-		// store.dispatch({
-		// 	type: 'API_GET_USER_ADDR_FULFILLED',
-		// 	payload: 'payload123123'
-		// });
-		console.log(store,'store.getState()');
-		// getNewList().then((data) => {
-		// 	console.log(data)
-		// })
-		// postDate().then((data) => {
-		// 	console.log(data)
-		// })
+		console.log(store, 'store.getState()');
+	}
+
+	handleUpload = () => {
+		const { fileList } = this.state;
+		const formData = new FormData();
+		fileList.forEach((file) => {
+			formData.append('files[]', file);
+		});
+
+		this.setState({
+			uploading: true,
+		});
+
+		// You can use any AJAX library you like
+		reqwest({
+			url: '//jsonplaceholder.typicode.com/posts/',
+			method: 'post',
+			processData: false,
+			data: formData,
+			success: () => {
+				this.setState({
+					fileList: [],
+					uploading: false,
+				});
+				message.success('upload successfully.');
+			},
+			error: () => {
+				this.setState({
+					uploading: false,
+				});
+				message.error('upload failed.');
+			},
+		});
 	}
 
 
 	render () {
+		const { uploading, fileList } = this.state;
+		const props = {
+			onRemove: (file) => {
+				this.setState((state) => {
+					const index = state.fileList.indexOf(file);
+					const newFileList = state.fileList.slice();
+					newFileList.splice(index, 1);
+					return {
+						fileList: newFileList,
+					};
+				});
+			},
+			beforeUpload: (file) => {
+				this.setState(state => ({
+					fileList: [...state.fileList, file],
+				}));
+				return false;
+			},
+			fileList,
+		};
 		return (
-			<div className="coolpad">
-				<Button>sdaf</Button>
-				<div className={styles.kk}>{this.state.title}</div>
+			<div className = {styles['upload_content']}>
+				<Upload {...props}>
+					<Button>
+						<Icon type="upload" /> Select File
+          </Button>
+				</Upload>
+				<Button
+					type="primary"
+					onClick={this.handleUpload}
+					disabled={fileList.length === 0 || fileList.length > 1}
+					loading={uploading}
+					style={{ marginTop: 16 }}
+				>
+					{uploading ? 'Uploading' : 'Start Upload'}
+				</Button>
 			</div>
 		)
 	}

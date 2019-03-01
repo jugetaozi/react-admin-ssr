@@ -76,7 +76,7 @@ module.exports = {
 								options: {
 									importLoaders: 1,
 									modules: true, //开启css 模块化
-									localIdentName: '[path][name]__[local]--[hash:base64:5]',
+									localIdentName: '[hash:5]',
 								},
 							},
 							{
