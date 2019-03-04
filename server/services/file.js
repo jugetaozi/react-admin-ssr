@@ -9,7 +9,7 @@ const user = {
 	 * download
 	 * @param {Object} options 
 	 */
-	async loginIn (options) {
+	async download (options) {
 		let result = await file.download(options)
 		return result
 	},

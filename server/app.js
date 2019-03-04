@@ -37,7 +37,7 @@ app.use(bodyParser())
 // 401错误处理
 app.use((ctx, next) => {
 	return next().catch((err) => {
-		console.log(err,'err');
+		console.log(err, 'err');
 		if (err.status === 401) {
 			let result = {}
 			result.code = '400000'
@@ -55,9 +55,8 @@ app.use((ctx, next) => {
 app.use(koajwt({
 	secret: config.secretkey
 }).unless({
-	path: [/^\/$/,/^\/xcentz\/api\/loginIn$/]  // ^$唯一匹配/  由于前端是hash路由  故拦截除静态服务器以外的其他api  需要放到静态资源之后 路由之前
+	path: [/^\/$/, /^\/xcentz\/api\/loginIn$/, /^\/download/]  // ^$唯一匹配/  由于前端是hash路由  故拦截除静态服务器以外的其他api  需要放到静态资源之后 路由之前
 }))
-
 
 // 初始化路由中间件和对于的allowedMethods
 app.use(routers.routes()).use(routers.allowedMethods())

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Menu, Icon, Tabs, Button, Upload, message } from 'antd';
+import classnames from 'classnames'
 import styles from './xcentz.less'
-import { getNewList, postDate } from "api/keyword";
+import { download } from "api/file";
 import store from "../../store/store";
+import { open } from 'utils/utils'
 
 const TabPane = Tabs.TabPane;
 const { SubMenu } = Menu;
@@ -19,36 +21,37 @@ class xcentZ extends Component {
 	}
 
 	handleUpload = () => {
-		const { fileList } = this.state;
-		const formData = new FormData();
-		fileList.forEach((file) => {
-			formData.append('files[]', file);
-		});
+		// const { fileList } = this.state;
+		// const formData = new FormData();
+		// fileList.forEach((file) => {
+		// 	formData.append('files[]', file);
+		// });
 
-		this.setState({
-			uploading: true,
-		});
-
+		// this.setState({
+		// 	uploading: true,
+		// });
 		// You can use any AJAX library you like
-		reqwest({
-			url: '//jsonplaceholder.typicode.com/posts/',
-			method: 'post',
-			processData: false,
-			data: formData,
-			success: () => {
-				this.setState({
-					fileList: [],
-					uploading: false,
-				});
-				message.success('upload successfully.');
-			},
-			error: () => {
-				this.setState({
-					uploading: false,
-				});
-				message.error('upload failed.');
-			},
-		});
+		// download({
+		// 	data: formData,
+		// 	success: () => {
+		// 		this.setState({
+		// 			fileList: [],
+		// 			uploading: false,
+		// 		});
+		// 		message.success('upload successfully.');
+		// 	},
+		// 	error: () => {
+		// 		this.setState({
+		// 			uploading: false,
+		// 		});
+		// 		message.error('upload failed.');
+		// 	},
+		// });
+	}
+	downloadClick () {
+		download().then((item) => {
+			open(`/download/${item.data.id}`)
+		})
 	}
 
 
@@ -74,10 +77,11 @@ class xcentZ extends Component {
 			fileList,
 		};
 		return (
-			<div className = {styles['upload_content']}>
+			<div className={styles['upload_content']}>
+				<Button type="primary" onClick={this.downloadClick.bind(this)} className={classnames(styles['download'])} shape="round" icon="download" size="large">下载excel表格</Button>
 				<Upload {...props}>
 					<Button>
-						<Icon type="upload" /> Select File
+						<Icon type="upload" /> 选择上传文件
           </Button>
 				</Upload>
 				<Button
@@ -87,7 +91,7 @@ class xcentZ extends Component {
 					loading={uploading}
 					style={{ marginTop: 16 }}
 				>
-					{uploading ? 'Uploading' : 'Start Upload'}
+					{uploading ? 'Uploading' : '开始上传'}
 				</Button>
 			</div>
 		)

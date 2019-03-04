@@ -29,9 +29,8 @@ axios.interceptors.response.use(response => {
 		// console.log('已过期重新登陆', response.data.code);
 		// hashTo('/login')
 		// return Promise.reject(response);
-	}
-	else {
-		console.log('请求失败', response.data.code);
+	} else {
+		console.log('响应失败', response.data.code);
 		return Promise.reject(response);
 	}
 }, error => {
