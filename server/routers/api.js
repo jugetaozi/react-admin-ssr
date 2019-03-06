@@ -12,6 +12,7 @@ const routers = router
 	.post('/createUser', XcentzList.createUser)
 	.post('/loginIn', UserInfo.loginIn)
 	.post('/download', File.download)
+	.post('/uploadExcel', File.uploadExcel)
 
 
 module.exports = routers

@@ -1,4 +1,5 @@
 const UserInfo = require('./../services/user-info')
+
 module.exports = {
 	/**
 	 * user-info

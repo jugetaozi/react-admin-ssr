@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Menu, Icon, Tabs, Button, Upload, message } from 'antd';
 import classnames from 'classnames'
 import styles from './xcentz.less'
-import { download } from "api/file";
+import { download, uploadExcel } from "api/file";
 import store from "../../store/store";
-import { open } from 'utils/utils'
+import { open, getFileType } from 'utils/utils'
 
 const TabPane = Tabs.TabPane;
 const { SubMenu } = Menu;
@@ -21,15 +21,28 @@ class xcentZ extends Component {
 	}
 
 	handleUpload = () => {
-		// const { fileList } = this.state;
-		// const formData = new FormData();
-		// fileList.forEach((file) => {
-		// 	formData.append('files[]', file);
-		// });
+		const { fileList } = this.state;
+		const formData = new FormData();
+		fileList.forEach((file) => {
+			formData.append('ylnum', file);
+		});
+		this.setState({
+			uploading: true,
+		});
+		uploadExcel(formData, { headers: { "Content-Type": "multipart/form-data" } }).then((item) => {
+			this.setState({
+				uploading: false,
+				fileList: []
+			});
+			message.success('上传成功');
+		}).catch((err) => {
+			this.setState({
+				uploading: false,
+			});
+			message.error('上传失败');
+		})
 
-		// this.setState({
-		// 	uploading: true,
-		// });
+
 		// You can use any AJAX library you like
 		// download({
 		// 	data: formData,
@@ -69,9 +82,20 @@ class xcentZ extends Component {
 				});
 			},
 			beforeUpload: (file) => {
-				this.setState(state => ({
-					fileList: [...state.fileList, file],
-				}));
+				if (getFileType(file.name) !== '.xlsx') {
+					this.setState(state => ({
+						fileList: [],
+					}));
+					message.error('仅支持.xlsx文件上传!');
+				} else {
+					this.setState(state => ({
+						fileList: [...state.fileList, file],
+					}), () => {
+						if (this.state.fileList.length > 1) {
+							message.info('一次只能上传一个文件!');
+						}
+					});
+				}
 				return false;
 			},
 			fileList,

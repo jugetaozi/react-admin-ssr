@@ -10,21 +10,40 @@ const { Header, Content } = Layout;
 
 class Banner extends Component {
 	state = {
-		isRender: true
+		isRender: true,
+		defaultSelectedKeys: ['1']
 	}
+
 	componentDidMount = () => {
 		// console.log(this.props, this.state, this.props.history.location.pathname !== "/login");
 		this.setState({
 			isRender: this.props.history.location.pathname !== "/login"
 		})
 	}
+	static getDerivedStateFromProps (props, state) {
+		let _key = ['1']
+		switch (props.history.location.pathname) {
+			case "/home":
+				_key = ['1']
+				break;
+			case "/admin":
+				_key = ['2']
+				break;
+			case "/login":
+				_key = ['3']
+				break;
+			default:
+				_key = ['1']
+				break;
+		}
+		return {
+			defaultSelectedKeys: _key,
+			isRender: props.history.location.pathname !== "/login"
+		}
+	}
+
 	shouldComponentUpdate (nextProps, nextState) {
 		return this.state.isRender !== nextState.isRender;
-	}
-	componentWillReceiveProps (nextProps) {
-		this.setState({
-			isRender: this.props.history.location.pathname !== "/login"
-		})
 	}
 	linkToDoc () {
 		hrefTo('/AppDoc/_book/')
@@ -39,7 +58,7 @@ class Banner extends Component {
 			<Menu
 				theme="dark"
 				mode="horizontal"
-				defaultSelectedKeys={['1']}
+				defaultSelectedKeys={this.state.defaultSelectedKeys}
 				style={{ lineHeight: '64px' }}
 			>
 				<Menu.Item key="1"><Link to='/home'>coolpad</Link></Menu.Item>

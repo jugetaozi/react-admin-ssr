@@ -3,7 +3,6 @@ import { Route, withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { getStorage } from '../../utils/utils'
 
-
 class privateRoute extends Component {
 	static propTypes = {
 		path: PropTypes.string,

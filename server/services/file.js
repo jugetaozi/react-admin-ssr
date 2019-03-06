@@ -13,5 +13,10 @@ const user = {
 		let result = await file.download(options)
 		return result
 	},
+	
+	async uploadExcel (options) {
+		let result = await file.uploadExcel(options)
+		return result
+	},
 }
 module.exports = user

@@ -131,7 +131,7 @@ class coolpadList extends Component {
 		const rowSelection = {
 			selectedRowKeys: this.state.selectedRowKeys,
 			onChange: this.onSelectChange.bind(this),
-			hideDefaultSelections: true,
+			hideDefaultSelections: false,
 			onSelection: this.onSelection.bind(this),
 		};
 		// const columns = this.columns.map((col) => {

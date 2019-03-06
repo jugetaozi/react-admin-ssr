@@ -1,28 +1,9 @@
 //dlXlsx.js
 const XLSX = require('xlsx');
-const { generatorFileName } = require('../utils/utils')
+const { generatorFileName } = require('./utils')
+const config = require('../../config.js')
 //表头
-const _headers = [
-	'id',
-	'ylNum',
-	'pn',
-	'sku',
-	'asin',
-	'name',
-	'supplier',
-	'category',
-	'subcategory',
-	'state',
-	'color',
-	'quantity',
-	'wireLength',
-	'terminalMaterial',
-	'externalMaterial',
-	'mouths',
-	'technology',
-	'capacity',
-	'adapterType'
-];
+const _headers = config.excelHeader;
 //表格数据
 // const _data = [
 // 	{
@@ -108,7 +89,7 @@ const dlXlsx = (_data) => {
 	// 生成文件名随机数
 	const _randomId = generatorFileName()
 	// 导出 Excel
-	XLSX.writeFile(workbook, 'build/static/file/' + _randomId + '.xlsx')
+	XLSX.writeFile(workbook, 'build/file/download/' + _randomId + '.xlsx')
 	return _randomId
 }
 module.exports = dlXlsx

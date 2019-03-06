@@ -26,3 +26,11 @@ export const removeStorage = (key) => {
 	session && window.sessionStorage.removeItem(key)
 	local && window.sessionStorage.removeItem(key)
 }
+
+//获取文件后缀
+export const getFileType = (filename) => {
+	var index1 = filename.lastIndexOf(".");
+	var index2 = filename.length;
+	var type = filename.substring(index1, index2);
+	return type;
+}
