@@ -2,6 +2,7 @@
 
 我们都知道让溢出内容变成...,只需要以下:
 
+
 ```
 overflow: hidden;
 text-overflow:ellipsis;

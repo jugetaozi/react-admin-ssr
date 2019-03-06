@@ -1,0 +1,111 @@
+卷 系统 的文件夹 PATH 列表
+卷序列号为 000F-E937
+C:.
+│  .babelrc
+│  .editorconfig
+│  .gitignore
+│  .prettierrc
+│  codeMean.md
+│  config.js
+│  package-lock.json
+│  package.json
+│  README.md
+│  test.txt
+│  yarn.lock
+│  
+├─.vscode
+│      settings.json
+│      
+├─build
+│  │  favicon.ico
+│  │  manifest.json
+│  │  
+│  ├─AppDoc
+│  │  │  README.md
+│  │  │  SUMMARY.md
+│  │  │  
+│  │  ├─help
+│  │  │      
+│  │  ├─images
+│  │  │      
+│  │  ├─note
+│  │  │      
+│  │  └─_book
+│  │      │  
+│  │      ├─gitbook
+│  │      │          
+│  │      ├─help
+│  │      │      help1.html
+│  │      │      help1.md
+│  │      │      
+│  │      ├─images
+│  │      │      alipay.png
+│  │      │      
+│  │      └─note
+│  │              
+│  ├─file
+│  │  ├─download
+│  │  └─upload
+│  │          
+│  └─static
+│      ├─js
+│      │      admin.js
+│      │      admin.js.map
+│      │      index.js
+│      │      index.js.map
+│      │      main.js
+│      │      main.js.map
+│      │      vendor.js
+│      │      vendor.js.map
+│      │      
+│      └─static
+│          └─media
+│                  logo.58eab546.png
+│                  
+├─config
+│      openBrowser.js
+│      webpack.base.config.js
+│      webpack.dev.config.js
+│      webpack.prod.config.js
+│    
+├─server
+│  │  app.js
+│  │  
+│  ├─codes
+│  │      
+│  ├─controllers
+│  │      
+│  ├─init
+│  │          
+│  ├─middleware
+│  │      
+│  ├─models
+│  │
+│  ├─routers
+│  │      
+│  ├─services
+│  │      
+│  ├─utils
+│  │      
+│  └─views
+│          
+└─src
+    │  
+    ├─api
+    │      
+    ├─assets
+    │      
+    ├─components
+    │          
+    ├─layouts
+    │      
+    ├─libs
+    │          
+    ├─pages
+    │          
+    ├─router
+    │      
+    ├─store
+    │          
+    └─utils
+            
