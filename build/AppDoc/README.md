@@ -11,6 +11,7 @@ github地址: https://github.com/jugetaozi/react-admin-ssr
 ## start 启动方式
 
 
+
 ```
 npm i
 配置config // 填写mysql数据库配置
