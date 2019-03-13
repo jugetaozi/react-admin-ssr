@@ -10,3 +10,6 @@
 * 测试工具还未引入
 * 性能问题
 * 安全性问题
+
+
+ cmd cd dir/  tree /f > test.txt

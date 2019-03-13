@@ -2,6 +2,15 @@
 
 - 系统介绍(gitbook):  https://www.jugetaozi.com/react-admin-ssr/
 
+## 登录页面
+
+![登录界面](./build/AppDoc/images/admin1.png)
+
+## 主页面
+
+![表格界面](./build/AppDoc/images/admin2.png)
+
+
 ## client 浏览器端
 - react 16.7 + antd 13.3+ webpack 4.29 + redux + reat-redux
 
@@ -11,9 +20,17 @@
 ## start 启动方式
 
 ```
-npm i
-配置config // 填写mysql数据库配置
-npm init //数据库初始化 DOC初始化
+npm i  //安装依赖  如果没有翻墙设置代理 网速比较慢的情况下一直未安装成功 需要换cnpm淘宝镜像源
+
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
+
+cnpm i //执行完上面的语句后  从淘宝镜像下载依赖.
+
+配置config.js // 填写mysql数据库配置
+npm init //数据库初始化 DOC初始化 (确定有本地mysql数据库服务并且已开启和正确配置)
 npm run dev //启动服务侧 客户侧 打开浏览器
 
 open in http://localhost:8888/
@@ -62,7 +79,7 @@ open in http://localhost:8888/
 │  │  ├─download //供下载的文件目录
 │  │  └─upload //用户上传文件的存储目录
 │  │          
-│  └─static   //webpack打包输出目录
+│  └─static   //webpack前端静态资源打包输出目录
 │      ├─js
 │      │      admin.js
 │      │      admin.js.map
