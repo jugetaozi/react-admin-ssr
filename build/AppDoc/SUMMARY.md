@@ -9,5 +9,6 @@
   * [2.3  接口文档](note/api.md)
   * [2.5  mysql语法](note/mysql语法.md)
   * [2.6  antd超出内容隐藏](note/antd超出内容隐藏.md)
-  * [2.7  项目依赖](note/package.md)
-  * [2.8  todoList](note/todoList.md)
+  * [2.7  Eslint&&Prettier](note/Eslint&&Prettier.md)
+  * [2.8  项目依赖](note/package.md)
+  * [2.9  todoList](note/todoList.md)

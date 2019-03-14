@@ -35,6 +35,8 @@ npm run dev //启动服务侧 客户侧 打开浏览器
 
 open in http://localhost:8888/
 
+默认登录账户: admin 123456
+
 目录结构:
 │  .babelrc //babel配置
 │  .editorconfig
