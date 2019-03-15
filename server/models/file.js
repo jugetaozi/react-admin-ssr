@@ -2,11 +2,11 @@ const dbUtils = require('./../utils/db-util')
 const codes = require('../codes/users')
 const config = require('../../config.js')
 const file = {
-  /**
-   * download 
-	 * 
-   */
-	async download (options) {
+	/**
+	 * download
+	 *
+	 */
+	async download(options) {
 		// let _sql = `
 		// SELECT * from v_detail_review
 		//   where first_name="${options.first_name}" or last_name="${options.last_name}"
@@ -17,18 +17,18 @@ const file = {
 		let _sql = `SELECT * FROM pub_YLnum WHERE pub_YLnum.is_deleted =0 `
 		// console.log(_sql);
 		let result = await dbUtils.query(_sql)
-		console.log(result);
+		console.log(result)
 		let _obj = {
 			data: null,
 			code: 999999,
-			message: ''
+			message: '',
 		}
 		if (Array.isArray(result) && result.length > 0) {
 			_obj.data = result
-			_obj.message = "success"
+			_obj.message = 'success'
 			_obj.code = 0
 		} else {
-			_obj.message = "error"
+			_obj.message = 'error'
 		}
 		return _obj
 	},
@@ -62,9 +62,9 @@ const file = {
 	// 	ON_DUPLICATE_KEY_UPDATE = ON_DUPLICATE_KEY_UPDATE.substr(0, ON_DUPLICATE_KEY_UPDATE.length - 1)
 	// 	// let _sql = `REPLACE INTO pub_YLnum (${Object.keys(datas[0]).join(',')}) VALUES ${values};`//插入以及更新
 	// 	let _sql = `INSERT INTO pub_YLnum (${Object.keys(datas[0]).join(',')}) VALUES ${values} ON DUPLICATE KEY UPDATE ${ON_DUPLICATE_KEY_UPDATE};`
-		
+
 	// 	let resultUpdate = await dbUtils.query(_sql)
-		
+
 	// 	//去除没有的数据   转换逻辑标志位
 	// 	// let _sql_delete = `DELETE FROM pub_YLnum WHERE pub_YLnum.id NOT IN (${localIds})`
 	// 	let _sql_logic_delete = `UPDATE pub_YLnum SET pub_YLnum.is_deleted=1 WHERE pub_YLnum.id NOT IN (${localIds})`
@@ -90,7 +90,7 @@ const file = {
 	 *版本2 1.不删除 增加逻辑删除位 删除前一次的上传记录 然后执行replace语句.
 	 *
 	 */
-	async uploadExcel (datas) {
+	async uploadExcel(datas) {
 		//每次上传 先转换逻辑标志位
 		let _sql_logic_delete = `UPDATE pub_YLnum SET pub_YLnum.is_deleted=1`
 		let resultDelete = await dbUtils.query(_sql_logic_delete)
@@ -99,28 +99,30 @@ const file = {
 		datas.map(_obj => {
 			values += `("${Object.values(_obj).join('","')}"),`
 		})
-		values = values.substr(0, values.length - 1);
+		values = values.substr(0, values.length - 1)
 		let _sql = `REPLACE INTO pub_YLnum (${Object.keys(datas[0]).join(',')}) VALUES ${values};`
 
 		let resultUpdate = await dbUtils.query(_sql)
 
-
 		let _obj = {
 			data: null,
 			code: 999999,
-			message: ''
+			message: '',
 		}
-		if (Array.isArray(resultUpdate) && Array.isArray(resultDelete) && resultUpdate.length > 0 && resultDelete.length > 0) {
+		if (
+			Array.isArray(resultUpdate) &&
+			Array.isArray(resultDelete) &&
+			resultUpdate.length > 0 &&
+			resultDelete.length > 0
+		) {
 			_obj.data = resultUpdate
-			_obj.message = "success"
+			_obj.message = 'success'
 			_obj.code = 0
 		} else {
-			_obj.message = "error"
+			_obj.message = 'error'
 		}
 		return _obj
 	},
-
 }
-
 
 module.exports = file

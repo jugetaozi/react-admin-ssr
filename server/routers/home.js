@@ -5,5 +5,4 @@
 const router = require('koa-router')()
 const index = require('../controllers/index.js')
 
-module.exports = router
-	.get('/', index)
+module.exports = router.get('/', index)
