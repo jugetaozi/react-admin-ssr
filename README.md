@@ -29,8 +29,8 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 
 cnpm i //执行完上面的语句后  从淘宝镜像下载依赖.
 
-配置config.js // 填写mysql数据库配置
-npm init //数据库初始化 DOC初始化 (确定有本地mysql数据库服务并且已开启和正确配置)
+配置config.js // 填写mysql数据库配置 本地需要新建mysql数据库
+npm init_sql //数据库初始化(确定有本地mysql数据库服务并且已开启和正确配置) ----- 如果需要执行gitbook初始化 git init 须确保本地有安装gitbook
 npm run dev //启动服务侧 客户侧 打开浏览器
 
 open in http://localhost:8888/
