@@ -1,27 +1,29 @@
-'use strict';
+'use strict'
 
-const autoprefixer = require('autoprefixer');
-const path = require('path');
-const webpack = require('webpack');
+const autoprefixer = require('autoprefixer')
+const path = require('path')
+const webpack = require('webpack')
 
-// const prodMode = process.env.NODE_ENV === 'production';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const srcResolve = function (file) {
+const isProdMode = process.env.NODE_ENV === 'production'
+
+const srcResolve = function(file) {
 	if (file) {
-		return path.join(__dirname, '..', 'src', file);
+		return path.join(__dirname, '..', 'src', file)
 	} else {
-		return path.join(__dirname, '..', 'src');
+		return path.join(__dirname, '..', 'src')
 	}
-};
+}
 
-const distResolve = function (file) {
-	return path.join(__dirname, '..', 'build', 'static', file);
-};
+const distResolve = function(file) {
+	return path.join(__dirname, '..', 'build', 'static', file)
+}
 
 module.exports = {
 	entry: {
 		index: srcResolve('index.js'),
-		admin: srcResolve('admin.js'),
+		// admin: srcResolve('admin.js'),//多页应用配置项
 	},
 	output: {
 		path: distResolve(''),
@@ -70,7 +72,11 @@ module.exports = {
 						test: /\.(css|less)$/,
 						include: srcResolve(),
 						use: [
-							require.resolve('style-loader'),
+							isProdMode
+								? {
+										loader: MiniCssExtractPlugin.loader,
+								  }
+								: require.resolve('style-loader'), //如果是生产模式 则抽离css
 							{
 								loader: require.resolve('css-loader'),
 								options: {
@@ -109,7 +115,11 @@ module.exports = {
 						test: /\.(css|less)$/,
 						exclude: srcResolve(),
 						use: [
-							require.resolve('style-loader'),
+							isProdMode
+								? {
+										loader: MiniCssExtractPlugin.loader,
+								  }
+								: require.resolve('style-loader'), //如果是生产模式 则抽离css
 							{
 								loader: require.resolve('css-loader'),
 								options: {
@@ -187,6 +197,12 @@ module.exports = {
 		// ],
 	},
 	plugins: [
+		new MiniCssExtractPlugin({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: 'css/[name].css',
+			chunkFilename: 'css/common.css', //非入口文件的依赖
+		}),
 	],
 	optimization: {
 		splitChunks: {

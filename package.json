@@ -15,6 +15,8 @@
   "dependencies": {
     "antd": "^3.13.0",
     "axios": "^0.18.0",
+    "bizcharts": "^3.4.5",
+    "@antv/data-set": "^0.10.2",
     "crypto": "^1.0.1",
     "jsonwebtoken": "^8.5.0",
     "koa": "^2.6.2",
@@ -62,6 +64,7 @@
     "koa-views": "^6.1.5",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
     "npm": "^6.7.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-flexbugs-fixes": "^4.1.0",

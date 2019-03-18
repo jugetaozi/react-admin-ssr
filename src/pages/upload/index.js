@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Icon, Tabs, Button, Upload, message } from 'antd';
 import classnames from 'classnames'
-import styles from './xcentz.less'
+import styles from './upload.less'
 import { download, uploadExcel } from "api/file";
 import store from "../../store/store";
 import { open, getFileType } from 'utils/utils'
@@ -9,7 +9,7 @@ import { open, getFileType } from 'utils/utils'
 const TabPane = Tabs.TabPane;
 const { SubMenu } = Menu;
 
-class xcentZ extends Component {
+class upload extends Component {
 
 	state = {
 		fileList: [],
@@ -121,4 +121,4 @@ class xcentZ extends Component {
 		)
 	}
 }
-export default xcentZ
+export default upload

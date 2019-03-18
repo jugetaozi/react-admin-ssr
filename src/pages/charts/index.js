@@ -1,0 +1,172 @@
+import React, {Component} from 'react'
+import {Menu, Icon, Tabs, Button, Upload, message} from 'antd'
+import classnames from 'classnames'
+import styles from './charts.less'
+import store from 'store/store'
+import {open, getFileType} from 'utils/utils'
+
+import {G2, Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet, Util} from 'bizcharts'
+import DataSet from '@antv/data-set'
+
+class charts extends Component {
+	state = {
+		fileList: [],
+		uploading: false,
+	}
+
+	componentDidMount = () => {
+	}
+
+	render() {
+		const data = [
+			{
+				month: '2019-01-01',
+				acc: 84.0,
+			},
+			{
+				month: '2019-02-01',
+				acc: 14.9,
+			},
+			{
+				month: '2019-03-01',
+				acc: 17.0,
+			},
+			{
+				month: '2019-04-01',
+				acc: 20.2,
+			},
+			{
+				month: '2019-05-01',
+				acc: 55.6,
+			},
+			{
+				month: '2019-06-01',
+				acc: 56.7,
+			},
+			{
+				month: '2019-07-01',
+				acc: 30.6,
+			},
+			{
+				month: '2019-08-01',
+				acc: 63.2,
+			},
+			{
+				month: '2019-09-01',
+				acc: 24.6,
+			},
+			{
+				month: '2019-10-01',
+				acc: 14.0,
+			},
+			{
+				month: '2019-11-01',
+				acc: 9.4,
+			},
+			{
+				month: '2019-12-01',
+				acc: 6.3,
+			},
+		]
+		const cols = {
+			month: {
+				alias: '月份',
+			},
+			acc: {
+				alias: '销量',
+			},
+		}
+
+		const data2 = [
+			{
+				label: 'Monday',
+				series1: 2800,
+				series2: 2260,
+			},
+			{
+				label: 'Tuesday',
+				series1: 1800,
+				series2: 1300,
+			},
+			{
+				label: 'Wednesday',
+				series1: 950,
+				series2: 900,
+			},
+			{
+				label: 'Thursday',
+				series1: 500,
+				series2: 390,
+			},
+			{
+				label: 'Friday',
+				series1: 170,
+				series2: 100,
+			},
+		]
+		const ds = new DataSet()
+		const dv = ds.createView().source(data2)
+		dv.transform({
+			type: 'fold',
+			fields: ['series1', 'series2'],
+			// 展开字段集
+			key: 'type',
+			// key字段
+			value: 'value', // value字段
+		})
+		return (
+			<div className={styles['charts_content']}>
+				<h3 className={styles['title']}>渐变色折线图</h3>
+				<Chart height={400} data={data} scale={cols} forceFit>
+					<Axis
+						name="month"
+						title={null}
+						tickLine={null}
+						line={{
+							stroke: '#E6E6E6',
+						}}
+					/>
+					<Axis name="acc" line={false} tickLine={null} grid={null} title={null} />
+					<Tooltip />
+					<Geom
+						type="line"
+						position="month*acc"
+						size={1}
+						color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1) 1:rgba(215, 0, 255, 1)"
+						shape="smooth"
+						style={{
+							shadowColor: 'l (270) 0:rgba(21, 146, 255, 0)',
+							shadowBlur: 60,
+							shadowOffsetY: 6,
+						}}
+					/>
+				</Chart>
+				<h3 className={styles['title']}>柱状图</h3>
+				<Chart height={400} data={dv} forceFit>
+					<Legend />
+					<Coord transpose scale={[1, -1]} />
+					<Axis
+						name="label"
+						label={{
+							offset: 12,
+						}}
+					/>
+					<Axis name="value" position={'right'} />
+					<Tooltip />
+					<Geom
+						type="interval"
+						position="label*value"
+						color={'type'}
+						adjust={[
+							{
+								type: 'dodge',
+								marginRatio: 1 / 32,
+							},
+						]}
+					/>
+				</Chart>
+			</div>
+		)
+	}
+}
+export default charts
