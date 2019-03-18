@@ -48,7 +48,7 @@ module.exports = {
 			// },
 			{
 				test: /\.(js|jsx|mjs)$/,
-				include: srcResolve(),
+				// include: srcResolve(),  //所有的都转换为ES5
 				loader: require.resolve('babel-loader'),
 				//不能再这里加option 否则会覆盖.babelrc
 			},
@@ -72,11 +72,9 @@ module.exports = {
 						test: /\.(css|less)$/,
 						include: srcResolve(),
 						use: [
-							isProdMode
-								? {
-										loader: MiniCssExtractPlugin.loader,
-								  }
-								: require.resolve('style-loader'), //如果是生产模式 则抽离css
+							{
+								loader: MiniCssExtractPlugin.loader,
+							}, 
 							{
 								loader: require.resolve('css-loader'),
 								options: {
@@ -115,11 +113,9 @@ module.exports = {
 						test: /\.(css|less)$/,
 						exclude: srcResolve(),
 						use: [
-							isProdMode
-								? {
-										loader: MiniCssExtractPlugin.loader,
-								  }
-								: require.resolve('style-loader'), //如果是生产模式 则抽离css
+							{
+								loader: MiniCssExtractPlugin.loader,
+							},
 							{
 								loader: require.resolve('css-loader'),
 								options: {

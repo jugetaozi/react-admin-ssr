@@ -4,11 +4,11 @@
 
 ## 登录页面
 
-![登录界面](./build/AppDoc/images/admin1.png)
+![登录界面](./images/admin1.png)
 
 ## 主页面
 
-![表格界面](./build/AppDoc/images/admin2.png)
+![表格界面](./images/admin2.png)
 
 
 ## client 浏览器端

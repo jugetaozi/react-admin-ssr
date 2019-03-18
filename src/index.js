@@ -4,7 +4,7 @@ import Index from './layouts/index.js';
 import './index.less';
 import 'nprogress/nprogress.css';
 
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker'; 
 
 ReactDOM.render(<Index />,
 	document.getElementById('root'));
