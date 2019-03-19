@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node ./config/openBrowser & npm run c_start | npm run s_start",
+    "start": "npm run dev",
     "init": "npm run init_sql | npm run doc",
     "test": "node scripts/test.js test",
     "init_sql": "node ./server/init/index.js",

@@ -80,7 +80,7 @@ module.exports = {
 								options: {
 									importLoaders: 1,
 									modules: true, //开启css 模块化
-									localIdentName: '[name][hash:base64:5]',
+									localIdentName: '[local]_[hash:base64:5]',
 								},
 							},
 							{
