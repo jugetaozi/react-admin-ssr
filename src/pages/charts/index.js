@@ -12,13 +12,7 @@ class charts extends Component {
 	state = {
 		fileList: [],
 		uploading: false,
-	}
-
-	componentDidMount = () => {
-	}
-
-	render() {
-		const data = [
+		data: [
 			{
 				month: '2019-01-01',
 				acc: 84.0,
@@ -67,17 +61,16 @@ class charts extends Component {
 				month: '2019-12-01',
 				acc: 6.3,
 			},
-		]
-		const cols = {
+		],
+		cols: {
 			month: {
 				alias: '月份',
 			},
 			acc: {
 				alias: '销量',
 			},
-		}
-
-		const data2 = [
+		},
+		data2: [
 			{
 				label: 'Monday',
 				series1: 2800,
@@ -103,10 +96,14 @@ class charts extends Component {
 				series1: 170,
 				series2: 100,
 			},
-		]
+		],
+		dv: null,
+	}
+
+	componentDidMount = () => {
 		const ds = new DataSet()
-		const dv = ds.createView().source(data2)
-		dv.transform({
+		const dvTr = ds.createView().source(this.state.data2)
+		dvTr.transform({
 			type: 'fold',
 			fields: ['series1', 'series2'],
 			// 展开字段集
@@ -114,10 +111,30 @@ class charts extends Component {
 			// key字段
 			value: 'value', // value字段
 		})
+		this.setState({
+			dv: dvTr,
+		})
+	}
+
+	render() {
+		if (this.chart1 || this.chart2 || this.chart3 || this.chart4) {
+			this.chart1.forceFit()
+			this.chart2.forceFit()
+			this.chart3.forceFit()
+			this.chart4.forceFit()
+			//解决宽度超出容易问题
+		}
 		return (
 			<div className={styles['charts_content']}>
 				<h3 className={styles['title']}>渐变色折线图</h3>
-				<Chart height={400} data={data} scale={cols} forceFit>
+				<Chart
+					height={400}
+					data={this.state.data}
+					onGetG2Instance={chart => {
+						this.chart1 = chart
+					}}
+					scale={this.state.cols}
+					forceFit>
 					<Axis
 						name="month"
 						title={null}
@@ -142,7 +159,73 @@ class charts extends Component {
 					/>
 				</Chart>
 				<h3 className={styles['title']}>柱状图</h3>
-				<Chart height={400} data={dv} forceFit>
+				<Chart
+					height={400}
+					data={this.state.dv}
+					onGetG2Instance={chart => {
+						this.chart2 = chart
+					}}
+					forceFit>
+					<Legend />
+					<Coord transpose scale={[1, -1]} />
+					<Axis
+						name="label"
+						label={{
+							offset: 12,
+						}}
+					/>
+					<Axis name="value" position={'right'} />
+					<Tooltip />
+					<Geom
+						type="interval"
+						position="label*value"
+						color={'type'}
+						adjust={[
+							{
+								type: 'dodge',
+								marginRatio: 1 / 32,
+							},
+						]}
+					/>
+				</Chart>
+				<h3 className={styles['title']}>柱状图</h3>
+				<Chart
+					height={400}
+					data={this.state.dv}
+					onGetG2Instance={chart => {
+						this.chart3 = chart
+					}}
+					forceFit>
+					<Legend />
+					<Coord transpose scale={[1, -1]} />
+					<Axis
+						name="label"
+						label={{
+							offset: 12,
+						}}
+					/>
+					<Axis name="value" position={'right'} />
+					<Tooltip />
+					<Geom
+						type="interval"
+						position="label*value"
+						color={'type'}
+						adjust={[
+							{
+								type: 'dodge',
+								marginRatio: 1 / 32,
+							},
+						]}
+					/>
+				</Chart>
+				<h3 className={styles['title']}>柱状图</h3>
+				<Chart
+					height={400}
+					data={this.state.dv}
+					onGetG2Instance={chart => {
+						this.chart4 = chart
+					}}
+					forceFit>
 					<Legend />
 					<Coord transpose scale={[1, -1]} />
 					<Axis

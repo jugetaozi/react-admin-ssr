@@ -78,9 +78,8 @@ class Banner extends Component {
 		return (
 			<Layout className={isRender ? styles['layout'] : ''}>
 				{isRender ? <LayoutHeader /> : ''}
-				<Content
-					style={isRender ? {margin: '0 10px', backgroundColor: '#fff'} : {margin: '0', backgroundColor: '#fff'}}>
-					{this.props.children}
+				<Content className={isRender ? styles['isRender'] : styles['isNotRender']}>
+					<div className = {styles['layout_content']}>{this.props.children}</div>
 				</Content>
 			</Layout>
 		)

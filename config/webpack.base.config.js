@@ -74,13 +74,13 @@ module.exports = {
 						use: [
 							{
 								loader: MiniCssExtractPlugin.loader,
-							}, 
+							},
 							{
 								loader: require.resolve('css-loader'),
 								options: {
 									importLoaders: 1,
 									modules: true, //开启css 模块化
-									localIdentName: '[hash:5]',
+									localIdentName: '[name][hash:base64:5]',
 								},
 							},
 							{

@@ -15,7 +15,6 @@ class LayoutIndex extends Component {
 			<Banner>
 				{/* isRender={this.props.history.location.pathname !== "/login"}  route改变=>location改变=>prop改变=>导致子组件重复渲染 */}
 				<Switch>
-					{' '}
 					{/** Switch只对子元素生效 */}
 					<PrivateRoute path="/home" exact component={Coolpad} />
 					<PrivateRoute path="/upload" exact component={Upload} />
