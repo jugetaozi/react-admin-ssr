@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import styles from './coolpad.less'
-import classnames from "classnames";
-import moment from "moment";
+import classnames from 'classnames'
+import moment from 'moment'
 import { getList, newCustomer } from 'api/keyword'
-import { Table, Button, Popconfirm, Alert} from 'antd';
+import { Table, Button, Popconfirm, Alert } from 'antd'
 import { connect } from 'react-redux'
-import { getUserInfo } from 'store/reducers/userReducer';
+import { getUserInfo } from 'store/reducers/userReducer'
 import AddModal from './addModal'
 import ModifyModal from './modifyModal'
 @connect(
 	state => ({
-		userReducer: state.userReducer
+		userReducer: state.userReducer,
 	}),
 	{ getUserInfo }
 )
@@ -21,119 +21,137 @@ class coolpadList extends Component {
 		isDeleteNotEnable: true,
 		visible: false,
 		modifyMdelShow: false,
-		selectedRowKeys: []
+		selectedRowKeys: [],
 	}
 
-	async componentDidMount () {
-		getList().then((res) => {
+	async componentDidMount() {
+		getList().then(res => {
 			this.setState({
 				data: res.data,
-			});
+			})
 		})
 		// const res = await this.props.getUserInfo()
 		// newCustomer().then((res) => {
 		// })
 	}
-	addModalShow () {
+	addModalShow() {
 		this.setState({
-			addModalShow: true
+			addModalShow: true,
 		})
 	}
 
-	handleAddModalClose () {
+	handleAddModalClose() {
 		this.setState({
-			addModalShow: false
+			addModalShow: false,
 		})
 	}
 
-	handleModify () {
+	handleModify() {
 		this.setState({
-			modifyMdelShow: true
+			modifyMdelShow: true,
 		})
 	}
-	handleModifyModalClose () {
+	handleModifyModalClose() {
 		this.setState({
-			modifyMdelShow: false
+			modifyMdelShow: false,
 		})
 	}
 
-	onSelectChange (changableRowKeys) {
-		let newSelectedRowKeys = [];
+	onSelectChange(changableRowKeys) {
+		let newSelectedRowKeys = []
 		newSelectedRowKeys = changableRowKeys.filter((key, index) => {
-			return true;
-		});
+			return true
+		})
 		let enable = false
 		if (newSelectedRowKeys.length) {
 			enable = false
 		} else {
 			enable = true
 		}
-		this.setState({ selectedRowKeys: newSelectedRowKeys, isDeleteNotEnable: enable });
+		this.setState({
+			selectedRowKeys: newSelectedRowKeys,
+			isDeleteNotEnable: enable,
+		})
 	}
-	onSelection (v, b, n, m) {
-		console.log(v, b, n, m, 'onSelection');
+	onSelection(v, b, n, m) {
+		console.log(v, b, n, m, 'onSelection')
 	}
-	handlePageSizeChange () {
-		this.setState({ selectedRowKeys: [], isDeleteNotEnable: true });
+	handlePageSizeChange() {
+		this.setState({ selectedRowKeys: [], isDeleteNotEnable: true })
 	}
-	deleteConfirm () {
-		console.log("deleteConfirm");
+	deleteConfirm() {
+		console.log('deleteConfirm')
 	}
-	handleVisibleChange = (visible) => {
+	handleVisibleChange = visible => {
 		if (!visible) {
-			this.setState({ visible });
-			return;
+			this.setState({ visible })
+			return
 		}
 		if (this.state.isDeleteNotEnable) {
-			this.setState({ visible: false });
+			this.setState({ visible: false })
 		} else {
-			this.setState({ visible: true }); // show the popconfirm
+			this.setState({ visible: true }) // show the popconfirm
 		}
 	}
 
 	handlePopconfirmCancel = () => {
-		this.setState({ visible: false });
+		this.setState({ visible: false })
 	}
 
-
-
-
-	render () {
-		const columns = [{
-			title: 'Asin',
-			dataIndex: 'asin',
-			align: 'center',
-		}, {
-			title: 'review_author',
-			align: 'center',
-			dataIndex: 'review_author',
-		}, {
-			title: 'review_date',
-			dataIndex: 'review_date',
-			width: 160,
-			align: 'center',
-			render: (text) => <span>{moment(text).format("YYYY-MM-DD HH:mm:ss")}</span>
-		}, {
-			title: 'review_title',
-			dataIndex: 'review_title',
-			width: 300,
-			align: 'center',
-			render: (text) => <span title={text}>{text}</span>
-		}, {
-			title: <div align="center">review_body</div>,
-			dataIndex: 'review_body',
-			render: (text) => <span title={text}>{text}</span>
-			// render: text => <a href={text.url}>{text}</a>,
-		}, {
-			title: '操作', align: 'center', width: 80, dataIndex: '', key: 'x', render: () => <a href="javascript:;" onClick={this.handleModify.bind(this)}>修改</a>,
-		},];
+	render() {
+		const columns = [
+			{
+				title: 'Asin',
+				dataIndex: 'asin',
+				align: 'center',
+			},
+			{
+				title: 'review_author',
+				align: 'center',
+				dataIndex: 'review_author',
+			},
+			{
+				title: 'review_date',
+				dataIndex: 'review_date',
+				width: 160,
+				align: 'center',
+				render: text => (
+					<span>{moment(text).format('YYYY-MM-DD HH:mm:ss')}</span>
+				),
+			},
+			{
+				title: 'review_title',
+				dataIndex: 'review_title',
+				width: 300,
+				align: 'center',
+				render: text => <span title={text}>{text}</span>,
+			},
+			{
+				title: <div align="center">review_body</div>,
+				dataIndex: 'review_body',
+				render: text => <span title={text}>{text}</span>,
+				// render: text => <a href={text.url}>{text}</a>,
+			},
+			{
+				title: '操作',
+				align: 'center',
+				width: 80,
+				dataIndex: '',
+				key: 'x',
+				render: () => (
+					<a href="javascript:;" onClick={this.handleModify.bind(this)}>
+						修改
+					</a>
+				),
+			},
+		]
 
 		const rowSelection = {
 			selectedRowKeys: this.state.selectedRowKeys,
 			onChange: this.onSelectChange.bind(this),
 			hideDefaultSelections: false,
 			onSelection: this.onSelection.bind(this),
-		};
+		}
 		// const columns = this.columns.map((col) => {
 		// 	if (!col.editable) {
 		// 		return col;
@@ -152,17 +170,28 @@ class coolpadList extends Component {
 		return (
 			<div className={styles['padContent']}>
 				<div className={styles['btn-content']}>
-					<Button type="primary" onClick={this.addModalShow.bind(this)} style={{ marginBottom: 16, width: 80 }}>
+					<Button
+						type="primary"
+						onClick={this.addModalShow.bind(this)}
+						style={{ marginBottom: 16, width: 80 }}
+					>
 						新增
-        </Button>
-					<Popconfirm title="   确定要删除吗？ "
+					</Button>
+					<Popconfirm
+						title="   确定要删除吗？ "
 						visible={this.state.visible}
 						onCancel={this.handlePopconfirmCancel}
 						onVisibleChange={this.handleVisibleChange}
-						placement="top" onConfirm={this.deleteConfirm}
+						placement="top"
+						onConfirm={this.deleteConfirm}
 						okText="确定"
-						cancelText="取消">
-						<Button type="danger" disabled={this.state.isDeleteNotEnable} style={{ marginBottom: 16, marginLeft: 20, width: 80 }}>
+						cancelText="取消"
+					>
+						<Button
+							type="danger"
+							disabled={this.state.isDeleteNotEnable}
+							style={{ marginBottom: 16, marginLeft: 20, width: 80 }}
+						>
 							删除
 						</Button>
 					</Popconfirm>
@@ -176,7 +205,7 @@ class coolpadList extends Component {
 							size: '',
 							showQuickJumper: true,
 							defaultCurrent: 1,
-							onChange: this.handlePageSizeChange.bind(this)
+							onChange: this.handlePageSizeChange.bind(this),
 						}}
 						// scroll={{ x: 2000, y: 1000 }}
 						rowClassName="table-row"
@@ -185,9 +214,16 @@ class coolpadList extends Component {
 						size="middle"
 						rowKey={(record, index) => `${index}`}
 						columns={columns}
-						dataSource={this.state.data} />
-					<AddModal onClose={this.handleAddModalClose.bind(this)} show={this.state.addModalShow} ></AddModal>
-					<ModifyModal onClose={this.handleModifyModalClose.bind(this)} show={this.state.modifyMdelShow} ></ModifyModal>
+						dataSource={this.state.data}
+					/>
+					<AddModal
+						onClose={this.handleAddModalClose.bind(this)}
+						show={this.state.addModalShow}
+					/>
+					<ModifyModal
+						onClose={this.handleModifyModalClose.bind(this)}
+						show={this.state.modifyMdelShow}
+					/>
 				</div>
 			</div>
 		)

@@ -13,7 +13,7 @@ const XcentzList = {
 	 * @return {object}      创建结果
 	 */
 
-	async getExistList (options) {
+	async getExistList(options) {
 		// await delay(3000)
 		let result = await ListInfo.getExistList(options)
 		return result
@@ -22,10 +22,10 @@ const XcentzList = {
 	 * 创建用户
 	 * @param {object}
 	 */
-	async createUser () {
+	async createUser() {
 		let result = await ListInfo.createUser()
 		return result
-	}
+	},
 }
 
 module.exports = XcentzList

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Route, withRouter } from "react-router-dom";
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
+import { Route, withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { getStorage } from '../../utils/utils'
 
 class privateRoute extends Component {
@@ -8,19 +8,19 @@ class privateRoute extends Component {
 		path: PropTypes.string,
 		exact: PropTypes.bool,
 		notRequiredAuth: PropTypes.bool,
-		component: PropTypes.func.isRequired,//组件func
+		component: PropTypes.func.isRequired, //组件func
 	}
 	static defaultProps = {
-		notRequiredAuth: false	//默认都需要带上auth
+		notRequiredAuth: false, //默认都需要带上auth
 	}
 	constructor(props) {
-		super(props);
+		super(props)
 		this.state = {
 			hasAuth: false,
-		};
+		}
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 		// console.log(this.state.hasAuth);
 		// if (getStorage("_token")) {
 		// 	this.setState({
@@ -36,10 +36,10 @@ class privateRoute extends Component {
 		// 	})
 		// }
 	}
-	static getDerivedStateFromProps (props, state) {
-		if (getStorage("_token")) {
+	static getDerivedStateFromProps(props, state) {
+		if (getStorage('_token')) {
 			return {
-				hasAuth: true
+				hasAuth: true,
 			}
 		} else {
 			if (!props.notRequiredAuth) {
@@ -47,21 +47,19 @@ class privateRoute extends Component {
 				return null
 			}
 			return {
-				hasAuth: false
+				hasAuth: false,
 			}
 		}
 	}
 
-	render () {
+	render() {
 		const { notRequiredAuth } = this.props
 		if (!notRequiredAuth && !this.state.hasAuth) {
 			//如果默认需要验证auto而且又没有aotu 拦截此类请求
 			return null
 		}
-		return (
-			<Route {...this.props} />
-		);
+		return <Route {...this.props} />
 	}
 }
 
-export default withRouter(privateRoute);//withRouter 提供一个history对象 来操作路由
+export default withRouter(privateRoute) //withRouter 提供一个history对象 来操作路由

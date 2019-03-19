@@ -5,13 +5,16 @@ module.exports = {
 	 * XcentzList
 	 * @param    {obejct} ctx 上下文对象
 	 */
-	async getNewList (ctx) {
+	async getNewList(ctx) {
 		let result = {
 			data: null,
 			message: '',
 			code: 999999,
 		}
-		const _data = await XcentzList.getExistList({ first_name: 'PENELOPE', last_name: 'GUINESS' })
+		const _data = await XcentzList.getExistList({
+			first_name: 'PENELOPE',
+			last_name: 'GUINESS',
+		})
 		if (_data) {
 			result.data = _data
 			result.code = 0
@@ -22,7 +25,7 @@ module.exports = {
 		}
 		ctx.body = result
 	},
-	async createUser (ctx) {
+	async createUser(ctx) {
 		let result = {
 			data: null,
 			message: '',
@@ -34,5 +37,5 @@ module.exports = {
 		} else {
 		}
 		ctx.body = result
-	}
+	},
 }

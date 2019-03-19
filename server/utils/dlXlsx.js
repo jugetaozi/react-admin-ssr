@@ -1,9 +1,9 @@
 //dlXlsx.js
-const XLSX = require('xlsx');
+const XLSX = require('xlsx')
 const { generatorFileName } = require('./utils')
 const config = require('../../config.js')
 //表头
-const _headers = config.excelHeader;
+const _headers = config.excelHeader
 //表格数据
 // const _data = [
 // 	{
@@ -13,15 +13,21 @@ const _headers = config.excelHeader;
 // 		country: 'China',
 // 	}
 // ];
-const dlXlsx = (_data) => {
+const dlXlsx = _data => {
 	const headers = _headers
-		.map((v, i) => Object.assign({}, { v: v, position: String.fromCharCode(65 + i) + 1 }))
+		.map((v, i) =>
+			Object.assign({}, { v: v, position: String.fromCharCode(65 + i) + 1 })
+		)
 		// 为 _headers 添加对应的单元格位置
 		// [ { v: 'id', position: 'A1' },
 		//   { v: 'name', position: 'B1' },
 		//   { v: 'age', position: 'C1' },
 		//   { v: 'country', position: 'D1' },
-		.reduce((prev, next) => Object.assign({}, prev, { [next.position]: { v: next.v } }), {});
+		.reduce(
+			(prev, next) =>
+				Object.assign({}, prev, { [next.position]: { v: next.v } }),
+			{}
+		)
 	// 转换成 worksheet 需要的结构
 	// { A1: { v: 'id' },
 	//   B1: { v: 'name' },
@@ -29,7 +35,14 @@ const dlXlsx = (_data) => {
 	//   D1: { v: 'country' },
 
 	const data = _data
-		.map((v, i) => _headers.map((k, j) => Object.assign({}, { v: v[k], position: String.fromCharCode(65 + j) + (i + 2) })))
+		.map((v, i) =>
+			_headers.map((k, j) =>
+				Object.assign(
+					{},
+					{ v: v[k], position: String.fromCharCode(65 + j) + (i + 2) }
+				)
+			)
+		)
 		// 匹配 headers 的位置，生成对应的单元格数据
 		// [ [ { v: '1', position: 'A2' },
 		//     { v: 'test1', position: 'B2' },
@@ -57,7 +70,11 @@ const dlXlsx = (_data) => {
 		//   { v: 'test3', position: 'B4' },
 		//   { v: '18', position: 'C4' },
 		//   { v: 'Unkonw', position: 'D4' },
-		.reduce((prev, next) => Object.assign({}, prev, { [next.position]: { v: next.v } }), {});
+		.reduce(
+			(prev, next) =>
+				Object.assign({}, prev, { [next.position]: { v: next.v } }),
+			{}
+		)
 	// 转换成 worksheet 需要的结构
 	//   { A2: { v: '1' },
 	//     B2: { v: 'test1' },
@@ -72,19 +89,19 @@ const dlXlsx = (_data) => {
 	//     C4: { v: '18' },
 	//     D4: { v: 'Unkonw' }
 	// 合并 headers 和 data
-	const output = Object.assign({}, headers, data);
+	const output = Object.assign({}, headers, data)
 	// 获取所有单元格的位置
-	const outputPos = Object.keys(output);
+	const outputPos = Object.keys(output)
 	// 计算出范围
-	const ref = outputPos[0] + ':' + outputPos[outputPos.length - 1];
+	const ref = outputPos[0] + ':' + outputPos[outputPos.length - 1]
 
 	// 构建 workbook 对象
 	const workbook = {
 		SheetNames: ['mySheet'],
 		Sheets: {
-			'mySheet': Object.assign({}, output, { '!ref': ref })
-		}
-	};
+			mySheet: Object.assign({}, output, { '!ref': ref }),
+		},
+	}
 
 	// 生成文件名随机数
 	const _randomId = generatorFileName()

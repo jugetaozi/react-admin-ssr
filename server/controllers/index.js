@@ -1,6 +1,6 @@
-module.exports = async (ctx) => {
+module.exports = async ctx => {
 	const title = 'home'
-	await ctx.render("index", {
-		title
+	await ctx.render('index', {
+		title,
 	})
 }

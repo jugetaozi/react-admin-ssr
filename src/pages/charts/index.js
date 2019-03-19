@@ -1,11 +1,25 @@
-import React, {Component} from 'react'
-import {Menu, Icon, Tabs, Button, Upload, message} from 'antd'
+import React, { Component } from 'react'
+import { Menu, Icon, Tabs, Button, Upload, message } from 'antd'
 import classnames from 'classnames'
 import styles from './charts.less'
 import store from 'store/store'
-import {open, getFileType} from 'utils/utils'
+import { open, getFileType } from 'utils/utils'
 
-import {G2, Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet, Util} from 'bizcharts'
+import {
+	G2,
+	Chart,
+	Geom,
+	Axis,
+	Tooltip,
+	Coord,
+	Label,
+	Legend,
+	View,
+	Guide,
+	Shape,
+	Facet,
+	Util,
+} from 'bizcharts'
 import DataSet from '@antv/data-set'
 
 class charts extends Component {
@@ -134,7 +148,8 @@ class charts extends Component {
 						this.chart1 = chart
 					}}
 					scale={this.state.cols}
-					forceFit>
+					forceFit
+				>
 					<Axis
 						name="month"
 						title={null}
@@ -143,7 +158,13 @@ class charts extends Component {
 							stroke: '#E6E6E6',
 						}}
 					/>
-					<Axis name="acc" line={false} tickLine={null} grid={null} title={null} />
+					<Axis
+						name="acc"
+						line={false}
+						tickLine={null}
+						grid={null}
+						title={null}
+					/>
 					<Tooltip />
 					<Geom
 						type="line"
@@ -165,7 +186,8 @@ class charts extends Component {
 					onGetG2Instance={chart => {
 						this.chart2 = chart
 					}}
-					forceFit>
+					forceFit
+				>
 					<Legend />
 					<Coord transpose scale={[1, -1]} />
 					<Axis
@@ -195,7 +217,8 @@ class charts extends Component {
 					onGetG2Instance={chart => {
 						this.chart3 = chart
 					}}
-					forceFit>
+					forceFit
+				>
 					<Legend />
 					<Coord transpose scale={[1, -1]} />
 					<Axis
@@ -225,7 +248,8 @@ class charts extends Component {
 					onGetG2Instance={chart => {
 						this.chart4 = chart
 					}}
-					forceFit>
+					forceFit
+				>
 					<Legend />
 					<Coord transpose scale={[1, -1]} />
 					<Axis

@@ -1,13 +1,12 @@
 const dbUtils = require('./../utils/db-util')
 
 const getList = {
-
-  /**
-   * 查找一个存在的视图
-   * @param  {obejct} options 查找条件参数
-   * @return {object|null}        查找结果
-   */
-	async getExistList (options) {
+	/**
+	 * 查找一个存在的视图
+	 * @param  {obejct} options 查找条件参数
+	 * @return {object|null}        查找结果
+	 */
+	async getExistList(options) {
 		// let _sql = `
 		// SELECT * from v_detail_review
 		//   where first_name="${options.first_name}" or last_name="${options.last_name}"
@@ -23,7 +22,7 @@ const getList = {
 		}
 		return result
 	},
-	async createUser () {
+	async createUser() {
 		let _sql = `CREATE TABLE  user_info (
   id int(11) NOT NULL AUTO_INCREMENT,
   email varchar(255) DEFAULT NULL,
@@ -37,16 +36,18 @@ const getList = {
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;`
 		let result
-		await dbUtils.createTable(_sql).then((res) => {
-			console.log("ok_" + res);
-			result = res
-		}).catch((err) => {
-			console.log("err_" + err);
-			result = null
-		})
+		await dbUtils
+			.createTable(_sql)
+			.then(res => {
+				console.log('ok_' + res)
+				result = res
+			})
+			.catch(err => {
+				console.log('err_' + err)
+				result = null
+			})
 		return result
-	}
+	},
 }
-
 
 module.exports = getList

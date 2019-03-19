@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
-import {Layout, Menu, Avatar} from 'antd'
-import {Link, withRouter} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Layout, Menu, Avatar } from 'antd'
+import { Link, withRouter } from 'react-router-dom'
 import classnames from 'classnames'
 import styles from './banner.less'
 import '../../utils/crypto'
-import {hrefTo} from '../../utils/utils'
-import {getList} from 'api/keyword'
-const {Header, Content} = Layout
+import { hrefTo } from '../../utils/utils'
+import { getList } from 'api/keyword'
+const { Header, Content } = Layout
 
 class Banner extends Component {
 	state = {
@@ -58,7 +58,8 @@ class Banner extends Component {
 					theme="dark"
 					mode="horizontal"
 					defaultSelectedKeys={this.state.defaultSelectedKeys}
-					style={{lineHeight: '64px'}}>
+					style={{ lineHeight: '64px' }}
+				>
 					<Menu.Item key="1">
 						<Link to="/home">coolpad</Link>
 					</Menu.Item>
@@ -74,12 +75,14 @@ class Banner extends Component {
 				</Menu>
 			</Header>
 		)
-		const {isRender} = this.state
+		const { isRender } = this.state
 		return (
 			<Layout className={isRender ? styles['layout'] : ''}>
 				{isRender ? <LayoutHeader /> : ''}
-				<Content className={isRender ? styles['isRender'] : styles['isNotRender']}>
-					<div className = {styles['layout_content']}>{this.props.children}</div>
+				<Content
+					className={isRender ? styles['isRender'] : styles['isNotRender']}
+				>
+					<div className={styles['layout_content']}>{this.props.children}</div>
 				</Content>
 			</Layout>
 		)

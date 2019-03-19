@@ -3,7 +3,6 @@
  */
 
 const userCode = {
-
 	ERROR_USER_NAME: '用户名格式为6-16位的小写字母，包括-、_',
 
 	ERROR_EMAIL: '请输入正确的邮箱地址',
@@ -23,8 +22,6 @@ const userCode = {
 	FAIL_USER_NO_LOGIN: '用户未登录',
 
 	FAIL_USER_NO_EXIST: '用户不存在',
-
 }
-
 
 module.exports = userCode

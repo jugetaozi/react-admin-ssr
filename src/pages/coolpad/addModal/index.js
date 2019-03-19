@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { Modal, Form, Input, TimePicker, Switch } from 'antd';
-import styles from "./addModal.less";
+import React, { Component } from 'react'
+import { Modal, Form, Input, TimePicker, Switch } from 'antd'
+import styles from './addModal.less'
 
-
-const FormItem = Form.Item;
+const FormItem = Form.Item
 
 const addModal = Form.create()(
 	class extends React.Component {
@@ -14,28 +13,28 @@ const addModal = Form.create()(
 
 		handleOk = () => {
 			this.setState({
-				confirmLoading: true
-			});
+				confirmLoading: true,
+			})
 			setTimeout(() => {
 				this.setState({
 					visible: false,
 					confirmLoading: false,
-				});
+				})
 				this.props.onClose(false)
-			}, 2000);
+			}, 2000)
 		}
 
 		handleCancel = () => {
-			console.log('Clicked cancel button');
+			console.log('Clicked cancel button')
 			this.setState({
 				visible: false,
-			});
+			})
 			this.props.onClose(false)
 		}
 
-		render () {
-			const { form } = this.props;
-			const { getFieldDecorator } = form;
+		render() {
+			const { form } = this.props
+			const { getFieldDecorator } = form
 			const formItemLayout = {
 				labelCol: {
 					xs: { span: 24 },
@@ -45,10 +44,11 @@ const addModal = Form.create()(
 					xs: { span: 24 },
 					sm: { span: 20 },
 				},
-			};
+			}
 			return (
 				<div className="addModal">
-					<Modal title="添加信息"
+					<Modal
+						title="添加信息"
 						width="900px"
 						wrapClassName={'addModalContent'}
 						maskClosable={false}
@@ -63,33 +63,21 @@ const addModal = Form.create()(
 							提示提示提示提示提示提示提示提示提示提示
             </div> */}
 						<Form>
-							<FormItem
-								{...formItemLayout}
-								label="用户名：">
-								{(
-									<Input style={{ width: 300 }}></Input>
-								)}
+							<FormItem {...formItemLayout} label="用户名：">
+								{<Input style={{ width: 300 }} />}
 							</FormItem>
-							<FormItem
-								{...formItemLayout}
-								label="宇龙编码">
-								{(
-									<Input style={{ width: 300 }}></Input>
-								)}
+							<FormItem {...formItemLayout} label="宇龙编码">
+								{<Input style={{ width: 300 }} />}
 							</FormItem>
-							<FormItem
-								{...formItemLayout}
-								label="ASIN：">
-								{(
-									<Input style={{ width: 300 }}></Input>
-								)}
+							<FormItem {...formItemLayout} label="ASIN：">
+								{<Input style={{ width: 300 }} />}
 							</FormItem>
 						</Form>
 					</Modal>
 				</div>
-			);
+			)
 		}
 	}
 )
 
-export default addModal;
+export default addModal

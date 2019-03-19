@@ -1,7 +1,7 @@
-import {get, post} from 'utils/http'
+import { get, post } from 'utils/http'
 
-export function login (data) {
-	const result = post('/api/loginIn',data)
+export function login(data) {
+	const result = post('/api/loginIn', data)
 	return result
 }
 

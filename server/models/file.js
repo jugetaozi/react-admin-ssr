@@ -100,7 +100,9 @@ const file = {
 			values += `("${Object.values(_obj).join('","')}"),`
 		})
 		values = values.substr(0, values.length - 1)
-		let _sql = `REPLACE INTO pub_YLnum (${Object.keys(datas[0]).join(',')}) VALUES ${values};`
+		let _sql = `REPLACE INTO pub_YLnum (${Object.keys(datas[0]).join(
+			','
+		)}) VALUES ${values};`
 
 		let resultUpdate = await dbUtils.query(_sql)
 

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import React, { Component } from 'react'
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import Login from '../pages/login'
 import ErrorPage from '../pages/errorPage'
 import Banner from '../pages/banner'
-import PrivateRoute from "../components/privateRoute";
+import PrivateRoute from '../components/privateRoute'
 
 import Coolpad from '../pages/coolpad'
 import Upload from '../pages/upload'
 import Charts from '../pages/charts'
 
 class LayoutIndex extends Component {
-	render () {
+	render() {
 		return (
 			<Banner>
 				{/* isRender={this.props.history.location.pathname !== "/login"}  route改变=>location改变=>prop改变=>导致子组件重复渲染 */}
@@ -33,4 +33,4 @@ class LayoutIndex extends Component {
 	}
 }
 
-export default withRouter(LayoutIndex);//withRouter 提供一个history对象 来操作路由
+export default withRouter(LayoutIndex) //withRouter 提供一个history对象 来操作路由
