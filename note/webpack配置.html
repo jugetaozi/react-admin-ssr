@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2.3  接口文档 · GitBook</title>
+        <title>2.8  webpack配置 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="mysql语法.html" />
+    <link rel="next" href="prettier批量格式化代码.html" />
     
     
-    <link rel="prev" href="node-openDefaultBrowser.html" />
+    <link rel="prev" href="Eslint&&Prettier.html" />
     
 
     </head>
@@ -174,7 +174,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.3" data-path="api.html">
+        <li class="chapter " data-level="1.2.3" data-path="api.html">
             
                 <a href="api.html">
             
@@ -226,7 +226,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.7" data-path="webpack配置.html">
+        <li class="chapter active" data-level="1.2.7" data-path="webpack配置.html">
             
                 <a href="webpack配置.html">
             
@@ -332,7 +332,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >2.3  接口文档</a>
+        <a href=".." >2.8  webpack配置</a>
     </h1>
 </div>
 
@@ -347,15 +347,65 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>userInfo </p>
-<pre><code class="lang-JSON">/xcentz/api/loginIn  POST
-{
-  name: Str,
-  password: Str,
-  remember: Bool
+                                <h2 id="mini-css-extract-plugin">mini-css-extract-plugin</h2>
+<p>&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x5C06;CSS&#x89E3;&#x538B;&#x5230;&#x5355;&#x72EC;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x5B83;&#x4E3A;&#x6BCF;&#x4E2A;&#x5305;&#x542B;CSS&#x7684;JS&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;CSS&#x6587;&#x4EF6;&#x3002;extract-text-webpack-plugin&#x8BE5;&#x63D2;&#x4EF6;&#x5728;webpack4&#x4E2D;&#x4E0D;&#x518D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;
+npmjs&#xFF1A;<a href="https://www.npmjs.com/package/mini-css-extract-plugin" target="_blank">https://www.npmjs.com/package/mini-css-extract-plugin</a></p>
+<p>&#x793A;&#x4F8B;
+  new MiniCssExtractPlugin({
+    filename: &apos;css/[name].css&apos;,
+    chunkFilename: &apos;css/common.css&apos;
+  }),</p>
+<h2 id="babelpreset-env-&#x4F1A;&#x6839;&#x636E;&#x73AF;&#x5883;&#x81EA;&#x52A8;&#x5207;&#x6362;&#x662F;&#x5426;&#x8F6C;&#x6362;&#x4E3A;es5-babelpreset-react-&#x8F6C;&#x6362;react&#x7684;&#x8BED;&#x6CD5;">@babel/preset-env &#x4F1A;&#x6839;&#x636E;&#x73AF;&#x5883;&#x81EA;&#x52A8;&#x5207;&#x6362;&#x662F;&#x5426;&#x8F6C;&#x6362;&#x4E3A;ES5 @babel/preset-react &#x8F6C;&#x6362;react&#x7684;&#x8BED;&#x6CD5;</h2>
+<ul>
+<li>webpack&#x914D;&#x7F6E;&#x9700;&#x8981;&#x5168;&#x5C40;&#x4F7F;&#x7528;babel-env</li>
+</ul>
+<pre><code>&quot;presets&quot;: [
+        [
+            &quot;@babel/preset-env&quot;,
+            {
+                &quot;targets&quot;: {
+                    &quot;uglify&quot;: true //&#x652F;&#x6301;uglify&#x63D2;&#x4EF6; &#x5728;&#x6253;&#x5305;&#x65F6;&#x5019;&#x8F6C;&#x6362;&#x4E3A;ES5&#x8BED;&#x6CD5;  &#x5DF2;&#x88AB;&#x5F03;&#x7528;
+                },
+        {
+                &quot;forceAllTransforms&quot;: true//&#x5F3A;&#x5236;&#x8F6C;&#x6362;&#x4E3A;ES5
+        }
+            }
+        ],
+        &quot;@babel/preset-react&quot;
+    ],
+
+  module.exports = {
+    presets: [
+        [
+            &apos;@babel/preset-env&apos;,
+            {
+                forceAllTransforms: process.env === &apos;production&apos;,//&#x5207;&#x6362;&#x4E3A;js&#x6A21;&#x5F0F;  &#x5224;&#x65AD;&#x5F53;&#x524D;&#x73AF;&#x5883; &#x5982;&#x679C;&#x4E3A;&#x751F;&#x4EA7;&#x73AF;&#x5883; &#x5219;&#x8F6C;&#x6362;&#x4E3A;ES5
+            },
+        ],
+        &apos;@babel/preset-react&apos;,
+    ],
+    plugins: [
+        [
+            &apos;@babel/plugin-proposal-decorators&apos;,
+            {
+                legacy: true,
+            },
+        ],
+        &apos;@babel/plugin-transform-runtime&apos;,
+        &apos;@babel/plugin-proposal-object-rest-spread&apos;,
+        &apos;@babel/plugin-syntax-dynamic-import&apos;,
+        &apos;@babel/plugin-proposal-class-properties&apos;,
+        [
+            &apos;import&apos;,
+            {
+                libraryDirectory: &apos;es&apos;,
+                libraryName: &apos;antd&apos;,
+                style: true,
+            },
+        ],
+    ],
 }
 </code></pre>
-
                                 
                                 </section>
                             
@@ -382,12 +432,12 @@
 
             
                 
-                <a href="node-openDefaultBrowser.html" class="navigation navigation-prev " aria-label="Previous page: 2.2  node-自动打开浏览器方式">
+                <a href="Eslint&&Prettier.html" class="navigation navigation-prev " aria-label="Previous page: 2.7  Eslint&&Prettier">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="mysql语法.html" class="navigation navigation-next " aria-label="Next page: 2.5  mysql语法">
+                <a href="prettier批量格式化代码.html" class="navigation navigation-next " aria-label="Next page: 2.9  prettier批量格式化代码">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -398,7 +448,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.3  接口文档","level":"1.2.3","depth":2,"next":{"title":"2.5  mysql语法","level":"1.2.4","depth":2,"path":"note/mysql语法.md","ref":"note/mysql语法.md","articles":[]},"previous":{"title":"2.2  node-自动打开浏览器方式","level":"1.2.2","depth":2,"path":"note/node-openDefaultBrowser.md","ref":"note/node-openDefaultBrowser.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/api.md","mtime":"2019-03-15T11:17:41.095Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-19T06:00:43.008Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.8  webpack配置","level":"1.2.7","depth":2,"next":{"title":"2.9  prettier批量格式化代码","level":"1.2.8","depth":2,"path":"note/prettier批量格式化代码.md","ref":"note/prettier批量格式化代码.md","articles":[]},"previous":{"title":"2.7  Eslint&&Prettier","level":"1.2.6","depth":2,"path":"note/Eslint&&Prettier.md","ref":"note/Eslint&&Prettier.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/webpack配置.md","mtime":"2019-03-18T11:35:18.518Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-19T06:00:43.008Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
