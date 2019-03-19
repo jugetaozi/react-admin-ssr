@@ -5,6 +5,14 @@ const path = require('path')
 const webpack = require('webpack')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin') //引入清除文件插件
+const ProgressBarPlugin = require('progress-bar-webpack-plugin') //引入进度条插件
+const HappyPack = require('happypack')
+const PostcssFlexbugsFixes = require('postcss-flexbugs-fixes')
+const os = require('os')
+const HappyPackThreadPool = HappyPack.ThreadPool({
+	size: os.cpus().length,
+})
 
 const isProdMode = process.env.NODE_ENV === 'production'
 
@@ -49,7 +57,8 @@ module.exports = {
 			{
 				test: /\.(js|jsx|mjs)$/,
 				// include: srcResolve(),  //所有的都转换为ES5
-				loader: require.resolve('babel-loader'),
+				// loader: require.resolve('babel-loader'), //换为happypack打包输出
+				loader: 'happypack/loader?id=js', //
 				//不能再这里加option 否则会覆盖.babelrc
 			},
 			{
@@ -90,7 +99,7 @@ module.exports = {
 									// https://github.com/facebookincubator/create-react-app/issues/2677
 									ident: 'postcss',
 									plugins: () => [
-										require('postcss-flexbugs-fixes'),
+										PostcssFlexbugsFixes,
 										autoprefixer({
 											browsers: [
 												'>1%',
@@ -105,7 +114,7 @@ module.exports = {
 							},
 							{
 								loader: require.resolve('less-loader'),
-								options: {javascriptEnabled: true},
+								options: { javascriptEnabled: true },
 							},
 						],
 					},
@@ -117,6 +126,7 @@ module.exports = {
 								loader: MiniCssExtractPlugin.loader,
 							},
 							{
+								loader: 'happypack/loader?id=css',
 								loader: require.resolve('css-loader'),
 								options: {
 									importLoaders: 1,
@@ -131,7 +141,7 @@ module.exports = {
 									// https://github.com/facebookincubator/create-react-app/issues/2677
 									ident: 'postcss',
 									plugins: () => [
-										require('postcss-flexbugs-fixes'),
+										PostcssFlexbugsFixes,
 										autoprefixer({
 											browsers: [
 												'>1%',
@@ -146,20 +156,11 @@ module.exports = {
 							},
 							{
 								loader: require.resolve('less-loader'),
-								options: {javascriptEnabled: true},
+								options: { javascriptEnabled: true },
 							},
 						],
 					},
-					// "file" loader makes sure those assets get served by WebpackDevServer.
-					// When you `import` an asset, you get its (virtual) filename.
-					// In production, they would get copied to the `build` folder.
-					// This loader doesn't use a "test" so it will catch all modules
-					// that fall through the other loaders.
 					{
-						// Exclude `js` files to keep "css" loader working as it injects
-						// its runtime that would otherwise processed through "file" loader.
-						// Also exclude `html` and `json` extensions so they get processed
-						// by webpacks internal loaders.
 						exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
 						loader: require.resolve('file-loader'),
 						options: {
@@ -193,6 +194,57 @@ module.exports = {
 		// ],
 	},
 	plugins: [
+		new CleanWebpackPlugin(), //实例化，参数为目录
+		new ProgressBarPlugin(),
+		new HappyPack({
+			id: 'js',
+			loaders: ['babel-loader'],
+			threads: HappyPackThreadPool.size,
+			//允许 HappyPack 输出日志
+			verbose: true,
+		}),
+		// new HappyPack({
+		// 	id: 'css',
+		// 	loaders: [
+		// 		{
+		// 			loader: MiniCssExtractPlugin.loader,
+		// 		},
+		// 		{
+		// 			loader: 'css-loader',
+		// 			options: {
+		// 				importLoaders: 1,
+		// 			},
+		// 		},
+		// 		{
+		// 			loader: 'postcss-loader',
+		// 			options: {
+		// 				// Necessary for external CSS imports to work
+		// 				// https://github.com/facebookincubator/create-react-app/issues/2677
+		// 				ident: 'postcss',
+		// 				plugins: () => [
+		// 					PostcssFlexbugsFixes,
+		// 					autoprefixer({
+		// 						browsers: [
+		// 							'>1%',
+		// 							'last 4 versions',
+		// 							'Firefox ESR',
+		// 							'not ie < 9', // React doesn't support IE8 anyway
+		// 						],
+		// 						flexbox: 'no-2009',
+		// 					}),
+		// 				],
+		// 			},
+		// 		},
+		// 		{
+		// 			loader: 'less-loader',
+		// 			options: { javascriptEnabled: true },
+		// 		},
+		// 	],
+		// 	threads: HappyPackThreadPool.size,
+		// 	//允许 HappyPack 输出日志
+		// 	verbose: true,
+		// }),
+
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
 			// both options are optional
@@ -202,6 +254,7 @@ module.exports = {
 	],
 	optimization: {
 		splitChunks: {
+			// 打包 node_modules里的代码
 			cacheGroups: {
 				commons: {
 					test: /[\\/]node_modules[\\/]/,
@@ -210,5 +263,6 @@ module.exports = {
 				},
 			},
 		},
+		// runtimeChunk: true, // 打包 runtime 代码
 	},
 }

@@ -10,7 +10,7 @@
   * [2.5  mysql语法](note/mysql语法.md)
   * [2.6  antd超出内容隐藏](note/antd超出内容隐藏.md)
   * [2.7  Eslint&&Prettier](note/Eslint&&Prettier.md)
-  * [2.8  webpack配置](note/webpack配置.md)
+  * [2.8  webpack配置及插件](note/webpack配置及插件.md)
   * [2.9  prettier批量格式化代码](note/prettier批量格式化代码.md)
 * [dev 项目依赖与待做事项]()
   * [3.1  项目依赖](note/package.md)
