@@ -9,3 +9,4 @@ module.exports = merge(config, {
 	mode: 'development',
 	devtool: 'cheap-module-source-map'//调试方便
 });
+return true

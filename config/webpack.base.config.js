@@ -5,7 +5,6 @@ const path = require('path')
 const webpack = require('webpack')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin') //引入清除文件插件
 const ProgressBarPlugin = require('progress-bar-webpack-plugin') //引入进度条插件
 const HappyPack = require('happypack')
 const PostcssFlexbugsFixes = require('postcss-flexbugs-fixes')
@@ -194,7 +193,6 @@ module.exports = {
 		// ],
 	},
 	plugins: [
-		new CleanWebpackPlugin(), //实例化，参数为目录
 		new ProgressBarPlugin(),
 		new HappyPack({
 			id: 'js',

@@ -3,6 +3,7 @@ process.env.NODE_ENV = 'production'
 const merge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin') //引入清除文件插件
 const config = require('./webpack.base.config')
 const CompressionWebpackPlugin = require('compression-webpack-plugin') //压缩文件
 
@@ -10,6 +11,8 @@ module.exports = merge(config, {
 	mode: 'production',
 	// devtool: 'source-map', //生产环境打开
 	plugins: [
+		new CleanWebpackPlugin(), //实例化，参数为目录
+
 		new CompressionWebpackPlugin({
 			filename: '[path].gz[query]', //asset不被支持 改为filename =>目标资产名称。文件被替换为原始资产。路径将替换为原始资产的路径并使用查询进行查询 默认:[path].gz[query]
 			algorithm: 'gzip', //可以是（缓冲区，cb）=> cb（缓冲区），或者如果使用了{String}，则该算法取自zlib` 默认gzip
