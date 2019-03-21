@@ -19,6 +19,7 @@ module.exports = {
 		'@babel/plugin-proposal-object-rest-spread',
 		'@babel/plugin-syntax-dynamic-import',
 		'@babel/plugin-proposal-class-properties',
+		'react-hot-loader/babel', // Enables React code to work with HMR.
 		[
 			'import',
 			{

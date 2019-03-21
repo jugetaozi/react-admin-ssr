@@ -31,11 +31,18 @@ module.exports = {
 	entry: {
 		index: srcResolve('index.js'),
 		// admin: srcResolve('admin.js'),//多页应用配置项
+		lib: ['react', 'react-dom'],
 	},
 	output: {
 		path: distResolve(''),
-		filename: 'js/[name].js',
+		filename: '[name].js',
+		publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
+		// process.env.NODE_ENV === 'production'
+		// 	? config.build.assetsPublicPath
+		// 	: config.dev.assetsPublicPath,
+		// necessary for HMR to know where to load the hot update chunks
 	},
+
 	module: {
 		rules: [
 			// {
