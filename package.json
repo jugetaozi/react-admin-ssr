@@ -6,7 +6,7 @@
     "clean":"rm -rf ./build/static/",
     "dev": "npm run clean && concurrently \"npm run c_start\" \"npm run s_start\" \"node ./config/openBrowser\"",
     "build":"npm run c_build",
-    "start": "npm run dev",
+    "start": "node server/app.js",
     "init": "npm run init_sql | npm run doc",
     "test": "node scripts/test.js test",
     "init_sql": "node ./server/init/index.js",
