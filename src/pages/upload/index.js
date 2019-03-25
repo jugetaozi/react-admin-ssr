@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Icon, Tabs, Button, Upload, message } from 'antd'
+import { Menu, Icon, Tabs, Button, Radio, Upload, message } from 'antd'
 import classnames from 'classnames'
 import styles from './upload.less'
 import { download, uploadExcel } from 'api/file'
@@ -12,7 +12,10 @@ const { SubMenu } = Menu
 class upload extends Component {
 	state = {
 		fileList: [],
+		fileList2: [],
+		fileList3: [],
 		uploading: false,
+		sheet: 'Pub_Ylnum',
 	}
 
 	componentDidMount = () => {}
@@ -62,13 +65,24 @@ class upload extends Component {
 		// });
 	}
 	downloadClick() {
-		download().then(item => {
-			open(`/download/${item.data.id}`)
+		download({
+			target: this.state.sheet,
+		})
+			.then(item => {
+				open(`/download/${item.data.id}`)
+			})
+			.catch(err => {
+				message.error(err.data.message)
+			})
+	}
+	onRadioChange(e, v) {
+		this.setState({
+			sheet: e.target.value,
 		})
 	}
 
 	render() {
-		const { uploading, fileList } = this.state
+		const { uploading, fileList, sheet } = this.state
 		const props = {
 			onRemove: file => {
 				this.setState(state => {
@@ -103,31 +117,49 @@ class upload extends Component {
 			fileList,
 		}
 		return (
-			<div className={styles['upload_content']}>
-				<Button
-					type="primary"
-					onClick={this.downloadClick.bind(this)}
-					className={classnames(styles['download'])}
-					shape="round"
-					icon="download"
-					size="large"
-				>
-					下载excel表格
-				</Button>
-				<Upload {...props}>
-					<Button>
-						<Icon type="upload" /> 选择上传文件
+			<div className={styles['upload_C']}>
+				<div className={styles['selection']}>
+					<Radio.Group
+						defaultValue="Pub_Ylnum"
+						onChange={this.onRadioChange.bind(this)}
+						buttonStyle="solid"
+					>
+						<Radio.Button value="Pub_Ylnum">Pub_Ylnum 表</Radio.Button>
+						<Radio.Button value="Asc_Bussiness_Report">
+							Asc_Bussiness_Report 表
+						</Radio.Button>
+						<Radio.Button value="Asc_Sponsored_Products_Advertised">
+							Asc_Sponsored_Products_Advertised 表
+						</Radio.Button>
+					</Radio.Group>
+				</div>
+				<div className={styles['upload_content']}>
+					<Button
+						type="primary"
+						onClick={this.downloadClick.bind(this, 'Pub_Ylnum')}
+						className={classnames(styles['download'])}
+						shape="round"
+						icon="download"
+						size="large"
+					>
+						下载excel表格
 					</Button>
-				</Upload>
-				<Button
-					type="primary"
-					onClick={this.handleUpload}
-					disabled={fileList.length === 0 || fileList.length > 1}
-					loading={uploading}
-					style={{ marginTop: 16 }}
-				>
-					{uploading ? 'Uploading' : '开始上传'}
-				</Button>
+					<p className={styles['title']}>上传到{sheet}表</p>
+					<Upload {...props}>
+						<Button>
+							<Icon type="upload" /> 选择上传文件
+						</Button>
+					</Upload>
+					<Button
+						type="primary"
+						onClick={this.handleUpload}
+						disabled={fileList.length === 0 || fileList.length > 1}
+						loading={uploading}
+						style={{ marginTop: 16 }}
+					>
+						{uploading ? 'Uploading' : '开始上传'}
+					</Button>
+				</div>
 			</div>
 		)
 	}

@@ -1,4 +1,4 @@
-CREATE TABLE   IF NOT EXISTS  `pub_YLnum` (
+CREATE TABLE   IF NOT EXISTS  `Pub_Ylnum_N` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ylNum` varchar(255) DEFAULT NULL,
   `pn` varchar(255) DEFAULT NULL,

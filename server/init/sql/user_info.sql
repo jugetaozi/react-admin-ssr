@@ -1,4 +1,4 @@
-CREATE TABLE   IF NOT EXISTS  `user_info` (
+CREATE TABLE   IF NOT EXISTS  `User_Info_N` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -11,4 +11,4 @@ CREATE TABLE   IF NOT EXISTS  `user_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `user_info` set name='d3be953436f112b36ef108f4c8669680',nick='CoCo',detail_info='admin_detail', email='coco@admin.com', password='7b35039bdc55847cea2c2cb9f9b8eca3';
+INSERT INTO `User_Info_N` set name='d3be953436f112b36ef108f4c8669680',nick='CoCo',detail_info='name:admin,password:123456', email='coco@admin.com', password='7b35039bdc55847cea2c2cb9f9b8eca3';

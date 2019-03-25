@@ -20,6 +20,7 @@ class Banner extends Component {
 			isRender: this.props.history.location.pathname !== '/login',
 		})
 	}
+	
 	static getDerivedStateFromProps(props, state) {
 		let _key = ['1']
 		switch (props.history.location.pathname) {

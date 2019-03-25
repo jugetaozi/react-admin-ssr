@@ -23,7 +23,7 @@ const getList = {
 		return result
 	},
 	async createUser() {
-		let _sql = `CREATE TABLE  user_info (
+		let _sql = `CREATE TABLE  User_Info_N (
   id int(11) NOT NULL AUTO_INCREMENT,
   email varchar(255) DEFAULT NULL,
   password varchar(255) DEFAULT NULL,

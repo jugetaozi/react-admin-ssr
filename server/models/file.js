@@ -12,21 +12,42 @@ const file = {
 		//   where first_name="${options.first_name}" or last_name="${options.last_name}"
 		// 	limit 1`
 
-		// let _sql = `SELECT * FROM user_info where name="${options.name}" and password="${options.password}"`
-		// let _sql = `SELECT * FROM pub_YLnum`
-		let _sql = `SELECT * FROM pub_YLnum WHERE pub_YLnum.is_deleted =0 `
-		// console.log(_sql);
-		let result = await dbUtils.query(_sql)
-		console.log(result)
+		// let _sql = `SELECT * FROM User_Info_N where name="${options.name}" and password="${options.password}"`
+		// let _sql = `SELECT * FROM Pub_Ylnum_N`
+		console.log('options', options, !Object.keys(options).length)
 		let _obj = {
 			data: null,
 			code: 999999,
 			message: '',
 		}
-		if (Array.isArray(result) && result.length > 0) {
-			_obj.data = result
-			_obj.message = 'success'
-			_obj.code = 0
+		let _sql = ''
+		if (!Object.keys(options).length || !options['target']) {
+			console.log('参数target不能为空')
+			_obj.message = '参数target不能为空'
+			return _obj
+		}
+		if (options.target === 'Pub_Ylnum_N') {
+			_sql = `SELECT * FROM Pub_Ylnum_N WHERE Pub_Ylnum_N.is_deleted =0 `
+		} else {
+			console.log('参数target不合法')
+			_obj.message = '参数target不合法'
+			return _obj
+		}
+
+		console.log(_sql)
+		let result = await dbUtils.query(_sql)
+		console.log(result)
+
+		if (Array.isArray(result) && result.length >= 0) {
+			if (result.length === 0) {
+				_obj.data = null
+				_obj.message = '当前表格无数据'
+				_obj.code = 999999
+			} else {
+				_obj.data = result
+				_obj.message = 'success'
+				_obj.code = 0
+			}
 		} else {
 			_obj.message = 'error'
 		}
@@ -42,7 +63,7 @@ const file = {
 	// 	//   where first_name="${options.first_name}" or last_name="${options.last_name}"
 	// 	// 	limit 1`
 
-	// 	// let _sql = `SELECT * FROM user_info where name="${options.name}" and password="${options.password}"`
+	// 	// let _sql = `SELECT * FROM User_Info_N where name="${options.name}" and password="${options.password}"`
 
 	// 	let values = ''
 	// 	let localIds = ''
@@ -60,14 +81,14 @@ const file = {
 	// 		ON_DUPLICATE_KEY_UPDATE += `${item}=VALUES(${item}),`
 	// 	}) //去除id
 	// 	ON_DUPLICATE_KEY_UPDATE = ON_DUPLICATE_KEY_UPDATE.substr(0, ON_DUPLICATE_KEY_UPDATE.length - 1)
-	// 	// let _sql = `REPLACE INTO pub_YLnum (${Object.keys(datas[0]).join(',')}) VALUES ${values};`//插入以及更新
-	// 	let _sql = `INSERT INTO pub_YLnum (${Object.keys(datas[0]).join(',')}) VALUES ${values} ON DUPLICATE KEY UPDATE ${ON_DUPLICATE_KEY_UPDATE};`
+	// 	// let _sql = `REPLACE INTO Pub_Ylnum_N (${Object.keys(datas[0]).join(',')}) VALUES ${values};`//插入以及更新
+	// 	let _sql = `INSERT INTO Pub_Ylnum_N (${Object.keys(datas[0]).join(',')}) VALUES ${values} ON DUPLICATE KEY UPDATE ${ON_DUPLICATE_KEY_UPDATE};`
 
 	// 	let resultUpdate = await dbUtils.query(_sql)
 
 	// 	//去除没有的数据   转换逻辑标志位
-	// 	// let _sql_delete = `DELETE FROM pub_YLnum WHERE pub_YLnum.id NOT IN (${localIds})`
-	// 	let _sql_logic_delete = `UPDATE pub_YLnum SET pub_YLnum.is_deleted=1 WHERE pub_YLnum.id NOT IN (${localIds})`
+	// 	// let _sql_delete = `DELETE FROM Pub_Ylnum_N WHERE Pub_Ylnum_N.id NOT IN (${localIds})`
+	// 	let _sql_logic_delete = `UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.is_deleted=1 WHERE Pub_Ylnum_N.id NOT IN (${localIds})`
 	// 	let resultDelete = await dbUtils.query(_sql_logic_delete)
 	// 	// let resultDelete = await dbUtils.query(_sql_delete)
 
@@ -92,7 +113,7 @@ const file = {
 	 */
 	async uploadExcel(datas) {
 		//每次上传 先转换逻辑标志位
-		let _sql_logic_delete = `UPDATE pub_YLnum SET pub_YLnum.is_deleted=1`
+		let _sql_logic_delete = `UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.is_deleted=1`
 		let resultDelete = await dbUtils.query(_sql_logic_delete)
 
 		let values = ''
@@ -100,7 +121,7 @@ const file = {
 			values += `("${Object.values(_obj).join('","')}"),`
 		})
 		values = values.substr(0, values.length - 1)
-		let _sql = `REPLACE INTO pub_YLnum (${Object.keys(datas[0]).join(
+		let _sql = `REPLACE INTO Pub_Ylnum_N (${Object.keys(datas[0]).join(
 			','
 		)}) VALUES ${values};`
 

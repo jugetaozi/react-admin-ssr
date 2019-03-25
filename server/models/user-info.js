@@ -13,8 +13,8 @@ const userInfo = {
 		//   where first_name="${options.first_name}" or last_name="${options.last_name}"
 		// 	limit 1`
 
-		// let _sql = `SELECT * FROM user_info where name="${options.name}" and password="${options.password}"`
-		let _sql = `SELECT * FROM user_info where name="${
+		// let _sql = `SELECT * FROM User_Info_N where name="${options.name}" and password="${options.password}"`
+		let _sql = `SELECT * FROM User_Info_N where name="${
 			options.name
 		}" and password="${options.password}"`
 		// console.log(_sql);

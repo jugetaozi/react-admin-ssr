@@ -11,11 +11,12 @@ module.exports = {
 	async download(ctx) {
 		const result = await File.download(ctx.request.body)
 
-		//生成xlsx文件
-		const _randomId = await dlXlsx(result.data)
-
-		result.data = {
-			id: _randomId,
+		if(result.data){
+			//生成xlsx文件
+			const _randomId = await dlXlsx(result.data)
+			result.data = {
+				id: _randomId,
+			}
 		}
 		ctx.body = result
 		//类型

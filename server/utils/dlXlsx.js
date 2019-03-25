@@ -3,7 +3,27 @@ const XLSX = require('xlsx')
 const { generatorFileName } = require('./utils')
 const config = require('../../config.js')
 //表头
-const _headers = config.excelHeader
+const _headers = config.excelHeader || [
+	'id',
+	'ylNum',
+	'pn',
+	'sku',
+	'asin',
+	'name',
+	'supplier',
+	'category',
+	'subcategory',
+	'state',
+	'color',
+	'quantity',
+	'wireLength',
+	'terminalMaterial',
+	'externalMaterial',
+	'mouths',
+	'technology',
+	'capacity',
+	'adapterType',
+]
 //表格数据
 // const _data = [
 // 	{
