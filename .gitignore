@@ -12,7 +12,6 @@ dist
 
 # production
 build/static/
-build/AppDoc/_book/
 
 # misc
 .DS_Store
