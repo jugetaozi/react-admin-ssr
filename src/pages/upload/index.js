@@ -15,7 +15,7 @@ class upload extends Component {
 		fileList2: [],
 		fileList3: [],
 		uploading: false,
-		sheet: 'Pub_Ylnum',
+		sheet: 'Pub_Ylnum_N',
 	}
 
 	componentDidMount = () => {}
@@ -120,11 +120,11 @@ class upload extends Component {
 			<div className={styles['upload_C']}>
 				<div className={styles['selection']}>
 					<Radio.Group
-						defaultValue="Pub_Ylnum"
+						defaultValue="Pub_Ylnum_N"
 						onChange={this.onRadioChange.bind(this)}
 						buttonStyle="solid"
 					>
-						<Radio.Button value="Pub_Ylnum">Pub_Ylnum 表</Radio.Button>
+						<Radio.Button value="Pub_Ylnum_N">Pub_Ylnum_N 表</Radio.Button>
 						<Radio.Button value="Asc_Bussiness_Report">
 							Asc_Bussiness_Report 表
 						</Radio.Button>
@@ -136,7 +136,7 @@ class upload extends Component {
 				<div className={styles['upload_content']}>
 					<Button
 						type="primary"
-						onClick={this.downloadClick.bind(this, 'Pub_Ylnum')}
+						onClick={this.downloadClick.bind(this, 'Pub_Ylnum_N')}
 						className={classnames(styles['download'])}
 						shape="round"
 						icon="download"
