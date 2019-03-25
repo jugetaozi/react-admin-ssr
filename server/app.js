@@ -67,7 +67,7 @@ app.use((ctx, next) => {
 })
 
 // 自定义中间件 全局sleep功能
-app.use(sleep(1000))
+// app.use(sleep(1000))
 
 // 需要放在路由前面 否则渲染请求已经返回
 app.use(
