@@ -12,7 +12,7 @@ dist
 
 # production
 build/static/
-build/AppDoc/_book/
+# build/AppDoc/_book/  生产环境需要注释掉
 build/file/download/*.xlsx
 build/file/upload/*.xlsx
 
