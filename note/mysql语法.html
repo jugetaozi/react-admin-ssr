@@ -226,12 +226,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.7" data-path="webpack配置.html">
+        <li class="chapter " data-level="1.2.7" data-path="webpack配置及插件.html">
             
-                <a href="webpack配置.html">
+                <a href="webpack配置及插件.html">
             
                     
-                    2.8  webpack配置
+                    2.8  webpack配置及插件
             
                 </a>
             
@@ -302,6 +302,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    production 生产环境
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="系统部署流程.html">
+            
+                <a href="系统部署流程.html">
+            
+                    
+                    4.1  系统部署流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
     
 
@@ -348,7 +380,9 @@
                                 <section class="normal markdown-section">
                                 
                                 <p>let _sql = <code>REPLACE INTO pub_YLnum (${Object.keys(datas[0]).join(&apos;,&apos;)}) VALUES ${values};</code>
-let _sql = <code>INSERT INTO pub_YLnum (${Object.keys(datas[0]).join(&apos;,&apos;)}) VALUES ${values} ON DUPLICATE KEY UPDATE ${ON_DUPLICATE_KEY_UPDATE};</code></p>
+let _sql = <code>INSERT INTO pub_YLnum (${Object.keys(datas[0]).join(&apos;,&apos;)}) VALUES ${values} ON DUPLICATE KEY UPDATE ${ON_DUPLICATE_KEY_UPDATE};</code>
+let _sql_logic_delete = <code>UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.delFlag=Pub_Ylnum_N.delFlag-1</code> //&#x6BCF;&#x6B21;&#x628A;&#x6807;&#x5FD7;&#x4F4D;&#x51CF;&#x4E00;
+let _sql_logic_delete = <code>UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.delFlag=Pub_Ylnum_N.delFlag-1 WHERE x=1</code> //&#x6BCF;&#x6B21;&#x628A;&#x6807;&#x5FD7;&#x4F4D;&#x51CF;&#x4E00; &#x5F53;x=1&#x65F6;&#x5019;</p>
 <p>&#x5B9E;&#x73B0;&#x4E86;&#x540C;&#x4E00;&#x529F;&#x80FD;</p>
 <p>MySQL ON DUPLICATE KEY UPDATE &#x8BED;&#x6CD5;
 mysql &quot;ON DUPLICATE KEY UPDATE&quot; &#x8BED;&#x6CD5;
@@ -430,7 +464,7 @@ ON DUPLICATE KEY UPDATE b=VALUES(b);</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.5  mysql语法","level":"1.2.4","depth":2,"next":{"title":"2.6  antd超出内容隐藏","level":"1.2.5","depth":2,"path":"note/antd超出内容隐藏.md","ref":"note/antd超出内容隐藏.md","articles":[]},"previous":{"title":"2.3  接口文档","level":"1.2.3","depth":2,"path":"note/api.md","ref":"note/api.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/mysql语法.md","mtime":"2019-03-15T11:17:41.105Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-19T06:00:43.008Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.5  mysql语法","level":"1.2.4","depth":2,"next":{"title":"2.6  antd超出内容隐藏","level":"1.2.5","depth":2,"path":"note/antd超出内容隐藏.md","ref":"note/antd超出内容隐藏.md","articles":[]},"previous":{"title":"2.3  接口文档","level":"1.2.3","depth":2,"path":"note/api.md","ref":"note/api.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/mysql语法.md","mtime":"2019-03-26T03:35:29.430Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T08:18:49.437Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

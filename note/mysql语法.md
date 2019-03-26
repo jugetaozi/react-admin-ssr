@@ -1,5 +1,7 @@
 let _sql = `REPLACE INTO pub_YLnum (${Object.keys(datas[0]).join(',')}) VALUES ${values};`
 let _sql = `INSERT INTO pub_YLnum (${Object.keys(datas[0]).join(',')}) VALUES ${values} ON DUPLICATE KEY UPDATE ${ON_DUPLICATE_KEY_UPDATE};`
+let _sql_logic_delete = `UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.delFlag=Pub_Ylnum_N.delFlag-1` //每次把标志位减一
+let _sql_logic_delete = `UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.delFlag=Pub_Ylnum_N.delFlag-1 WHERE x=1` //每次把标志位减一 当x=1时候
 
 实现了同一功能
 
