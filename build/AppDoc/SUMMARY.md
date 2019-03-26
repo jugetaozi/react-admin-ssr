@@ -12,6 +12,7 @@
   * [2.7  Eslint&&Prettier](note/Eslint&&Prettier.md)
   * [2.8  webpack配置及插件](note/webpack配置及插件.md)
   * [2.9  prettier批量格式化代码](note/prettier批量格式化代码.md)
+  * [3.0  使用forever守护node进程](note/使用forever守护node进程.md)
 * [dev 项目依赖与待做事项]()
   * [3.1  项目依赖](note/package.md)
   * [3.2 todoList](note/todoList.md)

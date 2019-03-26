@@ -1,29 +1,7 @@
 //dlXlsx.js
 const XLSX = require('xlsx')
 const { generatorFileName } = require('./utils')
-const config = require('../../config.js')
-//表头
-const _headers = config.excelHeader || [
-	'id',
-	'',
-	'pn',
-	'sku',
-	'asin',
-	'name',
-	'supplier',
-	'category',
-	'subcategory',
-	'state',
-	'color',
-	'quantity',
-	'wireLength',
-	'terminalMaterial',
-	'externalMaterial',
-	'mouths',
-	'technology',
-	'capacity',
-	'adapterType',
-]
+
 //表格数据
 // const _data = [
 // 	{
@@ -33,7 +11,7 @@ const _headers = config.excelHeader || [
 // 		country: 'China',
 // 	}
 // ];
-const dlXlsx = _data => {
+const dlXlsx = (_headers, _data) => {
 	const headers = _headers
 		.map((v, i) =>
 			Object.assign({}, { v: v, position: String.fromCharCode(65 + i) + 1 })

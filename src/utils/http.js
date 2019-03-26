@@ -2,6 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 import { hashTo, getStorage, removeStorage } from './utils'
 import NProgress from 'nprogress'
+import { message } from 'antd'
 
 axios.defaults.baseURL = '/xcentz'
 
@@ -40,6 +41,11 @@ axios.interceptors.response.use(
 			// return Promise.reject(response);
 		} else {
 			console.log('响应失败', response.data.code)
+			message.error(
+				`响应失败,状态码:${response.data.code},错误信息:${
+					response.data.message
+				}`
+			)
 			return Promise.reject(response)
 		}
 	},
@@ -54,7 +60,8 @@ axios.interceptors.response.use(
 			}
 		}
 		//对响应数据错误做操作
-		console.dir('请求error', error)
+		console.log('请求error', error)
+		message.error('响应失败' + error)
 		return Promise.reject(error)
 	}
 )

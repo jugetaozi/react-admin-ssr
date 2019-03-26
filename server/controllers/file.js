@@ -1,6 +1,7 @@
 const File = require('./../services/file')
 const dlXlsx = require('../utils/dlXlsx')
 const uploadExcelSrv = require('../services/uploadExcelSrv')
+const config = require('../../config.js')
 const fs = require('fs')
 
 module.exports = {
@@ -11,9 +12,13 @@ module.exports = {
 	async download(ctx) {
 		const result = await File.download(ctx.request.body)
 
-		if(result.data){
+		if (result.data) {
 			//生成xlsx文件
-			const _randomId = await dlXlsx(result.data)
+
+			const _randomId = await dlXlsx(
+				config.excelHeaders[ctx.request.body.target], //excelHeader
+				result.data
+			)
 			result.data = {
 				id: _randomId,
 			}

@@ -10,9 +10,15 @@ dist
 # testing
 /coverage
 
+#log
+/log/*.log
+
 # production
 build/static/
-# build/AppDoc/_book/  生产环境需要注释掉
+
+build/AppDoc/_book/  
+# 生产环境需要注释掉
+
 build/file/download/*.xlsx
 build/file/upload/*.xlsx
 
@@ -23,6 +29,7 @@ build/file/upload/*.xlsx
 .env.test.local
 .env.production.local
 
+# 单个文件
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

@@ -28,6 +28,10 @@ const file = {
 		}
 		if (options.target === 'Pub_Ylnum_N') {
 			_sql = `SELECT * FROM Pub_Ylnum_N WHERE Pub_Ylnum_N.delFlag =0 `
+		} else if (options.target === 'Asc_Sponsored_Products_Advertised_N') {
+			_sql = `SELECT * FROM Asc_Sponsored_Products_Advertised_N WHERE Asc_Sponsored_Products_Advertised_N.delFlag =0 `
+		} else if (options.target === 'Asc_Bussiness_Report_N') {
+			_sql = `SELECT * FROM Asc_Bussiness_Report_N WHERE Asc_Bussiness_Report_N.delFlag =0 `
 		} else {
 			console.log('参数target不合法')
 			_obj.message = '参数target不合法'

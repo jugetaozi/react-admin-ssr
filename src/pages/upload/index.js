@@ -72,7 +72,7 @@ class upload extends Component {
 				open(`/download/${item.data.id}`)
 			})
 			.catch(err => {
-				message.error(err.data.message)
+				message.error('下载失败')
 			})
 	}
 	onRadioChange(e, v) {
@@ -125,11 +125,11 @@ class upload extends Component {
 						buttonStyle="solid"
 					>
 						<Radio.Button value="Pub_Ylnum_N">Pub_Ylnum_N 表</Radio.Button>
-						<Radio.Button value="Asc_Bussiness_Report">
-							Asc_Bussiness_Report 表
+						<Radio.Button value="Asc_Bussiness_Report_N">
+							Asc_Bussiness_Report_N 表
 						</Radio.Button>
-						<Radio.Button value="Asc_Sponsored_Products_Advertised">
-							Asc_Sponsored_Products_Advertised 表
+						<Radio.Button value="Asc_Sponsored_Products_Advertised_N">
+							Asc_Sponsored_Products_Advertised_N 表
 						</Radio.Button>
 					</Radio.Group>
 				</div>
