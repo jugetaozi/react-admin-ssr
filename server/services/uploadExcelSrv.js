@@ -8,7 +8,7 @@ const downPath = path.resolve(__dirname, '../../build/file/upload')
 
 async function getExcel(ctx) {
 	// console.log(ctx.request.files.ylnum);
-	const file = ctx.request.files.ylnum // 获取上传文件
+	const file = ctx.request.files.targetUploadFile // 获取上传文件
 	const reader = fs.createReadStream(file.path) // 创建可读流
 	const ext = file.name.split('.').pop() // 获取上传文件扩展名
 	const filePath = `${downPath}/${generatorFileName()}.${ext}`
@@ -23,7 +23,8 @@ async function getExcel(ctx) {
 		const sheetNames = workbook.SheetNames // 返回 ['sheet1', ...]
 		for (const sheetName of sheetNames) {
 			const worksheet = workbook.Sheets[sheetName]
-			const data = xlsx.utils.sheet_to_json(worksheet)
+			const data = xlsx.utils.sheet_to_json(worksheet, { defval: '略' })
+			console.log(data)
 			datas.push(data)
 		}
 		return {
@@ -47,6 +48,14 @@ async function getExcelObjs(ctx) {
 	}
 	if (getRes.status) {
 		if (getRes.datas.length > 1) {
+			//默认取第一个
+			const objs = getRes.datas[0]
+			_obj = {
+				data: getRes.datas[0],
+				code: 0,
+				message: '上传数据成功',
+			}
+			await File.uploadExcel(objs)
 			return _obj
 		} else {
 			//得到的是数组
@@ -60,6 +69,7 @@ async function getExcelObjs(ctx) {
 			return _obj
 		}
 	} else {
+		_obj.message = 'getRes.status为false'
 		return _obj
 	}
 }

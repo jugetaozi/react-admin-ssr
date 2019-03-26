@@ -27,7 +27,7 @@ const file = {
 			return _obj
 		}
 		if (options.target === 'Pub_Ylnum_N') {
-			_sql = `SELECT * FROM Pub_Ylnum_N WHERE Pub_Ylnum_N.is_deleted =0 `
+			_sql = `SELECT * FROM Pub_Ylnum_N WHERE Pub_Ylnum_N.delFlag =0 `
 		} else {
 			console.log('参数target不合法')
 			_obj.message = '参数target不合法'
@@ -88,7 +88,7 @@ const file = {
 
 	// 	//去除没有的数据   转换逻辑标志位
 	// 	// let _sql_delete = `DELETE FROM Pub_Ylnum_N WHERE Pub_Ylnum_N.id NOT IN (${localIds})`
-	// 	let _sql_logic_delete = `UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.is_deleted=1 WHERE Pub_Ylnum_N.id NOT IN (${localIds})`
+	// 	let _sql_logic_delete = `UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.delFlag=1 WHERE Pub_Ylnum_N.id NOT IN (${localIds})`
 	// 	let resultDelete = await dbUtils.query(_sql_logic_delete)
 	// 	// let resultDelete = await dbUtils.query(_sql_delete)
 
@@ -113,7 +113,7 @@ const file = {
 	 */
 	async uploadExcel(datas) {
 		//每次上传 先转换逻辑标志位
-		let _sql_logic_delete = `UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.is_deleted=1`
+		let _sql_logic_delete = `UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.delFlag=Pub_Ylnum_N.delFlag-1`
 		let resultDelete = await dbUtils.query(_sql_logic_delete)
 
 		let values = ''

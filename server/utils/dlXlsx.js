@@ -5,7 +5,7 @@ const config = require('../../config.js')
 //表头
 const _headers = config.excelHeader || [
 	'id',
-	'ylNum',
+	'',
 	'pn',
 	'sku',
 	'asin',

@@ -24,7 +24,7 @@ class upload extends Component {
 		const { fileList } = this.state
 		const formData = new FormData()
 		fileList.forEach(file => {
-			formData.append('ylnum', file)
+			formData.append('targetUploadFile', file)
 		})
 		this.setState({
 			uploading: true,

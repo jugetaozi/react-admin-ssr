@@ -13,6 +13,8 @@ dist
 # production
 build/static/
 build/AppDoc/_book/
+build/file/download/*.xlsx
+build/file/upload/*.xlsx
 
 # misc
 .DS_Store

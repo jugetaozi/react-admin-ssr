@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "clean":"rm -rf ./build/static/",
+    "clean":"rm -rf ./build/static/ && rm -rf ./build/file/download/*.xlsx && rm -rf ./build/file/upload/*.xlsx",
     "dev": "npm run clean && concurrently \"npm run c_start\" \"npm run s_start\" \"node ./config/openBrowser\"",
     "build":"npm run c_build",
-    "start": "npm run dev",
+    "start": "npm run clean && concurrently \"npm run c_build\" \"node server/app.js\"",
     "init": "npm run init_sql | npm run doc",
     "test": "node scripts/test.js test",
     "init_sql": "node ./server/init/index.js",
