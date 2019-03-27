@@ -1,7 +1,7 @@
 //dlXlsx.js
 const XLSX = require('xlsx')
 const { generatorFileName } = require('./utils')
-
+const config = require('../../config.js')
 //表格数据
 // const _data = [
 // 	{
@@ -11,12 +11,14 @@ const { generatorFileName } = require('./utils')
 // 		country: 'China',
 // 	}
 // ];
-const dlXlsx = (_headers, _data) => {
-	const headers = _headers
+const dlXlsx = (_headerName, _data) => {
+	console.log(_data, '_data_data_data_data_data_data')
+	const headerConfig = config.excelHeaders[_headerName]
+	const headers = headerConfig
 		.map((v, i) =>
 			Object.assign({}, { v: v, position: String.fromCharCode(65 + i) + 1 })
 		)
-		// 为 _headers 添加对应的单元格位置
+		// 为 headerConfig 添加对应的单元格位置
 		// [ { v: 'id', position: 'A1' },
 		//   { v: 'name', position: 'B1' },
 		//   { v: 'age', position: 'C1' },
@@ -31,48 +33,52 @@ const dlXlsx = (_headers, _data) => {
 	//   B1: { v: 'name' },
 	//   C1: { v: 'age' },
 	//   D1: { v: 'country' },
-
-	const data = _data
-		.map((v, i) =>
-			_headers.map((k, j) =>
-				Object.assign(
-					{},
-					{ v: v[k], position: String.fromCharCode(65 + j) + (i + 2) }
+	let data
+	if (_data.length === 0) {
+		data = _data
+	} else {
+		data = _data
+			.map((v, i) =>
+				headerConfig.map((k, j) =>
+					Object.assign(
+						{},
+						{ v: v[k], position: String.fromCharCode(65 + j) + (i + 2) }
+					)
 				)
 			)
-		)
-		// 匹配 headers 的位置，生成对应的单元格数据
-		// [ [ { v: '1', position: 'A2' },
-		//     { v: 'test1', position: 'B2' },
-		//     { v: '30', position: 'C2' },
-		//     { v: 'China', position: 'D2' }],
-		//   [ { v: '2', position: 'A3' },
-		//     { v: 'test2', position: 'B3' },
-		//     { v: '20', position: 'C3' },
-		//     { v: 'America', position: 'D3' }],
-		//   [ { v: '3', position: 'A4' },
-		//     { v: 'test3', position: 'B4' },
-		//     { v: '18', position: 'C4' },
-		//     { v: 'Unkonw', position: 'D4' }] ]
-		.reduce((prev, next) => prev.concat(next))
-		// 对刚才的结果进行降维处理（二维数组变成一维数组）
-		// [ { v: '1', position: 'A2' },
-		//   { v: 'test1', position: 'B2' },
-		//   { v: '30', position: 'C2' },
-		//   { v: 'China', position: 'D2' },
-		//   { v: '2', position: 'A3' },
-		//   { v: 'test2', position: 'B3' },
-		//   { v: '20', position: 'C3' },
-		//   { v: 'America', position: 'D3' },
-		//   { v: '3', position: 'A4' },
-		//   { v: 'test3', position: 'B4' },
-		//   { v: '18', position: 'C4' },
-		//   { v: 'Unkonw', position: 'D4' },
-		.reduce(
-			(prev, next) =>
-				Object.assign({}, prev, { [next.position]: { v: next.v } }),
-			{}
-		)
+			// 匹配 headers 的位置，生成对应的单元格数据
+			// [ [ { v: '1', position: 'A2' },
+			//     { v: 'test1', position: 'B2' },
+			//     { v: '30', position: 'C2' },
+			//     { v: 'China', position: 'D2' }],
+			//   [ { v: '2', position: 'A3' },
+			//     { v: 'test2', position: 'B3' },
+			//     { v: '20', position: 'C3' },
+			//     { v: 'America', position: 'D3' }],
+			//   [ { v: '3', position: 'A4' },
+			//     { v: 'test3', position: 'B4' },
+			//     { v: '18', position: 'C4' },
+			//     { v: 'Unkonw', position: 'D4' }] ]
+			.reduce((prev, next) => prev.concat(next))
+			// 对刚才的结果进行降维处理（二维数组变成一维数组）
+			// [ { v: '1', position: 'A2' },
+			//   { v: 'test1', position: 'B2' },
+			//   { v: '30', position: 'C2' },
+			//   { v: 'China', position: 'D2' },
+			//   { v: '2', position: 'A3' },
+			//   { v: 'test2', position: 'B3' },
+			//   { v: '20', position: 'C3' },
+			//   { v: 'America', position: 'D3' },
+			//   { v: '3', position: 'A4' },
+			//   { v: 'test3', position: 'B4' },
+			//   { v: '18', position: 'C4' },
+			//   { v: 'Unkonw', position: 'D4' },
+			.reduce(
+				(prev, next) =>
+					Object.assign({}, prev, { [next.position]: { v: next.v } }),
+				{}
+			)
+	}
 	// 转换成 worksheet 需要的结构
 	//   { A2: { v: '1' },
 	//     B2: { v: 'test1' },
@@ -94,10 +100,15 @@ const dlXlsx = (_headers, _data) => {
 	const ref = outputPos[0] + ':' + outputPos[outputPos.length - 1]
 
 	// 构建 workbook 对象
+	let sheetNames = _headerName
+	if (sheetNames.length > 31) {
+		//Sheet names cannot exceed 31 chars
+		sheetNames = _headerName.substring(0, 31)
+	}
 	const workbook = {
-		SheetNames: ['mySheet'],
+		SheetNames: [sheetNames],
 		Sheets: {
-			mySheet: Object.assign({}, output, { '!ref': ref }),
+			[sheetNames]: Object.assign({}, output, { '!ref': ref }),
 		},
 	}
 

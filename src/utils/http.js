@@ -57,11 +57,14 @@ axios.interceptors.response.use(
 				case 400000:
 					removeStorage('_token')
 					hashTo('/login')
+					message.error('请先登录')
+					break
 			}
+		}else{
+			//对响应数据错误做操作
+			console.log('请求error', error)
+			message.error('响应失败' + error)
 		}
-		//对响应数据错误做操作
-		console.log('请求error', error)
-		message.error('响应失败' + error)
 		return Promise.reject(error)
 	}
 )

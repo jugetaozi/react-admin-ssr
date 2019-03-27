@@ -1,6 +1,7 @@
 const dbUtils = require('./../utils/db-util')
 const codes = require('../codes/users')
 const config = require('../../config.js')
+const downloadSqlLib = require('../sqlLib/download')
 const file = {
 	/**
 	 * download
@@ -14,7 +15,6 @@ const file = {
 
 		// let _sql = `SELECT * FROM User_Info_N where name="${options.name}" and password="${options.password}"`
 		// let _sql = `SELECT * FROM Pub_Ylnum_N`
-		console.log('options', options, !Object.keys(options).length)
 		let _obj = {
 			data: null,
 			code: 999999,
@@ -22,36 +22,33 @@ const file = {
 		}
 		let _sql = ''
 		if (!Object.keys(options).length || !options['target']) {
-			console.log('参数target不能为空')
 			_obj.message = '参数target不能为空'
 			return _obj
 		}
-		if (options.target === 'Pub_Ylnum_N') {
-			_sql = `SELECT * FROM Pub_Ylnum_N WHERE Pub_Ylnum_N.delFlag =0 `
-		} else if (options.target === 'Asc_Sponsored_Products_Advertised_N') {
-			_sql = `SELECT * FROM Asc_Sponsored_Products_Advertised_N WHERE Asc_Sponsored_Products_Advertised_N.delFlag =0 `
-		} else if (options.target === 'Asc_Bussiness_Report_N') {
-			_sql = `SELECT * FROM Asc_Bussiness_Report_N WHERE Asc_Bussiness_Report_N.delFlag =0 `
-		} else {
-			console.log('参数target不合法')
-			_obj.message = '参数target不合法'
-			return _obj
-		}
 
-		console.log(_sql)
+		if (downloadSqlLib[options.target]) {
+			_sql = downloadSqlLib[options.target]
+		} else {
+			//如果没有配置 则为默认查询
+			_sql = `SELECT * FROM ${options.target} WHERE ${options.target}.delFlag=0`
+		}
+		console.log(
+			_sql,
+			'sql语句__sql语句__sql语句__sql语句__sql语句__sql语句__sql语句__sql语句__'
+		)
+
 		let result = await dbUtils.query(_sql)
-		console.log(result)
 
 		if (Array.isArray(result) && result.length >= 0) {
-			if (result.length === 0) {
-				_obj.data = null
-				_obj.message = '当前表格无数据'
-				_obj.code = 999999
-			} else {
-				_obj.data = result
-				_obj.message = 'success'
-				_obj.code = 0
-			}
+			// if (result.length === 0) {
+			// 	_obj.data = null
+			// 	_obj.message = '当前表格无数据'
+			// 	_obj.code = 999999
+			// } else {
+			_obj.data = result
+			_obj.message = 'success'
+			_obj.code = 0
+			// }
 		} else {
 			_obj.message = 'error'
 		}
@@ -115,40 +112,54 @@ const file = {
 	 *版本2 1.不删除 增加逻辑删除位 删除前一次的上传记录 然后执行replace语句.
 	 *
 	 */
-	async uploadExcel(datas) {
+	async uploadExcel(ctx, datas) {
+		let tableName = ctx.request.body.tableName //上传的表名
 		//每次上传 先转换逻辑标志位
-		let _sql_logic_delete = `UPDATE Pub_Ylnum_N SET Pub_Ylnum_N.delFlag=Pub_Ylnum_N.delFlag-1`
+		let _sql_logic_delete = `UPDATE ${tableName} SET ${tableName}.delFlag=${tableName}.delFlag-1`
+
 		let resultDelete = await dbUtils.query(_sql_logic_delete)
 
 		let values = ''
-		datas.map(_obj => {
-			values += `("${Object.values(_obj).join('","')}"),`
-		})
-		values = values.substr(0, values.length - 1)
-		let _sql = `REPLACE INTO Pub_Ylnum_N (${Object.keys(datas[0]).join(
-			','
-		)}) VALUES ${values};`
-
-		let resultUpdate = await dbUtils.query(_sql)
-
 		let _obj = {
 			data: null,
 			code: 999999,
 			message: '',
 		}
-		if (
-			Array.isArray(resultUpdate) &&
-			Array.isArray(resultDelete) &&
-			resultUpdate.length > 0 &&
-			resultDelete.length > 0
-		) {
-			_obj.data = resultUpdate
-			_obj.message = 'success'
-			_obj.code = 0
+		if (datas.length) {
+			//更新上传的数据
+			datas.map(_obj => {
+				values += `("${Object.values(_obj).join('","')}"),`
+			})
+
+			values = values.substr(0, values.length - 1)
+			let _sql = `REPLACE INTO ${tableName} (${config.excelHeaders[
+				tableName
+			].join(',')}) VALUES ${values};`
+			let resultUpdate = await dbUtils.query(_sql)
+			if (
+				Array.isArray(resultUpdate) &&
+				Array.isArray(resultDelete) &&
+				resultUpdate.length > 0 &&
+				resultDelete.length > 0
+			) {
+				_obj.data = resultUpdate
+				_obj.message = 'success'
+				_obj.code = 0
+			} else {
+				_obj.message = 'error'
+			}
+			return _obj
 		} else {
-			_obj.message = 'error'
+			//如果没有上传数据 resultDelete结果即为本次操作结果
+			if (Array.isArray(resultDelete) && resultDelete.length > 0) {
+				_obj.data = resultDelete
+				_obj.message = 'success'
+				_obj.code = 0
+			} else {
+				_obj.message = 'error'
+			}
+			return _obj
 		}
-		return _obj
 	},
 }
 

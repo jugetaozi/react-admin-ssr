@@ -14,8 +14,8 @@ const user = {
 		return result
 	},
 
-	async uploadExcel(options) {
-		let result = await file.uploadExcel(options)
+	async uploadExcel(ctx,datas) {
+		let result = await file.uploadExcel(ctx,datas)
 		return result
 	},
 }

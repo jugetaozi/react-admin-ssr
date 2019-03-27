@@ -7,7 +7,6 @@ const { generatorFileName } = require('../utils/utils')
 const downPath = path.resolve(__dirname, '../../build/file/upload')
 
 async function getExcel(ctx) {
-	// console.log(ctx.request.files.ylnum);
 	const file = ctx.request.files.targetUploadFile // 获取上传文件
 	const reader = fs.createReadStream(file.path) // 创建可读流
 	const ext = file.name.split('.').pop() // 获取上传文件扩展名
@@ -21,10 +20,10 @@ async function getExcel(ctx) {
 		//没有问题
 		const workbook = xlsx.readFile(filePath)
 		const sheetNames = workbook.SheetNames // 返回 ['sheet1', ...]
+		
 		for (const sheetName of sheetNames) {
 			const worksheet = workbook.Sheets[sheetName]
 			const data = xlsx.utils.sheet_to_json(worksheet, { defval: '略' })
-			console.log(data)
 			datas.push(data)
 		}
 		return {
@@ -55,7 +54,7 @@ async function getExcelObjs(ctx) {
 				code: 0,
 				message: '上传数据成功',
 			}
-			await File.uploadExcel(objs)
+			await File.uploadExcel(ctx,objs)
 			return _obj
 		} else {
 			//得到的是数组
@@ -65,7 +64,7 @@ async function getExcelObjs(ctx) {
 				code: 0,
 				message: '上传数据成功',
 			}
-			await File.uploadExcel(objs)
+			await File.uploadExcel(ctx,objs)
 			return _obj
 		}
 	} else {
