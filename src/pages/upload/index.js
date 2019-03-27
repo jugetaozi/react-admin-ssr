@@ -15,7 +15,7 @@ class upload extends Component {
 		fileList2: [],
 		fileList3: [],
 		uploading: false,
-		sheet: 'Pub_Ylnum_N',
+		tableName: 'Pub_Ylnum_N',
 	}
 
 	componentDidMount = () => {}
@@ -24,7 +24,8 @@ class upload extends Component {
 		const { fileList } = this.state
 		const formData = new FormData()
 		fileList.forEach(file => {
-			formData.append('targetUploadFile', file)
+			formData.append('targetUploadFile', file) //FormData对象的字段类型可以是 Blob, File, 或者 string: 如果它的字段类型不是Blob也不是File，则会被转换成字符串类)。
+			formData.append('tableName', this.state.tableName)
 		})
 		this.setState({
 			uploading: true,
@@ -66,7 +67,7 @@ class upload extends Component {
 	}
 	downloadClick() {
 		download({
-			target: this.state.sheet,
+			target: this.state.tableName,
 		})
 			.then(item => {
 				open(`/download/${item.data.id}`)
@@ -77,12 +78,12 @@ class upload extends Component {
 	}
 	onRadioChange(e, v) {
 		this.setState({
-			sheet: e.target.value,
+			tableName: e.target.value,
 		})
 	}
 
 	render() {
-		const { uploading, fileList, sheet } = this.state
+		const { uploading, fileList, tableName } = this.state
 		const props = {
 			onRemove: file => {
 				this.setState(state => {
@@ -144,7 +145,7 @@ class upload extends Component {
 					>
 						下载excel表格
 					</Button>
-					<p className={styles['title']}>上传到{sheet}表</p>
+					<p className={styles['title']}>上传到{tableName}表</p>
 					<Upload {...props}>
 						<Button>
 							<Icon type="upload" /> 选择上传文件
