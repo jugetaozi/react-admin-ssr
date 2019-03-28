@@ -147,9 +147,12 @@ open in http://localhost:8888/
 
 ## 已实现功能
 
-- 支持 ES6/ES7/Promise
+- 支持 ES6/ES7/Promise 
 - 登录页面 + 首页菜单 layout 布局
 - 登录权限验证/登录态持久化
 - 全局的登录状态的路由拦截 接口验证
-- 登录密码 aes-256-cbc 加密
+- aes-256-cbc 加密
 - gitbook DOC
+- excel表格从mysql下载/上传/解析
+- 服务器控制台日志/错误日志收集
+- forever守护node服务端进程

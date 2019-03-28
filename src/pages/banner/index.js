@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Avatar } from 'antd'
+import { Layout, Menu } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
 import classnames from 'classnames'
 import styles from './banner.less'
 import '../../utils/crypto'
 import { hrefTo } from '../../utils/utils'
 import { getList } from 'api/keyword'
+import Avatar from 'components/avatar'
 const { Header, Content } = Layout
 
 class Banner extends Component {
@@ -20,7 +21,7 @@ class Banner extends Component {
 			isRender: this.props.history.location.pathname !== '/login',
 		})
 	}
-	
+
 	static getDerivedStateFromProps(props, state) {
 		let _key = ['1']
 		switch (props.history.location.pathname) {
@@ -74,6 +75,7 @@ class Banner extends Component {
 						AppDoc
 					</Menu.Item>
 				</Menu>
+				<Avatar className={styles['avatarInfo']} />
 			</Header>
 		)
 		const { isRender } = this.state

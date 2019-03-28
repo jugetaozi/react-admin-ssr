@@ -25,15 +25,21 @@ const userInfo = {
 			message: '',
 		}
 		if (Array.isArray(result) && result.length > 0) {
+			delete result[0]['name']
+			delete result[0]['password']
 			const token = jwt.sign(
 				{
-					name: result.name,
-					id: result.id,
+					...result[0],
 				},
 				config.secretkey,
-				{ expiresIn: '2h' }
+				{
+					expiresIn: '2h',
+				}
 			)
-			_obj.data = token
+			_obj.data = {
+				token,
+				userInfo: result[0],
+			}
 			_obj.message = '登录成功'
 			_obj.code = 0
 		} else {

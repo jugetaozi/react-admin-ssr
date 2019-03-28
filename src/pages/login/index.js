@@ -6,13 +6,21 @@ import { login } from 'api/keyword'
 import canvasJS from '../../libs/canvasJs/zhihu-like'
 import { aesEncrypt } from '../../utils/crypto'
 import { removeStorage } from '../../utils/utils'
+import { connect } from 'react-redux'
+import { changeUserInfo } from 'store/reducers/getUserInfoReducer'
 
 const Login = Form.create()(
+	@connect(
+		state => ({
+			getUserInfoReducer: state.getUserInfoReducer,
+		}),
+		{ changeUserInfo }
+	)
 	class extends Component {
 		state = {
 			loginInfo: '',
 		}
-		handleSubmit = e => {
+		handleSubmit = async e => {
 			this.setState({
 				loginInfo: '',
 			})
@@ -24,17 +32,18 @@ const Login = Form.create()(
 					values.password = aesEncrypt(values.password)
 					login(values)
 						.then(res => {
-							if (res.data) {
+							if (res.data && res.data.token) {
 								//如果有data token 则存到本地localStorage
 								removeStorage('_token')
 								if (values.remember) {
 									//存进session
-									window.localStorage.setItem('_token', res.data)
+									window.localStorage.setItem('_token', res.data.token)
 								} else {
 									//存进localStorage
-									window.sessionStorage.setItem('_token', res.data)
+									window.sessionStorage.setItem('_token', res.data.token)
 								}
 							}
+							this.props.changeUserInfo(res.data.userInfo)
 							this.props.history.push('/')
 						})
 						.catch(err => {

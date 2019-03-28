@@ -27,9 +27,9 @@ export const getStorage = key => {
 
 export const removeStorage = key => {
 	const session = window.sessionStorage.getItem(key)
-	const local = window.sessionStorage.getItem(key)
+	const local = window.localStorage.getItem(key)
 	session && window.sessionStorage.removeItem(key)
-	local && window.sessionStorage.removeItem(key)
+	local && window.localStorage.removeItem(key)
 }
 
 //获取文件后缀

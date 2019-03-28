@@ -5,14 +5,14 @@ import moment from 'moment'
 import { getList, newCustomer } from 'api/keyword'
 import { Table, Button, Popconfirm, Alert } from 'antd'
 import { connect } from 'react-redux'
-import { getUserInfo } from 'store/reducers/userReducer'
+// import { getUserInfo } from 'store/reducers/userReducer'
 import AddModal from './addModal'
 import ModifyModal from './modifyModal'
 @connect(
 	state => ({
 		userReducer: state.userReducer,
-	}),
-	{ getUserInfo }
+	})
+	// { getUserInfo }
 )
 class coolpadList extends Component {
 	state = {

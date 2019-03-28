@@ -11,10 +11,10 @@ export const aesEncrypt = function(data, key) {
 	return crypted
 }
 
-export const aesDecrypt = function(encrypted, key) {
+export const aesDecrypt = function(data, key) {
 	let sKey = key || secretkey
 	const decipher = crypto.createDecipher('aes-256-cbc', sKey)
-	var decrypted = decipher.update(encrypted, 'hex', 'utf8')
+	var decrypted = decipher.update(data, 'hex', 'utf8')
 	decrypted += decipher.final('utf8')
 	return decrypted
 }

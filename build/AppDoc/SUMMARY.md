@@ -14,6 +14,7 @@
   * [2.9  prettier批量格式化代码](note/prettier批量格式化代码.md)
   * [2.10  使用forever守护node进程](note/使用forever守护node进程.md)
   * [2.11  mysql插入data类型数据报错问题](note/mysql插入data类型数据报错问题.md)
+  * [2.12  使用PropTypes进行类型校验](note/使用PropTypes进行类型校验.md)
 * [dev 项目依赖与待做事项]()
   * [3.1  项目依赖](note/package.md)
   * [3.2 todoList](note/todoList.md)

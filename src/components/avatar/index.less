@@ -1,0 +1,39 @@
+.avatarContent {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 0;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.content {
+  width: 220px;
+
+  p {
+    line-height: 32px;
+    padding: 0 20px;
+    color: #000;
+    min-width: 80px;
+    max-width: 14em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  p:nth-of-type(n+4) {
+    cursor: pointer;
+
+    &:hover {
+      color: #00a4ff;
+    }
+  }
+}
+
+.logoutBtn{
+	margin: 10px 0;
+}

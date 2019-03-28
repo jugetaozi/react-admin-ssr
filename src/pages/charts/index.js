@@ -114,7 +114,7 @@ class charts extends Component {
 		dv: null,
 	}
 
-	componentDidMount = () => {
+	componentDidMount = async () => {
 		const ds = new DataSet()
 		const dvTr = ds.createView().source(this.state.data2)
 		dvTr.transform({
