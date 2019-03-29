@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Menu, Icon, Tabs, Button, Radio, Upload, message } from 'antd'
 import classnames from 'classnames'
+import PropTypes from 'prop-types'
 import styles from './upload.less'
 import { download, uploadExcel } from 'api/file'
 import store from '../../store/store'
@@ -10,6 +11,7 @@ const TabPane = Tabs.TabPane
 const { SubMenu } = Menu
 
 class upload extends Component {
+	static propTypes = {}
 	state = {
 		fileList: [],
 		fileList2: [],

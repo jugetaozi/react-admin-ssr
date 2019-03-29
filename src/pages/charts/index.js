@@ -23,95 +23,98 @@ import {
 import DataSet from '@antv/data-set'
 
 class charts extends Component {
-	state = {
-		fileList: [],
-		uploading: false,
-		data: [
-			{
-				month: '2019-01-01',
-				acc: 84.0,
+	constructor(props) {
+		super(props)
+		this.state = {
+			fileList: [],
+			uploading: false,
+			data: [
+				{
+					month: '2019-01-01',
+					acc: 84.0,
+				},
+				{
+					month: '2019-02-01',
+					acc: 14.9,
+				},
+				{
+					month: '2019-03-01',
+					acc: 17.0,
+				},
+				{
+					month: '2019-04-01',
+					acc: 20.2,
+				},
+				{
+					month: '2019-05-01',
+					acc: 55.6,
+				},
+				{
+					month: '2019-06-01',
+					acc: 56.7,
+				},
+				{
+					month: '2019-07-01',
+					acc: 30.6,
+				},
+				{
+					month: '2019-08-01',
+					acc: 63.2,
+				},
+				{
+					month: '2019-09-01',
+					acc: 24.6,
+				},
+				{
+					month: '2019-10-01',
+					acc: 14.0,
+				},
+				{
+					month: '2019-11-01',
+					acc: 9.4,
+				},
+				{
+					month: '2019-12-01',
+					acc: 6.3,
+				},
+			],
+			cols: {
+				month: {
+					alias: '月份',
+				},
+				acc: {
+					alias: '销量',
+				},
 			},
-			{
-				month: '2019-02-01',
-				acc: 14.9,
-			},
-			{
-				month: '2019-03-01',
-				acc: 17.0,
-			},
-			{
-				month: '2019-04-01',
-				acc: 20.2,
-			},
-			{
-				month: '2019-05-01',
-				acc: 55.6,
-			},
-			{
-				month: '2019-06-01',
-				acc: 56.7,
-			},
-			{
-				month: '2019-07-01',
-				acc: 30.6,
-			},
-			{
-				month: '2019-08-01',
-				acc: 63.2,
-			},
-			{
-				month: '2019-09-01',
-				acc: 24.6,
-			},
-			{
-				month: '2019-10-01',
-				acc: 14.0,
-			},
-			{
-				month: '2019-11-01',
-				acc: 9.4,
-			},
-			{
-				month: '2019-12-01',
-				acc: 6.3,
-			},
-		],
-		cols: {
-			month: {
-				alias: '月份',
-			},
-			acc: {
-				alias: '销量',
-			},
-		},
-		data2: [
-			{
-				label: 'Monday',
-				series1: 2800,
-				series2: 2260,
-			},
-			{
-				label: 'Tuesday',
-				series1: 1800,
-				series2: 1300,
-			},
-			{
-				label: 'Wednesday',
-				series1: 950,
-				series2: 900,
-			},
-			{
-				label: 'Thursday',
-				series1: 500,
-				series2: 390,
-			},
-			{
-				label: 'Friday',
-				series1: 170,
-				series2: 100,
-			},
-		],
-		dv: null,
+			data2: [
+				{
+					label: 'Monday',
+					series1: 2800,
+					series2: 2260,
+				},
+				{
+					label: 'Tuesday',
+					series1: 1800,
+					series2: 1300,
+				},
+				{
+					label: 'Wednesday',
+					series1: 950,
+					series2: 900,
+				},
+				{
+					label: 'Thursday',
+					series1: 500,
+					series2: 390,
+				},
+				{
+					label: 'Friday',
+					series1: 170,
+					series2: 100,
+				},
+			],
+			dv: null,
+		}
 	}
 
 	componentDidMount = async () => {

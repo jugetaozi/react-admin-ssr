@@ -63,9 +63,9 @@ class AvatarInfo extends Component {
 		}
 		const content = (
 			<div className={styles['content']}>
-				<p>昵称: {userInfo['nick']}</p>
-				<p>email: {userInfo['email']}</p>
-				<p>当前角色: {config.roleNameArr[userInfo['role']]}</p>
+				<p>昵称：{userInfo['nick']}</p>
+				<p>email：{userInfo['email']}</p>
+				<p>当前角色：{config.roleNameArr[userInfo['role']]}</p>
 				<Button
 					onClick={this.onHandleLogout.bind(this)}
 					// type="primary"

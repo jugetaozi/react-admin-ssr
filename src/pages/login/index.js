@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
 import classnames from 'classnames'
+import PropTypes from 'prop-types'
 import styles from './login.less'
-import { login } from 'api/keyword'
 import canvasJS from '../../libs/canvasJs/zhihu-like'
+import { login } from 'api/keyword'
 import { aesEncrypt } from '../../utils/crypto'
 import { removeStorage } from '../../utils/utils'
 import { connect } from 'react-redux'
@@ -17,6 +18,9 @@ const Login = Form.create()(
 		{ changeUserInfo }
 	)
 	class extends Component {
+		static propTypes = {
+			form: PropTypes.object.isRequired,
+		}
 		state = {
 			loginInfo: '',
 		}

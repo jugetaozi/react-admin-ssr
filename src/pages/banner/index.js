@@ -5,14 +5,22 @@ import classnames from 'classnames'
 import styles from './banner.less'
 import '../../utils/crypto'
 import { hrefTo } from '../../utils/utils'
+import PropTypes from 'prop-types'
 import { getList } from 'api/keyword'
 import Avatar from 'components/avatar'
 const { Header, Content } = Layout
 
 class Banner extends Component {
-	state = {
-		isRender: true,
-		defaultSelectedKeys: ['1'],
+	static propTypes = {
+		children: PropTypes.element,
+		history: PropTypes.object.isRequired,
+	}
+	constructor(props) {
+		super(props)
+		this.state = {
+			isRender: true,
+			defaultSelectedKeys: ['1'],
+		}
 	}
 
 	componentDidMount = () => {
