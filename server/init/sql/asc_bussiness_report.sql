@@ -17,4 +17,4 @@ CREATE TABLE   IF NOT EXISTS  `Asc_Bussiness_Report_N` (
   `delFlag`  int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `Asc_Bussiness_Report_N` set title='init Data', delFlag='0';
+-- INSERT INTO `Asc_Bussiness_Report_N` set title='init Data', delFlag='0';

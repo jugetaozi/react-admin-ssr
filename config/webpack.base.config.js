@@ -29,9 +29,13 @@ const distResolve = function(file) {
 
 module.exports = {
 	entry: {
-		index: srcResolve('index.js'),
+		index: [
+			'@babel/polyfill', //垫片库
+			srcResolve('index.js'),
+		],
 		// admin: srcResolve('admin.js'),//多页应用配置项
 	},
+
 	output: {
 		path: distResolve(''),
 		filename: 'js/[name].js',
@@ -197,7 +201,8 @@ module.exports = {
 		new ProgressBarPlugin(),
 		new HappyPack({
 			id: 'js',
-			loaders: ['babel-loader'],
+
+			loaders: [{ loader: 'babel-loader', include: srcResolve() }],
 			threads: HappyPackThreadPool.size,
 			//允许 HappyPack 输出日志
 			verbose: true,

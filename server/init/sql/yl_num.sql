@@ -24,4 +24,4 @@ CREATE TABLE   IF NOT EXISTS  `Pub_Ylnum_N` (
   -- PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `Pub_Ylnum_N` set YlNum='000', name='init data', delFlag='0';
+-- INSERT INTO `Pub_Ylnum_N` set YlNum='000', name='init data', delFlag='0';

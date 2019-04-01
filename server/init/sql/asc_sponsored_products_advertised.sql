@@ -26,4 +26,4 @@ CREATE TABLE   IF NOT EXISTS  `Asc_Sponsored_Products_Advertised_N` (
   `delFlag`  int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `Asc_Sponsored_Products_Advertised_N` set PortfolioName='init Data', delFlag='0';
+-- INSERT INTO `Asc_Sponsored_Products_Advertised_N` set PortfolioName='init Data', delFlag='0';
