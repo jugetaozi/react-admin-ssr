@@ -43,6 +43,7 @@
     "sequelize": "^4.42.0",
     "validator": "^10.11.0",
     "@babel/polyfill": "^7.0.0",
+    "eventsource-polyfill": "^0.9.6",
     "xlsx": "^0.14.1"
   },
   "devDependencies": {

@@ -11,7 +11,6 @@ import { getUserInfo } from 'store/reducers/getUserInfoReducer'
 const colorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae', '#cccccc']
 @connect(
 	state => {
-		console.log(state, 'state注入props')
 		return {
 			userInfoReducer: state.getUserInfoReducer,
 		}

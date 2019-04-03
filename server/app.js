@@ -74,7 +74,7 @@ app.use(
 	koajwt({
 		secret: config.secretkey,
 	}).unless({
-		path: [/^\/$/, /^\/xcentz\/api\/loginIn$/, /^\/download/], // ^$唯一匹配/  由于前端是hash路由  故拦截除静态服务器以外的其他api  需要放到静态资源之后 路由之前
+		path: [/^\/$/, /^\/xcentz\/api\/loginIn$/, /^\/download/, /^\/es/], // ^$唯一匹配/  由于前端是hash路由  故拦截除静态服务器以外的其他api  需要放到静态资源之后 路由之前
 	})
 )
 

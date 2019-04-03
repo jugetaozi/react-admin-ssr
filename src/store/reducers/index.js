@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
-import userReducer from './userReducer'
+import getSystemInfo from './getSystemInfo'
 import getUserInfoReducer from './getUserInfoReducer'
 
 const rootReducer = combineReducers({
-	// userReducer,
+	getSystemInfo,
 	getUserInfoReducer,
 })
 

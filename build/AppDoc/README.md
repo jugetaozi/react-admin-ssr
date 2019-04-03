@@ -147,7 +147,8 @@ open in http://localhost:8888/
 
 ## 已实现功能
 
-- 支持 ES6/ES7/Promise 
+- 支持 ES6/ES7/Promise 兼容IE9+
+- 支持 EventSource 
 - 登录页面 + 首页菜单 layout 布局
 - 登录权限验证/登录态持久化
 - 全局的登录状态的路由拦截 接口验证

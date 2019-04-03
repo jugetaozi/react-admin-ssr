@@ -30,6 +30,7 @@ const distResolve = function(file) {
 module.exports = {
 	entry: {
 		index: [
+			'eventsource-polyfill', //兼容老版本浏览器 IE 10+, Firefox 3.5+, Chrome 3+, Safari 4+, Opera 12+
 			'@babel/polyfill', //垫片库
 			srcResolve('index.js'),
 		],

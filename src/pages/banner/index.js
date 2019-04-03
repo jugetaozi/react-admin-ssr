@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { Layout, Menu } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
 import classnames from 'classnames'
-import styles from './banner.less'
+import { connect } from 'react-redux'
+import styles from './index.less'
 import '../../utils/crypto'
 import { hrefTo } from '../../utils/utils'
 import PropTypes from 'prop-types'
 import { getList } from 'api/keyword'
 import Avatar from 'components/avatar'
+import SystemTime from './systemTime'
 const { Header, Content } = Layout
 
 class Banner extends Component {
@@ -24,15 +26,33 @@ class Banner extends Component {
 	}
 
 	componentDidMount = () => {
+		// const evtSource = new EventSource(
+		// 	window.location.protocol + '//' + window.location.host + '/es'
+		// )
+		// evtSource.addEventListener('HandleGetTime', function(e) {
+		// 	//必须用addEventListener才能监听到
+		// 	console.log(e.data)
+		// })
+		// this.props.getSystemInfo.evtSource.onHandleGetTime = e => {
+		// 	console.log('eeeeeeeeeeeeee', e)
+		// }
 		// console.log(this.props, this.state, this.props.history.location.pathname !== "/login");
 		this.setState({
 			isRender: this.props.history.location.pathname !== '/login',
 		})
 	}
 
-	static getDerivedStateFromProps(props, state) {
+	static getDerivedStateFromProps(nextProps, state) {
+		// if (nextProps.getSystemInfo.evtSource) {
+		// 	nextProps.getSystemInfo.evtSource.addEventListener('HandleGetTime', e => {
+		// 		//必须用addEventListener才能监听到
+		// 		this.setState({
+		// 			serverTime: e.data.toLocaleDateString(),
+		// 		})
+		// 	})
+		// }
 		let _key = ['1']
-		switch (props.history.location.pathname) {
+		switch (nextProps.history.location.pathname) {
 			case '/home':
 				_key = ['1']
 				break
@@ -48,7 +68,7 @@ class Banner extends Component {
 		}
 		return {
 			defaultSelectedKeys: _key,
-			isRender: props.history.location.pathname !== '/login',
+			isRender: nextProps.history.location.pathname !== '/login',
 		}
 	}
 
@@ -57,7 +77,6 @@ class Banner extends Component {
 	}
 	linkToDoc() {
 		hrefTo('/AppDoc/_book/')
-		// getList()
 	}
 
 	render() {
@@ -83,6 +102,7 @@ class Banner extends Component {
 						AppDoc
 					</Menu.Item>
 				</Menu>
+				<SystemTime />
 				<Avatar className={styles['avatarInfo']} />
 			</Header>
 		)

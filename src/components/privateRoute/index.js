@@ -2,7 +2,17 @@ import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { getStorage } from '../../utils/utils'
+import { connect } from 'react-redux'
+import { getSystemTime, establishEvtSource} from 'store/reducers/getSystemInfo'
 
+@connect(
+	state => {
+		return {}
+	},
+	{
+		getSystemTime, establishEvtSource
+	}
+)
 class privateRoute extends Component {
 	static propTypes = {
 		path: PropTypes.string,
@@ -38,6 +48,7 @@ class privateRoute extends Component {
 	}
 	static getDerivedStateFromProps(props, state) {
 		if (getStorage('_token')) {
+			props.establishEvtSource()
 			return {
 				hasAuth: true,
 			}

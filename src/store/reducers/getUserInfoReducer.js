@@ -28,7 +28,7 @@ export const getUserInfo = () => (dispatch, getState) => {
 }
 
 export default function reducer(state = init_state, action) {
-	console.log('getUserInfoReduceractionDispatchAction', action) //初始会触发三次
+	// console.log('getUserInfoReduceractionDispatchAction', action) //初始会触发三次
 	switch (action.type) {
 		case 'API_CHANGE_USER_INFO_FULFILLED': //没有fulfilled状态
 			return {
