@@ -12,4 +12,4 @@ CREATE TABLE   IF NOT EXISTS  `User_Info_N` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `User_Info_N` set name='d3be953436f112b36ef108f4c8669680',nick='CoCo',detail_info='name:admin,password:123456', email='coco@admin.com', level=0, role=0, password='7b35039bdc55847cea2c2cb9f9b8eca3';
+-- INSERT INTO `User_Info_N` set name='d3be953436f112b36ef108f4c8669680',nick='CoCo',detail_info='name:admin,password:123456', email='coco@admin.com', level=0, role=0, password='7b35039bdc55847cea2c2cb9f9b8eca3';

@@ -28,7 +28,7 @@ class AvatarInfo extends Component {
 		super(props)
 		this.state = {
 			hasAuth: false,
-			user: 'CoCo',
+			userName: 'admin',
 			color: colorList[0],
 		}
 	}
@@ -41,6 +41,7 @@ class AvatarInfo extends Component {
 		const _UI = nextProps.userInfoReducer.userInfo
 		if (_UI && (_UI.level === 0 || _UI.level > 0)) {
 			return {
+				userName: nextProps.userInfoReducer.userInfo.nick,
 				color: colorList[_UI.level],
 			}
 		} else {
@@ -64,7 +65,9 @@ class AvatarInfo extends Component {
 			<div className={styles['content']}>
 				<p>昵称：{userInfo['nick']}</p>
 				<p>email：{userInfo['email']}</p>
-				<p>当前角色：{config.roleNameArr[userInfo['role']]}</p>
+				<p>
+					当前角色：{config.roleNameArr[userInfo['role']]};权限:{userInfo['level']}
+				</p>
 				<Button
 					onClick={this.onHandleLogout.bind(this)}
 					// type="primary"
@@ -85,7 +88,7 @@ class AvatarInfo extends Component {
 						style={{ backgroundColor: this.state.color }}
 						size="large"
 					>
-						{this.state.user}
+						{this.state.userName}
 					</Avatar>
 				</Popover>
 			</div>

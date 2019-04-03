@@ -3,6 +3,7 @@ const config = require('../../config.js')
 let secretkey = config.secretkey
 
 function aesEncrypt(data, key) {
+	console.log("循环训话", key, secretkey, config)
 	let sKey = key || secretkey
 	const cipher = crypto.createCipher('aes-256-cbc', sKey)
 	var crypted = cipher.update(data, 'utf8', 'hex')
