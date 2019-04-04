@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import styles from './charts.less'
 import store from 'store/store'
 import { open, getFileType } from 'utils/utils'
+import { connect } from 'react-redux'
 
 import {
 	G2,
@@ -19,13 +20,20 @@ import {
 	Shape,
 	Facet,
 	Util,
+	Animate,
 } from 'bizcharts'
 import DataSet from '@antv/data-set'
-
+@connect(state => {
+	return {
+		getSystemInfo: state.getSystemInfo,
+	}
+})
 class charts extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			dataDV: new DataSet().createView(),
+			websocketMsg: '',
 			fileList: [],
 			uploading: false,
 			data: [
@@ -118,8 +126,8 @@ class charts extends Component {
 	}
 
 	componentDidMount = async () => {
-		const ds = new DataSet()
-		const dvTr = ds.createView().source(this.state.data2)
+		const ds = new DataSet().createView()
+		const dvTr = ds.source(this.state.data2)
 		dvTr.transform({
 			type: 'fold',
 			fields: ['series1', 'series2'],
@@ -132,7 +140,6 @@ class charts extends Component {
 			dv: dvTr,
 		})
 	}
-
 	render() {
 		if (this.chart1 || this.chart2 || this.chart3 || this.chart4) {
 			this.chart1.forceFit()
@@ -141,12 +148,15 @@ class charts extends Component {
 			this.chart4.forceFit()
 			//解决宽度超出容易问题
 		}
+		const { chartData } = this.props.getSystemInfo.websocketMsg || {
+			chartData: '',
+		}
 		return (
 			<div className={styles['charts_content']}>
 				<h3 className={styles['title']}>渐变色折线图</h3>
 				<Chart
 					height={400}
-					data={this.state.data}
+					data={chartData}
 					onGetG2Instance={chart => {
 						this.chart1 = chart
 					}}
@@ -154,7 +164,7 @@ class charts extends Component {
 					forceFit
 				>
 					<Axis
-						name="month"
+						name="time"
 						title={null}
 						tickLine={null}
 						line={{
@@ -162,7 +172,7 @@ class charts extends Component {
 						}}
 					/>
 					<Axis
-						name="acc"
+						name="number"
 						line={false}
 						tickLine={null}
 						grid={null}
@@ -171,7 +181,7 @@ class charts extends Component {
 					<Tooltip />
 					<Geom
 						type="line"
-						position="month*acc"
+						position="time*number"
 						size={1}
 						color="l (270) 0:rgba(255, 146, 255, 1) .5:rgba(100, 268, 255, 1) 1:rgba(215, 0, 255, 1)"
 						shape="smooth"
@@ -179,6 +189,11 @@ class charts extends Component {
 							shadowColor: 'l (270) 0:rgba(21, 146, 255, 0)',
 							shadowBlur: 60,
 							shadowOffsetY: 6,
+						}}
+						animate={{
+							update: {
+								animation: 'delayScaleInX',
+							},
 						}}
 					/>
 				</Chart>

@@ -34,6 +34,7 @@ class AvatarInfo extends Component {
 	}
 
 	componentDidMount = () => {
+		console.log(this.context, 'this.context')
 		this.props.getUserInfo() //引起更新
 	}
 
@@ -66,7 +67,8 @@ class AvatarInfo extends Component {
 				<p>昵称：{userInfo['nick']}</p>
 				<p>email：{userInfo['email']}</p>
 				<p>
-					当前角色：{config.roleNameArr[userInfo['role']]};权限:{userInfo['level']}
+					当前角色：{config.roleNameArr[userInfo['role']]};权限:
+					{userInfo['level']}
 				</p>
 				<Button
 					onClick={this.onHandleLogout.bind(this)}
@@ -90,6 +92,7 @@ class AvatarInfo extends Component {
 					>
 						{this.state.userName}
 					</Avatar>
+					
 				</Popover>
 			</div>
 		)

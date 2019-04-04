@@ -65,10 +65,8 @@ class SystemTime extends Component {
 	}
 
 	render() {
-		const systemInfo = this.props.getSystemInfo || {
+		const systemInfo = this.props.getSystemInfo.evtSourceMsg || {
 			systemTime: '2019-04-01 15:20:20',
-			evtSourceExist: false,
-			evtSource: null,
 		}
 		return (
 			<div>

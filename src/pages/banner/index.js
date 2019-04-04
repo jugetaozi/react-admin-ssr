@@ -26,6 +26,13 @@ class Banner extends Component {
 	}
 
 	componentDidMount = () => {
+		// const socket = io('http://localhost:8888')
+		// socket.on('connect', function (e) {
+		// 	console.log('连接成功', e)
+		// })
+		// socket.on('message', function (data) {
+		// 	console.log(data)
+		// })
 		// const evtSource = new EventSource(
 		// 	window.location.protocol + '//' + window.location.host + '/es'
 		// )

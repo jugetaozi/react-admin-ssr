@@ -6,11 +6,13 @@ import styles from './index.less'
 import store from '../store/store'
 import { LocaleProvider } from 'antd'
 import zh_CN from 'antd/lib/locale-provider/zh_CN'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 import NProgress from 'nprogress'
 
 moment.locale('zh-cn')
+
 class Index extends Component {
 	render() {
 		return (

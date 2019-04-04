@@ -3,14 +3,16 @@ import { Route, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { getStorage } from '../../utils/utils'
 import { connect } from 'react-redux'
-import { getSystemTime, establishEvtSource} from 'store/reducers/getSystemInfo'
+import { getSystemTime, establishEvtSource, establishSocket } from 'store/reducers/getSystemInfo'
 
 @connect(
 	state => {
 		return {}
 	},
 	{
-		getSystemTime, establishEvtSource
+		getSystemTime,
+		establishEvtSource,
+		establishSocket,
 	}
 )
 class privateRoute extends Component {
@@ -48,7 +50,8 @@ class privateRoute extends Component {
 	}
 	static getDerivedStateFromProps(props, state) {
 		if (getStorage('_token')) {
-			props.establishEvtSource()
+			props.establishEvtSource() //内部判断建立一次
+			props.establishSocket() //内部判断建立一次
 			return {
 				hasAuth: true,
 			}
@@ -66,7 +69,7 @@ class privateRoute extends Component {
 	render() {
 		const { notRequiredAuth } = this.props
 		if (!notRequiredAuth && !this.state.hasAuth) {
-			//如果默认需要验证auto而且又没有aotu 拦截此类请求
+			//如果默认需要验证auth而且又没有auth 拦截此类请求
 			return null
 		}
 		return <Route {...this.props} />

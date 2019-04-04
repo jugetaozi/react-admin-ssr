@@ -8,6 +8,8 @@ const routers = require('./routers/index')
 const koaBody = require('koa-body')
 const koajwt = require('koa-jwt')
 const codes = require('./codes/users.js')
+const http = require('http')
+const wsConn = require('./websocket')
 const sleep = require('./middleware/awake')
 
 const app = new Koa()
@@ -81,7 +83,13 @@ app.use(
 // 初始化路由中间件和对于的allowedMethods
 app.use(routers.routes()).use(routers.allowedMethods())
 
+//如果原来是用app.listen(3000);来启动服务，现在要改成用http来启动server
+const server = http.createServer(app.callback())
+
+//挂载websocket
+wsConn(server)
+
 // 监听启动端口
-app.listen(config.port)
+server.listen(config.port)
 
 console.log(`the server is start at port ${config.port}`)
