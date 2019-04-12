@@ -1,0 +1,833 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.13  socket.io常见用法 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="集成eventSource和websocket.html" />
+    
+    
+    <link rel="prev" href="使用PropTypes进行类型校验.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    Xcentz
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1.1  系统简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../help/help1.html">
+            
+                <a href="../help/help1.html">
+            
+                    
+                    1.2  系统使用帮助
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    developement 研发笔记
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="intercept-strategy.html">
+            
+                <a href="intercept-strategy.html">
+            
+                    
+                    2.1  请求拦截策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="node-openDefaultBrowser.html">
+            
+                <a href="node-openDefaultBrowser.html">
+            
+                    
+                    2.2  node-自动打开浏览器方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    2.3  接口文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="mysql语法.html">
+            
+                <a href="mysql语法.html">
+            
+                    
+                    2.5  mysql语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="antd超出内容隐藏.html">
+            
+                <a href="antd超出内容隐藏.html">
+            
+                    
+                    2.6  antd超出内容隐藏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="Eslint&&Prettier.html">
+            
+                <a href="Eslint&&Prettier.html">
+            
+                    
+                    2.7  Eslint&&Prettier
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="webpack配置及插件.html">
+            
+                <a href="webpack配置及插件.html">
+            
+                    
+                    2.8  webpack配置及插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="prettier批量格式化代码.html">
+            
+                <a href="prettier批量格式化代码.html">
+            
+                    
+                    2.9  prettier批量格式化代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="使用forever守护node进程.html">
+            
+                <a href="使用forever守护node进程.html">
+            
+                    
+                    2.10  使用forever守护node进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="mysql插入data类型数据报错问题.html">
+            
+                <a href="mysql插入data类型数据报错问题.html">
+            
+                    
+                    2.11  mysql插入data类型数据报错问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="使用PropTypes进行类型校验.html">
+            
+                <a href="使用PropTypes进行类型校验.html">
+            
+                    
+                    2.12  使用PropTypes进行类型校验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.12" data-path="socket.io常见用法.html">
+            
+                <a href="socket.io常见用法.html">
+            
+                    
+                    2.13  socket.io常见用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="集成eventSource和websocket.html">
+            
+                <a href="集成eventSource和websocket.html">
+            
+                    
+                    2.14  集成eventSource和websocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="服务端推送技术eventSource.html">
+            
+                <a href="服务端推送技术eventSource.html">
+            
+                    
+                    2.15  服务端推送技术eventSource
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="inline-block3像素问题.html">
+            
+                <a href="inline-block3像素问题.html">
+            
+                    
+                    2.16  inline-block3像素问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="redux.html">
+            
+                <a href="redux.html">
+            
+                    
+                    2.17  redux说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="react-context.html">
+            
+                <a href="react-context.html">
+            
+                    
+                    2.18  react-context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="js原型链的一点.html">
+            
+                <a href="js原型链的一点.html">
+            
+                    
+                    2.19  js原型链的一点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="react受控组件.html">
+            
+                <a href="react受控组件.html">
+            
+                    
+                    2.20  react受控组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="react进阶知识.html">
+            
+                <a href="react进阶知识.html">
+            
+                    
+                    2.21  react进阶知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    dev 项目依赖与待做事项
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="package.html">
+            
+                <a href="package.html">
+            
+                    
+                    3.1  项目依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="todoList.html">
+            
+                <a href="todoList.html">
+            
+                    
+                    3.2 todoList
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="babel.html">
+            
+                <a href="babel.html">
+            
+                    
+                    3.3 babel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    production 生产环境
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="系统部署流程.html">
+            
+                <a href="系统部署流程.html">
+            
+                    
+                    4.1  系统部署流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.13  socket.io常见用法</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <pre><code>io.on(&apos;connect&apos;, onConnect);
+
+function onConnect(socket){
+
+  // &#x53EA;&#x53D1;&#x7ED9;sender&#x3002; sending to the client
+  socket.emit(&apos;hello&apos;, &apos;can you hear me?&apos;, 1, 2, &apos;abc&apos;);
+
+  // &#x53D1;&#x7ED9;&#x6240;&#x6709;&#x4EBA;&#xFF0C;&#x9664;&#x4E86;sender&#x3002; sending to all clients except sender
+  socket.broadcast.emit(&apos;broadcast&apos;, &apos;hello friends!&apos;);
+
+  // &#x53D1;&#x7ED9;game&#x623F;&#x95F4;&#x6240;&#x6709;&#x4EBA;&#xFF0C;&#x9664;&#x4E86;sender&#x3002; sending to all clients in &apos;game&apos; room except sender
+  socket.to(&apos;game&apos;).emit(&apos;nice game&apos;, &quot;let&apos;s play a game&quot;);
+
+  // &#x53D1;&#x7ED9;game1&#x548C;/&#x6216;game2&#x6240;&#x6709;&#x4EBA;&#xFF0C;&#x9664;&#x4E86;sender&#x3002; sending to all clients in &apos;game1&apos; and/or in &apos;game2&apos; room, except sender
+  socket.to(&apos;game1&apos;).to(&apos;game2&apos;).emit(&apos;nice game&apos;, &quot;let&apos;s play a game (too)&quot;);
+
+  // &#x53D1;&#x7ED9;game&#x623F;&#x95F4;&#x6240;&#x6709;&#x4EBA;&#xFF0C;&#x5305;&#x542B;sender&#x3002; sending to all clients in &apos;game&apos; room, including sender
+  io.in(&apos;game&apos;).emit(&apos;big-announcement&apos;, &apos;the game will start soon&apos;);
+
+  // &#x53D1;&#x7ED9;&#x57DF;&#x540D;myNamespacs&#x6240;&#x6709;&#x4EBA;&#xFF0C;&#x5305;&#x542B;sender&#x3002; sending to all clients in namespace &apos;myNamespace&apos;, including sender
+  io.of(&apos;myNamespace&apos;).emit(&apos;bigger-announcement&apos;, &apos;the tournament will start soon&apos;);
+
+  // &#x53D1;&#x7ED9;&#x57DF;&#x540D;myNamespace&#x91CC;room&#x623F;&#x95F4;&#x7684;&#x6240;&#x6709;&#x4EBA;&#xFF0C;&#x5305;&#x542B;sender&#x3002; sending to a specific room in a specific namespace, including sender
+  io.of(&apos;myNamespace&apos;).to(&apos;room&apos;).emit(&apos;event&apos;, &apos;message&apos;);
+
+  // &#x53D1;&#x7ED9;&#x67D0;&#x4E00;&#x4E2A;&#x4EBA; sending to individual socketid (private message)
+  io.to(`${socketId}`).emit(&apos;hey&apos;, &apos;I just met you&apos;);
+
+  // WARNING: `socket.to(socket.id).emit()` will NOT work, as it will send to everyone in the room
+  // named `socket.id` but the sender. Please use the classic `socket.emit()` instead.
+
+  // sending with acknowledgement
+  socket.emit(&apos;question&apos;, &apos;do you think so?&apos;, function (answer) {});
+
+  // sending without compression
+  socket.compress(false).emit(&apos;uncompressed&apos;, &quot;that&apos;s rough&quot;);
+
+  // sending a message that might be dropped if the client is not ready to receive messages
+  socket.volatile.emit(&apos;maybe&apos;, &apos;do you really need it?&apos;);
+
+  // specifying whether the data to send has binary data
+  socket.binary(false).emit(&apos;what&apos;, &apos;I have no binaries!&apos;);
+
+  // sending to all clients on this node (when using multiple nodes)
+  io.local.emit(&apos;hi&apos;, &apos;my lovely babies&apos;);
+
+  // sending to all connected clients
+  io.emit(&apos;an event sent to all connected clients&apos;);
+
+};
+</code></pre><h2 id="socketio-&#x57FA;&#x672C;&#x5E94;&#x7528;">Socket.io &#x57FA;&#x672C;&#x5E94;&#x7528;</h2>
+<p>socket.io&#x63D0;&#x4F9B;&#x4E86;&#x57FA;&#x4E8E;&#x4E8B;&#x4EF6;&#x7684;&#x5B9E;&#x65F6;&#x53CC;&#x5411;&#x901A;&#x8BAF;&#xFF0C;&#x5B83;&#x540C;&#x65F6;&#x63D0;&#x4F9B;&#x4E86;&#x670D;&#x52A1;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x7684;API&#x3002;</p>
+<p>&#x670D;&#x52A1;&#x7AEF;</p>
+<p>&#x670D;&#x52A1;&#x7AEF;socket.io&#x5FC5;&#x987B;&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A;<code>http.Server</code>&#x5B9E;&#x4F8B;&#xFF0C;&#x56E0;&#x4E3A;WebSocket&#x534F;&#x8BAE;&#x662F;&#x6784;&#x5EFA;&#x5728;HTTP&#x534F;&#x8BAE;&#x4E4B;&#x4E0A;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x521B;&#x5EFA;WebSocket&#x670D;&#x52A1;&#x65F6;&#x9700;&#x8C03;&#x7528;HTTP&#x6A21;&#x5757;&#x5E76;&#x8C03;&#x7528;&#x5176;&#x4E0B;<code>createServer()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x751F;&#x6210;&#x7684;server&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;socket.io&#x3002;</p>
+<pre><code>var httpServer = require(&apos;http&apos;).createServer();
+var io = require(&apos;socket.io&apos;)(httpServer);
+httpServer.listen(3000);
+</code></pre><p>&#x7ED1;&#x5B9A;<code>http.Server</code>&#x53EF;&#x4F7F;&#x7528;&#x9690;&#x5F0F;&#x7ED1;&#x5B9A;&#x548C;&#x663E;&#x5F0F;&#x7ED1;&#x5B9A;</p>
+<ul>
+<li>&#x9690;&#x5F0F;&#x7ED1;&#x5B9A;</li>
+</ul>
+<p>socket.io&#x5185;&#x90E8;&#x5B9E;&#x4F8B;&#x5316;&#x5E76;&#x76D1;&#x542C;<code>http.Server</code>&#xFF0C;&#x901A;&#x8FC7;&#x5B9E;&#x4F8B;&#x5316;&#x65F6;&#x4F20;&#x5165;&#x7AEF;&#x53E3;&#x6216;&#x8005;&#x5728;&#x5B9E;&#x4F8B;&#x5316;&#x540E;&#x8C03;&#x7528;<code>listen</code>&#x6216;<code>attach</code>&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x9690;&#x5F0F;&#x7ED1;&#x5B9A;&#x3002;</p>
+<pre><code>// &#x5B9E;&#x4F8B;&#x5316;&#x65F6;&#x4F20;&#x5165;&#x7AEF;&#x53E3;
+require(&apos;socket.io&apos;)(3000)
+
+// &#x901A;&#x8FC7;listen&#x6216;attach&#x51FD;&#x6570;&#x7ED1;&#x5B9A;
+let io = require(&apos;socket.io&apos;)
+io.listen(3000);
+// io.attach(3000);
+</code></pre><ul>
+<li>&#x663E;&#x5F0F;&#x7ED1;&#x5B9A;</li>
+</ul>
+<pre><code>// &#x5B9E;&#x4F8B;&#x5316;&#x65F6;&#x7ED1;&#x5B9A;
+let httpServer = require(&apos;http&apos;).Server();
+let io = require(&apos;socket.io&apos;)(httpServer);
+httpServer.listen(3000);
+
+//&#x901A;&#x8FC7;listen&#x6216;attach&#x7ED1;&#x5B9A;
+let httpServer = require(&apos;http&apos;).Server();
+let io = require(&apos;socket.io&apos;)();
+io.listen(httpServer);
+// io.attach(httpServer);
+httpServer.listen(3000);
+</code></pre><p>Express&#x6846;&#x67B6;&#x4E2D;&#x4F7F;&#x7528;</p>
+<pre><code>let app = require(&apos;express&apos;);
+
+let httpServer= require(&apos;http&apos;).Server(app);
+let io = require(&apos;socket.io&apos;)(httpServer);
+
+app.listen(3000);
+</code></pre><p>KOA&#x6846;&#x67B6;&#x4E2D;&#x4F7F;&#x7528;</p>
+<pre><code>let app = require(&apos;koa&apos;)();
+
+let httpServer = require(&apos;http&apos;).Server(app.callback());
+let io = require(&apos;socket.io&apos;)(httpServer);
+
+app.listen(3000);
+</code></pre><p>&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;</p>
+<p>&#x5F53;&#x670D;&#x52A1;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x6210;&#x529F;&#x65F6;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x4F1A;&#x76D1;&#x542C;&#x5230;<code>connection</code>&#x548C;<code>connect</code>&#x4E8B;&#x4EF6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x76D1;&#x542C;&#x5230;<code>connect</code>&#x4E8B;&#x4EF6;&#xFF0C;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x65F6;&#x670D;&#x52A1;&#x7AEF;&#x5BF9;&#x5E94;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;socket&#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x5747;&#x4F1A;&#x76D1;&#x542C;&#x5230;<code>disconcect</code>&#x4E8B;&#x4EF6;&#x3002;</p>
+<pre><code>/*&#x5BA2;&#x6237;&#x7AEF;*/
+&lt;script src=&quot;http://cdn.socket.io/stable/socket.io.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+// socket.io&#x5F15;&#x5165;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x53EF;&#x901A;&#x8FC7;io()&#x751F;&#x6210;&#x5BA2;&#x6237;&#x7AEF;&#x6240;&#x9700;&#x7684;socket&#x5BF9;&#x8C61;&#x3002;
+let socket = io(&apos;http://127.0.0.0:3000&apos;);
+
+// socket.emmit()&#x7528;&#x6237;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#x7684;&#x662F;socket.on()&#x6765;&#x63A5;&#x6536;&#x4FE1;&#x606F;&#x3002;
+socket.emmit(&apos;client message&apos;, {msg:&apos;hi, server&apos;});
+
+// socket.on()&#x7528;&#x4E8E;&#x63A5;&#x6536;&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x6765;&#x7684;&#x6D88;&#x606F;
+socket.on(&apos;connect&apos;,  ()=&gt;{
+  console.log(&apos;client connect server&apos;);
+});
+socket.on(&apos;disconnect&apos;, ()=&gt;{
+  console.log(&apos;client disconnect&apos;);
+});
+&lt;/script&gt;
+
+/*&#x670D;&#x52A1;&#x7AEF;*/
+// &#x670D;&#x52A1;&#x7AEF;&#x7ED1;&#x5B9A;HTTP&#x670D;&#x52A1;&#x5668;&#x5B9E;&#x4F8B;
+let httpServer = require(&apos;http&apos;).Server();
+let io = require(&apos;socket.io&apos;)(httpServer);
+httpServer.listen(3000);
+
+// &#x670D;&#x52A1;&#x7AEF;&#x76D1;&#x542C;&#x8FDE;&#x63A5;&#x72B6;&#x6001;&#xFF1A;io&#x7684;connection&#x4E8B;&#x4EF6;&#x8868;&#x793A;&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x6210;&#x529F;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#xFF0C;&#x5B83;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4F1A;&#x63A5;&#x6536;&#x4E00;&#x4E2A;socket&#x53C2;&#x6570;&#x3002;
+io.on(&apos;connection&apos;,  (socket)=&gt;{
+  console.log(&apos;client connect server, ok!&apos;);
+
+  // io.emit()&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x5411;&#x670D;&#x52A1;&#x7AEF;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF0C;&#x53C2;&#x6570;1&#x8868;&#x793A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6570;&#x636E;&#x540D;&#xFF0C;&#x53C2;&#x6570;2&#x8868;&#x793A;&#x9700;&#x8981;&#x914D;&#x5408;&#x4E8B;&#x4EF6;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;
+  io.emmit(&apos;server message&apos;, {msg:&apos;client connect server success&apos;});
+
+  // socket.broadcast.emmit()&#x8868;&#x793A;&#x5411;&#x9664;&#x4E86;&#x81EA;&#x5DF1;&#x4EE5;&#x5916;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x6D88;&#x606F;
+  socket.broadcast.emmit(&apos;server message&apos;, {msg:&apos;broadcast&apos;});
+
+  // &#x76D1;&#x542C;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x72B6;&#x6001;&#xFF1A;socket&#x7684;disconnect&#x4E8B;&#x4EF6;&#x8868;&#x793A;&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;
+  socket.on(&apos;disconnect&apos;, ()=&gt;{
+    console.log(&apos;connect disconnect&apos;);
+  });
+
+  // &#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x5BF9;&#x5E94;&#x7684;&#x63A5;&#x6536;&#x6307;&#x5B9A;&#x7684;&#x6D88;&#x606F;
+  socket.on(&apos;client message&apos;, (data)=&gt;{
+    cosnole.log(data);// hi server
+  });
+
+  socket.disconnect();
+});
+</code></pre><p>&#x4F20;&#x8F93;&#x6570;&#x636E;</p>
+<p>&#x670D;&#x52A1;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x7684;socket&#x662F;&#x4E00;&#x4E2A;&#x5173;&#x8054;&#x7684;<code>EventEmitter</code>&#x5BF9;&#x8C61;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;socket&#x6D3E;&#x53D1;&#x7684;&#x4E8B;&#x4EF6;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x88AB;&#x670D;&#x52A1;&#x7AEF;&#x7684;socket&#x63A5;&#x6536;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;socket&#x6D3E;&#x53D1;&#x7684;&#x4E8B;&#x4EF6;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x5BA2;&#x6237;&#x7AEF;&#x63A5;&#x6536;&#x3002;&#x57FA;&#x4E8E;&#x8FD9;&#x79CD;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x53CC;&#x5411;&#x4EA4;&#x6D41;&#x3002;</p>
+<pre><code># &#x6A21;&#x62DF;&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x4E0D;&#x65AD;&#x53D1;&#x9001;&#x968F;&#x673A;&#x6570;&#xFF0C;&#x5F53;&#x968F;&#x673A;&#x6570;&#x5927;&#x4E8E;0.95&#x65F6;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x5EF6;&#x8FDF;1s&#x540E;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x8B66;&#x544A;&#x4EE5;&#x53CA;&#x8B66;&#x544A;&#x6B21;&#x6570;&#x3002;
+/*&#x5BA2;&#x6237;&#x7AEF;*/
+&lt;script src=&quot;http://cdn.socket.io/stable/socket.io.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+let socket = io(&apos;http://127.0.0.1:3000&apos;);
+
+let interval = setTimeInterval(()=&gt;{
+  socket.emit(&apos;random&apos;, Math.random());
+}, 500);
+
+socket.on(&apos;warn&apos;, count=&gt;{
+  console.log(&apos;warning count : &apos;+count);
+});
+
+socket.on(&apos;disconnect&apos;, ()=&gt;{
+  clearInterval(interval);
+});
+&lt;/script&gt;
+
+
+/*&#x670D;&#x52A1;&#x7AEF;*/
+let httpServer = require(&apos;http&apos;).Server();
+let io = require(&apos;socket.io&apos;)(httpServer);
+httpServer.listen(3000);
+
+io.on(&apos;connection&apos;, socket=&gt;{
+  socket.on(&apos;random&apos;, value=&gt;{
+    console.log(value);
+    if(value&gt;0.95){
+      if(typeof socket.warnign===&apos;undefined&apos;){
+        socket.warning = 0;// socket&#x5BF9;&#x8C61;&#x53EF;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x72B6;&#x6001;&#x548C;&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;
+      }
+      setTimeout(()=&gt;{
+        socket.emit(&apos;warn&apos;, ++socket.warning);
+      }, 1000);
+    }
+  });
+});
+</code></pre><p>Socket.IO&#x5185;&#x7F6E;&#x4E86;&#x4E00;&#x4E9B;&#x9ED8;&#x8BA4;&#x4E8B;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x8BBE;&#x8BA1;&#x4E8B;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x5E94;&#x8BE5;&#x907F;&#x5F00;&#x9ED8;&#x8BA4;&#x7684;&#x4E8B;&#x4EF6;&#x540D;&#x79F0;&#xFF0C;&#x5E76;&#x7075;&#x6D3B;&#x8FD0;&#x7528;&#x8FD9;&#x4E9B;&#x9ED8;&#x8BA4;&#x4E8B;&#x4EF6;&#x3002;
+&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x4E8B;&#x4EF6;&#xFF1A;
+io.sockets.on(&#x2018;connection&#x2019;, function(socket) {})&#xFF1A;socket&#x8FDE;&#x63A5;&#x6210;&#x529F;&#x4E4B;&#x540E;&#x89E6;&#x53D1;&#xFF0C;&#x7528;&#x4E8E;&#x521D;&#x59CB;&#x5316;
+socket.on(&#x2018;message&#x2019;, function(message, callback) {})&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x901A;&#x8FC7;socket.send&#x6765;&#x4F20;&#x9001;&#x6D88;&#x606F;&#x65F6;&#x89E6;&#x53D1;&#x6B64;&#x4E8B;&#x4EF6;&#xFF0C;message&#x4E3A;&#x4F20;&#x8F93;&#x7684;&#x6D88;&#x606F;&#xFF0C;callback&#x662F;&#x6536;&#x5230;&#x6D88;&#x606F;&#x540E;&#x8981;&#x6267;&#x884C;&#x7684;&#x56DE;&#x8C03;
+socket.on(&#x2018;anything&#x2019;, function(data) {})&#xFF1A;&#x6536;&#x5230;&#x4EFB;&#x4F55;&#x4E8B;&#x4EF6;&#x65F6;&#x89E6;&#x53D1;
+socket.on(&#x2018;disconnect&#x2019;, function() {})&#xFF1A;socket&#x5931;&#x53BB;&#x8FDE;&#x63A5;&#x65F6;&#x89E6;&#x53D1;&#xFF08;&#x5305;&#x62EC;&#x5173;&#x95ED;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x4E3B;&#x52A8;&#x65AD;&#x5F00;&#xFF0C;&#x6389;&#x7EBF;&#x7B49;&#x4EFB;&#x4F55;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;&#x7684;&#x60C5;&#x51B5;&#xFF09;
+&#x5BA2;&#x6237;&#x7AEF;&#x4E8B;&#x4EF6;&#xFF1A;
+connect&#xFF1A;&#x8FDE;&#x63A5;&#x6210;&#x529F;
+connecting&#xFF1A;&#x6B63;&#x5728;&#x8FDE;&#x63A5;
+disconnect&#xFF1A;&#x65AD;&#x5F00;&#x8FDE;&#x63A5;
+connect_failed&#xFF1A;&#x8FDE;&#x63A5;&#x5931;&#x8D25;
+error&#xFF1A;&#x9519;&#x8BEF;&#x53D1;&#x751F;&#xFF0C;&#x5E76;&#x4E14;&#x65E0;&#x6CD5;&#x88AB;&#x5176;&#x4ED6;&#x4E8B;&#x4EF6;&#x7C7B;&#x578B;&#x6240;&#x5904;&#x7406;
+message&#xFF1A;&#x540C;&#x670D;&#x52A1;&#x5668;&#x7AEF;message&#x4E8B;&#x4EF6;
+anything&#xFF1A;&#x540C;&#x670D;&#x52A1;&#x5668;&#x7AEF;anything&#x4E8B;&#x4EF6;
+reconnect_failed&#xFF1A;&#x91CD;&#x8FDE;&#x5931;&#x8D25;
+reconnect&#xFF1A;&#x6210;&#x529F;&#x91CD;&#x8FDE;
+reconnecting&#xFF1A;&#x6B63;&#x5728;&#x91CD;&#x8FDE;
+&#x5728;&#x8FD9;&#x91CC;&#x8981;&#x63D0;&#x4E0B;&#x5BA2;&#x6237;&#x7AEF;socket&#x53D1;&#x8D77;&#x8FDE;&#x63A5;&#x65F6;&#x7684;&#x987A;&#x5E8F;&#x3002;&#x5F53;&#x7B2C;&#x4E00;&#x6B21;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x987A;&#x5E8F;&#x4E3A;&#xFF1A;connecting-&gt;connect&#xFF1B;&#x5F53;&#x5931;&#x53BB;&#x8FDE;&#x63A5;&#x65F6;&#xFF0C;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x987A;&#x5E8F;&#x4E3A;&#xFF1A;disconnect-&gt;reconnecting&#xFF08;&#x53EF;&#x80FD;&#x8FDB;&#x884C;&#x591A;&#x6B21;&#xFF09;-&gt;connecting-&gt;reconnect-&gt;connect&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="使用PropTypes进行类型校验.html" class="navigation navigation-prev " aria-label="Previous page: 2.12  使用PropTypes进行类型校验">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="集成eventSource和websocket.html" class="navigation navigation-next " aria-label="Next page: 2.14  集成eventSource和websocket">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.13  socket.io常见用法","level":"1.2.12","depth":2,"next":{"title":"2.14  集成eventSource和websocket","level":"1.2.13","depth":2,"path":"note/集成eventSource和websocket.md","ref":"note/集成eventSource和websocket.md","articles":[]},"previous":{"title":"2.12  使用PropTypes进行类型校验","level":"1.2.11","depth":2,"path":"note/使用PropTypes进行类型校验.md","ref":"note/使用PropTypes进行类型校验.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/socket.io常见用法.md","mtime":"2019-04-04T06:34:10.804Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-12T02:39:48.324Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

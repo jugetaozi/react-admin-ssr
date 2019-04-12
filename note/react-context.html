@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>4.1  系统部署流程 · GitBook</title>
+        <title>2.18  react-context · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,6 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="js原型链的一点.html" />
+    
+    
+    <link rel="prev" href="redux.html" />
     
 
     </head>
@@ -352,7 +356,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.17" data-path="react-context.html">
+        <li class="chapter active" data-level="1.2.17" data-path="react-context.html">
             
                 <a href="react-context.html">
             
@@ -481,7 +485,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.1" data-path="系统部署流程.html">
+        <li class="chapter " data-level="1.4.1" data-path="系统部署流程.html">
             
                 <a href="系统部署流程.html">
             
@@ -529,7 +533,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >4.1  系统部署流程</a>
+        <a href=".." >2.18  react-context</a>
     </h1>
 </div>
 
@@ -544,48 +548,95 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="1&#x5B89;&#x88C5;node-&#x4E0B;&#x8F7D;&#x5730;&#x5740;">1.&#x5B89;&#x88C5;node &#x4E0B;&#x8F7D;&#x5730;&#x5740;:</h2>
-<blockquote>
-<p>&#x4E0B;&#x8F7D;&#x5730;&#x5740;: <a href="https://nodejs.org/zh-cn/download/" target="_blank">https://nodejs.org/zh-cn/download/</a></p>
-<ul>
-<li><a href="https://nodejs.org/zh-cn/download/" target="_blank">&#x4E0B;&#x8F7D;&#x9875;&#x9762;</a>     --&#x7248;&#x672C;&#x9009;&#x62E9;  node-v10.15.3-linux-x64.tar</li>
-</ul>
-</blockquote>
-<p><img src="../images/download.png" alt="&#x4E0B;&#x8F7D;&#x9875;&#x9762;"></p>
-<p>&#x4E0B;&#x8F7D; node-v10.15.3-linux-x64.tar.xz &#x81F3; /user/src &#x76EE;&#x5F55;&#x4E0B;
-<img src="../images/anzhangdizhi.png" alt="&#x4E0B;&#x8F7D;&#x9875;&#x9762;"></p>
-<h2 id="2&#x521B;&#x5EFA;&#x8F6F;&#x94FE;&#x63A5;&#xFF0C;&#x4F7F;node&#x548C;npm&#x547D;&#x4EE4;&#x5168;&#x5C40;&#x6709;&#x6548;&#x901A;&#x8FC7;&#x521B;&#x5EFA;&#x8F6F;&#x94FE;&#x63A5;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F97;&#x5728;&#x4EFB;&#x610F;&#x76EE;&#x5F55;&#x4E0B;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;node&#x548C;npm&#x547D;&#x4EE4;--&#x5206;&#x522B;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x4E24;&#x6761;&#x547D;&#x4EE4;">2.&#x521B;&#x5EFA;&#x8F6F;&#x94FE;&#x63A5;&#xFF0C;&#x4F7F;node&#x548C;npm&#x547D;&#x4EE4;&#x5168;&#x5C40;&#x6709;&#x6548;(&#x901A;&#x8FC7;&#x521B;&#x5EFA;&#x8F6F;&#x94FE;&#x63A5;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F97;&#x5728;&#x4EFB;&#x610F;&#x76EE;&#x5F55;&#x4E0B;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;node&#x548C;npm&#x547D;&#x4EE4;)  &#x5206;&#x522B;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x4E24;&#x6761;&#x547D;&#x4EE4;</h2>
-<pre><code>ln -s /usr/src/node-v10.15.3-linux-x64/bin/node /usr/local/bin/node
-ln -s /usr/src/node-v10.15.3-linux-x64/bin/npm /usr/local/bin/npm
-</code></pre><h2 id="3&#x5C06;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x79FB;&#x52A8;&#x5230;&#x76F8;&#x5173;&#x76EE;&#x5F55;&#x4E0B;">3.&#x5C06;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x79FB;&#x52A8;&#x5230;&#x76F8;&#x5173;&#x76EE;&#x5F55;&#x4E0B;</h2>
-<p>1.&#x5229;&#x7528;ftp&#x4F20;&#x6587;&#x4EF6;
-2.&#x5229;&#x7528;git&#x62C9;&#x4EE3;&#x7801;&#x5230;&#x672C;&#x5730;</p>
-<h2 id="4&#x5B89;&#x88C5;&#x9879;&#x76EE;&#x4F9D;&#x8D56;">4.&#x5B89;&#x88C5;&#x9879;&#x76EE;&#x4F9D;&#x8D56;</h2>
-<pre><code>cd /usr/src/xcentzNodeServer
-
-npm i //&#x5B89;&#x88C5;&#x4F9D;&#x8D56;
-npm run build //&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x6784;&#x5EFA;
-node server/app.js //&#x9879;&#x76EE;&#x5165;&#x53E3;&#x6587;&#x4EF6; &#x542F;&#x52A8;&#x670D;&#x52A1; 
-
-open in http://localhost:8080/
-</code></pre><h4 id="&#x5982;&#x679C;&#x9047;&#x5230;8080&#x7AEF;&#x53E3;&#x88AB;&#x5360;&#x7528;---&#x6740;&#x6B7B;&#x76F8;&#x5173;&#x8FDB;&#x7A0B;&#x5373;&#x53EF;">&#x5982;&#x679C;&#x9047;&#x5230;8080&#x7AEF;&#x53E3;&#x88AB;&#x5360;&#x7528;   &#x6740;&#x6B7B;&#x76F8;&#x5173;&#x8FDB;&#x7A0B;&#x5373;&#x53EF;</h4>
+                                <p><strong>&#x65E5;&#x5E38;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#x5427;&#x3002;&#x597D;&#x8BB0;&#x6027;&#x4E0D;&#x5982;&#x70C2;&#x7B14;&#x5934;~ &#x6211;&#x76F8;&#x4FE1;&#x8FD9;&#x662F;&#x5BF9;&#x7684;&#x3002;</strong>
+ <a href="https://react.docschina.org/docs/context.html" target="_blank">&#x5B98;&#x65B9;&#x6587;&#x6863;</a> &#x7684;demo&#x5DF2;&#x7ECF;&#x5F88;&#x68D2;&#x4E86;&#x3002;&#x4F46;&#x6211;&#x89C9;&#x5F97;&#x6211;&#x7684;&#x63CF;&#x8FF0;&#x4F1A;&#x8BA9;&#x4F60;&#x66F4;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x3002;</p>
+<h5 id="1context">1.Context</h5>
+<p>Context &#x901A;&#x8FC7;&#x7EC4;&#x4EF6;&#x6811;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x4F20;&#x9012;&#x6570;&#x636E;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4ECE;&#x800C;&#x907F;&#x514D;&#x4E86;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x5C42;&#x7EA7;&#x624B;&#x52A8;&#x7684;&#x4F20;&#x9012; props &#x5C5E;&#x6027;&#x3002;
+ &#x6709;&#x90E8;&#x5206;&#x5C0F;&#x4F19;&#x4F34;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;props&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x7EC4;&#x4EF6;&#x5411;&#x4E0B;&#x4F20;&#x503C;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x5F53;&#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#x5D4C;&#x5957;&#x65F6;&#x5019;&#x3002;&#x4F60;&#x5C31;&#x9700;&#x8981;&#x6162;&#x6162;&#x5411;&#x4E0A;&#x5BFB;&#x627E;&#x6700;&#x521D;&#x7684;&#x503C;&#x662F;&#x4EC0;&#x4E48;~(&#x624B;&#x52A8;&#x5FAE;&#x7B11;,&#x6076;&#x5FC3;&#x5427; )</p>
+<h5 id="2api-&#x4E2A;&#x4EBA;&#x5927;&#x767D;&#x8BDD;&#x7406;&#x89E3;">2.API (&#x4E2A;&#x4EBA;&#x5927;&#x767D;&#x8BDD;&#x7406;&#x89E3;)</h5>
+<p><strong>React.createContext&#xFF1A;</strong>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x5BB9;&#x5668;(&#x7EC4;&#x4EF6;), defaultValue&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5171;&#x4EAB;&#x7684;&#x9ED8;&#x8BA4;&#x6570;&#x636E;</p>
+<pre><code>const {Provider, Consumer} = React.createContext(defaultValue);
+</code></pre><p><strong>Provider(&#x751F;&#x4EA7;&#x8005;)</strong>: &#x548C;&#x4ED6;&#x7684;&#x540D;&#x5B57;&#x4E00;&#x6837;&#x3002;&#x7528;&#x4E8E;&#x751F;&#x4EA7;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x7684;&#x5730;&#x65B9;&#x3002;&#x751F;&#x4EA7;&#x4EC0;&#x4E48;&#x5462;&#xFF1F; &#x90A3;&#x5C31;&#x770B;value&#x5B9A;&#x4E49;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#x4E86;&#x3002;value:&#x653E;&#x7F6E;&#x5171;&#x4EAB;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<pre><code>&lt;Provider value={/*&#x5171;&#x4EAB;&#x7684;&#x6570;&#x636E;*/}&gt;
+    /*&#x91CC;&#x9762;&#x53EF;&#x4EE5;&#x6E32;&#x67D3;&#x5BF9;&#x5E94;&#x7684;&#x5185;&#x5BB9;*/
+&lt;/Provider&gt;
+</code></pre><p><strong>Consumer(&#x6D88;&#x8D39;&#x8005;)</strong>:&#x8FD9;&#x4E2A;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x6D88;&#x8D39;&#x8005;&#x3002; &#x4ED6;&#x662F;&#x4E13;&#x95E8;&#x6D88;&#x8D39;&#x4F9B;&#x5E94;&#x5546;(<strong>Provider</strong> &#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;)&#x4EA7;&#x751F;&#x6570;&#x636E;&#x3002;Consumer&#x9700;&#x8981;&#x5D4C;&#x5957;&#x5728;&#x751F;&#x4EA7;&#x8005;&#x4E0B;&#x9762;&#x3002;&#x624D;&#x80FD;&#x901A;&#x8FC7;&#x56DE;&#x8C03;&#x7684;&#x65B9;&#x5F0F;&#x62FF;&#x5230;&#x5171;&#x4EAB;&#x7684;&#x6570;&#x636E;&#x6E90;&#x3002;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#xFF0C;&#x90A3;&#x5C31;&#x53EA;&#x80FD;&#x6D88;&#x8D39;&#x5230;&#x4E0A;&#x6587;&#x63D0;&#x5230;&#x7684;defaultValue</p>
+<pre><code>&lt;Consumer&gt;
+  {value =&gt; /*&#x6839;&#x636E;&#x4E0A;&#x4E0B;&#x6587;  &#x8FDB;&#x884C;&#x6E32;&#x67D3;&#x76F8;&#x5E94;&#x5185;&#x5BB9;*/}
+&lt;/Consumer&gt;
+</code></pre><h5 id="3react&#x811A;&#x624B;&#x67B6;&#x5FEB;&#x901F;&#x642D;&#x5EFA;">3.react&#x811A;&#x624B;&#x67B6;&#x5FEB;&#x901F;&#x642D;&#x5EFA;</h5>
+<p>&#x547D;&#x4EE4;&#x884C;&#x6309;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>npm install -g create-react-app`
+ `create-react-app demo`
+ `yarn start
+</code></pre><h5 id="4demo">4.demo</h5>
+<p> &#x5728;&#x4E0A;&#x9762; &#x811A;&#x624B;&#x67B6;&#x6DFB;&#x52A0; son.js &#x3001;grandson.js &#x5E76;&#x4FEE;&#x6539;App.js&#x5185;&#x5BB9;&#x3002;&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x81EA;&#x884C;&#x8C03;&#x6574;&#xFF1A;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/7078301-ec199f70c77b42a1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/506/format/webp" alt="img"></p>
+<p>&#x9879;&#x76EE;&#x7ED3;&#x6784;.jpg</p>
+<p> &#x4EE3;&#x7801;&#x6548;&#x679C;&#x56FE;&#xFF1A;</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/7078301-a244e49439dd8f47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/713/format/webp" alt="img"></p>
+<p>demo&#x6548;&#x679C;&#x56FE;.png</p>
 <ol>
-<li><p>&#x67E5;&#x627E;&#x5360;&#x7528;&#x7684;&#x7A0B;&#x5E8F;
-netstat -apn | grep 8080</p>
-</li>
-<li><p>&#x6740;&#x6389;&#x5BF9;&#x5E94;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5F7B;&#x5E95;&#x6740;&#x6B7B;&#x8FDB;&#x7A0B;</p>
-</li>
+<li>App.js &#x7236;&#x7EC4;&#x4EF6;</li>
 </ol>
-<p><img src="../images/kill.png" alt="&#x6740;&#x6B7B;&#x8FDB;&#x7A0B;"></p>
-<h4 id="&#x542F;&#x52A8;&#x9879;&#x76EE;doc&#x5E93;">&#x542F;&#x52A8;&#x9879;&#x76EE;doc&#x5E93;</h4>
-<ol>
-<li>&#x5B89;&#x88C5;gitbook&#x4E0E;gitbook&#x811A;&#x624B;&#x67B6;
-<code>npm i gitbook gitbook-cli -g</code></li>
-<li>&#x6784;&#x5EFA;gitbook
-<code>npm run doc</code></li>
-</ol>
-<h2 id="&#x4F7F;&#x7528;forever&#x5B88;&#x62A4;node&#x8FDB;&#x7A0B;">&#x4F7F;&#x7528;forever&#x5B88;&#x62A4;node&#x8FDB;&#x7A0B;</h2>
-<p> &#x8BE6;&#x60C5;&#x89C1; <a href="&#x7CFB;&#x7EDF;&#x90E8;&#x7F72;&#x6D41;&#x7A0B;.html">&#x4E0A;&#x4E00;&#x7AE0;</a></p>
+<pre><code>//App.js
+import React from &apos;react&apos;;
+import Son from &apos;./son&apos;;//&#x5F15;&#x5165;&#x5B50;&#x7EC4;&#x4EF6;
+// &#x521B;&#x5EFA;&#x4E00;&#x4E2A; theme Context,
+export const {Provider,Consumer} = React.createContext(&quot;&#x9ED8;&#x8BA4;&#x540D;&#x79F0;&quot;);
+export default class App extends React.Component {
+    render() {
+        let name =&quot;&#x5C0F;&#x4EBA;&#x5934;&quot;
+        return (
+            //Provider&#x5171;&#x4EAB;&#x5BB9;&#x5668; &#x63A5;&#x6536;&#x4E00;&#x4E2A;name&#x5C5E;&#x6027;
+            &lt;Provider value={name}&gt;
+                &lt;div style{border:&apos;1px solid red&apos;,width:&apos;30%&apos;,margin:&apos;50px auto&apos;,textAlign:&apos;center&apos;&gt;
+                    &lt;p&gt;&#x7236;&#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;&#x7684;&#x503C;:{name}&lt;/p&gt;
+                    &lt;Son /&gt;
+                &lt;/div&gt;
+            &lt;/Provider&gt;
+        );
+    }
+}
+</code></pre><p>son.js &#x5B50;&#x7EC4;&#x4EF6;</p>
+<pre><code>//son.js &#x5B50;&#x7C7B;
+import React from &apos;react&apos;;
+import { Consumer } from &quot;./index&quot;;//&#x5F15;&#x5165;&#x7236;&#x7EC4;&#x4EF6;&#x7684;Consumer&#x5BB9;&#x5668;
+import Grandson from &quot;./grandson.js&quot;;//&#x5F15;&#x5165;&#x5B50;&#x7EC4;&#x4EF6;
+function Son(props) {
+    return (
+        //Consumer&#x5BB9;&#x5668;,&#x53EF;&#x4EE5;&#x62FF;&#x5230;&#x4E0A;&#x6587;&#x4F20;&#x9012;&#x4E0B;&#x6765;&#x7684;name&#x5C5E;&#x6027;,&#x5E76;&#x53EF;&#x4EE5;&#x5C55;&#x793A;&#x5BF9;&#x5E94;&#x7684;&#x503C;
+        &lt;Consumer&gt;
+            {( name ) =&gt;
+                &lt;div style= border: &apos;1px solid blue&apos;, width: &apos;60%&apos;, margin: &apos;20px auto&apos;, textAlign: &apos;center&apos; &gt;
+                    &lt;p&gt;&#x5B50;&#x7EC4;&#x4EF6;&#x3002;&#x83B7;&#x53D6;&#x7236;&#x7EC4;&#x4EF6;&#x7684;&#x503C;:{name}&lt;/p&gt;
+                    {/* &#x5B59;&#x7EC4;&#x4EF6;&#x5185;&#x5BB9; */}
+                    &lt;Grandson /&gt;
+               &lt;/div&gt;
+            }
+        &lt;/Consumer&gt;
+    );
+}
+export default Son;
+</code></pre><p>grandson.js &#x5B59;&#x7EC4;&#x4EF6;</p>
+<pre><code>//grandson.js &#x5B59;&#x7C7B;
+import React from &apos;react&apos;;
+import { Consumer } from &quot;./index&quot;;//&#x5F15;&#x5165;&#x7236;&#x7EC4;&#x4EF6;&#x7684;Consumer&#x5BB9;&#x5668;
+function Grandson(props) {
+    return (
+         //Consumer&#x5BB9;&#x5668;,&#x53EF;&#x4EE5;&#x62FF;&#x5230;&#x4E0A;&#x6587;&#x4F20;&#x9012;&#x4E0B;&#x6765;&#x7684;name&#x5C5E;&#x6027;,&#x5E76;&#x53EF;&#x4EE5;&#x5C55;&#x793A;&#x5BF9;&#x5E94;&#x7684;&#x503C;
+        &lt;Consumer&gt;
+            {(name ) =&gt;
+                   &lt;div style=border:&apos;1px solid green&apos;,width:&apos;60%&apos;,margin:&apos;50px auto&apos;,textAlign:&apos;center&apos;&gt;
+                   &lt;p&gt;&#x5B59;&#x7EC4;&#x4EF6;&#x3002;&#x83B7;&#x53D6;&#x4F20;&#x9012;&#x4E0B;&#x6765;&#x7684;&#x503C;:{name}&lt;/p&gt;
+               &lt;/div&gt;
+            }
+        &lt;/Consumer&gt;
+    );
+}
+export default Grandson;
+</code></pre><p>&#x8FD0;&#x884C;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x3002;&#x76F8;&#x4FE1;&#x5C0F;&#x4F19;&#x4F34;&#x5BF9; React context &#x7684;&#x4F5C;&#x7528; &#x4EE5;&#x53CA;&#x4F7F;&#x7528;&#x6709;&#x4E86;&#x4E00;&#x5B9A;&#x7684;&#x4E86;&#x89E3;&#x3002;&#x5F53;&#x7136;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x573A;&#x666F;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x53EF;&#x76F4;&#x63A5;&#x770B;<a href="https://reactjs.org/docs/context.html" target="_blank">&#x5B98;&#x65B9;context&#x6587;&#x6863;</a>  &#x8FD9;&#x4E2A;&#x6587;&#x7AE0;&#x4F5C;&#x4E3A;&#x81EA;&#x5DF1;&#x5B66;&#x4E60;&#x8BB0;&#x5F55;&#x3002;&#x4E5F;&#x5E0C;&#x671B;&#x5E2E;&#x52A9;&#x5230;&#x9700;&#x8981;&#x7684;&#x5C0F;&#x4F19;&#x4F34;&#x4EEC;&#x3002;
+ &#x6709;&#x4E0D;&#x5BF9;&#x7684;&#x5730;&#x65B9; &#x5E0C;&#x671B;&#x5C0F;&#x4F19;&#x4F34; &#x53CA;&#x65F6;&#x6307;&#x6B63;&#x3002;&#x8C22;&#x8C22;</p>
 
                                 
                                 </section>
@@ -613,6 +664,14 @@ netstat -apn | grep 8080</p>
 
             
                 
+                <a href="redux.html" class="navigation navigation-prev " aria-label="Previous page: 2.17  redux说明">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="js原型链的一点.html" class="navigation navigation-next " aria-label="Next page: 2.19  js原型链的一点">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -621,7 +680,7 @@ netstat -apn | grep 8080</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.1  系统部署流程","level":"1.4.1","depth":2,"previous":{"title":"production 生产环境","level":"1.4","depth":1,"ref":"","articles":[{"title":"4.1  系统部署流程","level":"1.4.1","depth":2,"path":"note/系统部署流程.md","ref":"note/系统部署流程.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/系统部署流程.md","mtime":"2019-03-26T10:55:49.656Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-12T02:39:48.324Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.18  react-context","level":"1.2.17","depth":2,"next":{"title":"2.19  js原型链的一点","level":"1.2.18","depth":2,"path":"note/js原型链的一点.md","ref":"note/js原型链的一点.md","articles":[]},"previous":{"title":"2.17  redux说明","level":"1.2.16","depth":2,"path":"note/redux.md","ref":"note/redux.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/react-context.md","mtime":"2019-04-04T10:52:01.225Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-12T02:39:48.324Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

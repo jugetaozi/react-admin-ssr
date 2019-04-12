@@ -1,0 +1,134 @@
+the server is start at port 8888
+  [90m<--[39m [1mGET[22m [90m/[39m
+  [90m-->[39m [1mGET[22m [90m/[39m [32m200[39m [90m114ms[39m [90m661b[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/common.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/index.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/vendor.js[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/index.js[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/common.css[39m [32m200[39m [90m11ms[39m [90m32.1kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/index.css[39m [32m200[39m [90m9ms[39m [90m1.71kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/index.js[39m [32m200[39m [90m4ms[39m [90m10.38kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/vendor.js[39m [32m200[39m [90m233ms[39m [90m838.14kb[39m
+  [90m<--[39m [1mPOST[22m [90m/xcentz/api/getList[39m
+{ UnauthorizedError: Authentication Error
+    at Object.throw (C:\Users\wudi\Desktop\xcentz\node_modules\koa\lib\context.js:97:11)
+    at jwt (C:\Users\wudi\Desktop\xcentz\node_modules\koa-jwt\lib\index.js:68:26)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  message: 'Authentication Error',
+  originalError:
+   { TokenExpiredError: jwt expired
+       at C:\Users\wudi\Desktop\xcentz\node_modules\koa-jwt\node_modules\jsonwebtoken\verify.js:141:21
+       at getSecret (C:\Users\wudi\Desktop\xcentz\node_modules\koa-jwt\node_modules\jsonwebtoken\verify.js:76:14)
+       at Object.module.exports [as verify] (C:\Users\wudi\Desktop\xcentz\node_modules\koa-jwt\node_modules\jsonwebtoken\verify.js:80:10)
+       at Promise (C:\Users\wudi\Desktop\xcentz\node_modules\koa-jwt\lib\verify.js:5:23)
+       at new Promise (<anonymous>)
+       at module.exports.args (C:\Users\wudi\Desktop\xcentz\node_modules\koa-jwt\lib\verify.js:4:12)
+       at secrets.map (C:\Users\wudi\Desktop\xcentz\node_modules\koa-jwt\lib\index.js:39:30)
+       at Array.map (<anonymous>)
+       at jwt (C:\Users\wudi\Desktop\xcentz\node_modules\koa-jwt\lib\index.js:38:43)
+       at C:\Users\wudi\Desktop\xcentz\node_modules\koa-unless\index.js:29:12
+       at dispatch (C:\Users\wudi\Desktop\xcentz\node_modules\koa-compose\index.js:42:32)
+       at app.use (C:\Users\wudi\Desktop\xcentz\server\app.js:54:9)
+       at dispatch (C:\Users\wudi\Desktop\xcentz\node_modules\koa-compose\index.js:42:32)
+       at C:\Users\wudi\Desktop\xcentz\node_modules\koa-body\index.js:125:14
+       at process._tickCallback (internal/process/next_tick.js:68:7)
+     name: 'TokenExpiredError',
+     message: 'jwt expired',
+     expiredAt: 2019-03-29T09:31:15.000Z } } 'err'
+  [90m-->[39m [1mPOST[22m [90m/xcentz/api/getList[39m [33m401[39m [90m206ms[39m [90m57b[39m
+  [90m<--[39m [1mGET[22m [90m/favicon.ico[39m
+  [90m<--[39m [1mGET[22m [90m/manifest.json[39m
+  [90m-->[39m [1mGET[22m [90m/manifest.json[39m [32m200[39m [90m3ms[39m [90m332b[39m
+  [90m-->[39m [1mGET[22m [90m/favicon.ico[39m [32m200[39m [90m14ms[39m [90m3.78kb[39m
+  [90m<--[39m [1mGET[22m [90m/favicon.ico[39m
+  [90m-->[39m [1mGET[22m [90m/favicon.ico[39m [32m200[39m [90m2ms[39m [90m3.78kb[39m
+  [90m<--[39m [1mPOST[22m [90m/xcentz/api/loginIn[39m
+  [90m-->[39m [1mPOST[22m [90m/xcentz/api/loginIn[39m [32m200[39m [90m33ms[39m [90m649b[39m
+  [90m<--[39m [1mPOST[22m [90m/xcentz/api/getList[39m
+  [90m-->[39m [1mPOST[22m [90m/xcentz/api/getList[39m [32m200[39m [90m53ms[39m [90m437.89kb[39m
+  [90m<--[39m [1mGET[22m [90m/[39m
+  [90m-->[39m [1mGET[22m [90m/[39m [32m200[39m [90m2ms[39m [90m661b[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/common.css[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/common.css[39m [32m200[39m [90m2ms[39m [90m32.1kb[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/index.css[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/index.css[39m [32m200[39m [90m1ms[39m [90m1.71kb[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/vendor.js[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/index.js[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/index.js[39m [32m200[39m [90m2ms[39m [90m10.38kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/vendor.js[39m [32m200[39m [90m30ms[39m [90m838.14kb[39m
+  [90m<--[39m [1mGET[22m [90m/[39m
+  [90m-->[39m [1mGET[22m [90m/[39m [32m200[39m [90m1ms[39m [90m661b[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/common.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/index.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/vendor.js[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/index.js[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/index.css[39m [32m200[39m [90m2ms[39m [90m1.71kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/common.css[39m [32m200[39m [90m2ms[39m [90m32.1kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/index.js[39m [32m200[39m [90m2ms[39m [90m10.38kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/vendor.js[39m [32m200[39m [90m26ms[39m [90m838.14kb[39m
+  [90m<--[39m [1mGET[22m [90m/[39m
+  [90m-->[39m [1mGET[22m [90m/[39m [32m200[39m [90m1ms[39m [90m661b[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/common.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/index.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/vendor.js[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/index.js[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/common.css[39m [32m200[39m [90m3ms[39m [90m32.1kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/index.css[39m [32m200[39m [90m4ms[39m [90m1.71kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/index.js[39m [32m200[39m [90m3ms[39m [90m10.38kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/vendor.js[39m [32m200[39m [90m30ms[39m [90m838.14kb[39m
+  [90m<--[39m [1mGET[22m [90m/[39m
+  [90m-->[39m [1mGET[22m [90m/[39m [32m200[39m [90m1ms[39m [90m661b[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/common.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/index.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/vendor.js[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/index.js[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/common.css[39m [32m200[39m [90m2ms[39m [90m32.1kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/index.css[39m [32m200[39m [90m3ms[39m [90m1.71kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/index.js[39m [32m200[39m [90m2ms[39m [90m10.38kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/vendor.js[39m [32m200[39m [90m25ms[39m [90m838.14kb[39m
+  [90m<--[39m [1mGET[22m [90m/[39m
+  [90m-->[39m [1mGET[22m [90m/[39m [32m200[39m [90m1ms[39m [90m661b[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/common.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/css/index.css[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/vendor.js[39m
+  [90m<--[39m [1mGET[22m [90m/static/js/index.js[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/common.css[39m [32m200[39m [90m5ms[39m [90m32.1kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/css/index.css[39m [32m200[39m [90m3ms[39m [90m1.71kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/index.js[39m [32m200[39m [90m2ms[39m [90m10.38kb[39m
+  [90m-->[39m [1mGET[22m [90m/static/js/vendor.js[39m [32m200[39m [90m30ms[39m [90m838.14kb[39m
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888
+the server is start at port 8888

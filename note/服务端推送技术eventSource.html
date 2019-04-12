@@ -1,0 +1,746 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.15  服务端推送技术eventSource · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="inline-block3像素问题.html" />
+    
+    
+    <link rel="prev" href="集成eventSource和websocket.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <span>
+            
+                    
+                    Xcentz
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1.1  系统简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../help/help1.html">
+            
+                <a href="../help/help1.html">
+            
+                    
+                    1.2  系统使用帮助
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    developement 研发笔记
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="intercept-strategy.html">
+            
+                <a href="intercept-strategy.html">
+            
+                    
+                    2.1  请求拦截策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="node-openDefaultBrowser.html">
+            
+                <a href="node-openDefaultBrowser.html">
+            
+                    
+                    2.2  node-自动打开浏览器方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    2.3  接口文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="mysql语法.html">
+            
+                <a href="mysql语法.html">
+            
+                    
+                    2.5  mysql语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="antd超出内容隐藏.html">
+            
+                <a href="antd超出内容隐藏.html">
+            
+                    
+                    2.6  antd超出内容隐藏
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="Eslint&&Prettier.html">
+            
+                <a href="Eslint&&Prettier.html">
+            
+                    
+                    2.7  Eslint&&Prettier
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="webpack配置及插件.html">
+            
+                <a href="webpack配置及插件.html">
+            
+                    
+                    2.8  webpack配置及插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="prettier批量格式化代码.html">
+            
+                <a href="prettier批量格式化代码.html">
+            
+                    
+                    2.9  prettier批量格式化代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="使用forever守护node进程.html">
+            
+                <a href="使用forever守护node进程.html">
+            
+                    
+                    2.10  使用forever守护node进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="mysql插入data类型数据报错问题.html">
+            
+                <a href="mysql插入data类型数据报错问题.html">
+            
+                    
+                    2.11  mysql插入data类型数据报错问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="使用PropTypes进行类型校验.html">
+            
+                <a href="使用PropTypes进行类型校验.html">
+            
+                    
+                    2.12  使用PropTypes进行类型校验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="socket.io常见用法.html">
+            
+                <a href="socket.io常见用法.html">
+            
+                    
+                    2.13  socket.io常见用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="集成eventSource和websocket.html">
+            
+                <a href="集成eventSource和websocket.html">
+            
+                    
+                    2.14  集成eventSource和websocket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.14" data-path="服务端推送技术eventSource.html">
+            
+                <a href="服务端推送技术eventSource.html">
+            
+                    
+                    2.15  服务端推送技术eventSource
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="inline-block3像素问题.html">
+            
+                <a href="inline-block3像素问题.html">
+            
+                    
+                    2.16  inline-block3像素问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="redux.html">
+            
+                <a href="redux.html">
+            
+                    
+                    2.17  redux说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="react-context.html">
+            
+                <a href="react-context.html">
+            
+                    
+                    2.18  react-context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="js原型链的一点.html">
+            
+                <a href="js原型链的一点.html">
+            
+                    
+                    2.19  js原型链的一点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="react受控组件.html">
+            
+                <a href="react受控组件.html">
+            
+                    
+                    2.20  react受控组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="react进阶知识.html">
+            
+                <a href="react进阶知识.html">
+            
+                    
+                    2.21  react进阶知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    dev 项目依赖与待做事项
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="package.html">
+            
+                <a href="package.html">
+            
+                    
+                    3.1  项目依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="todoList.html">
+            
+                <a href="todoList.html">
+            
+                    
+                    3.2 todoList
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="babel.html">
+            
+                <a href="babel.html">
+            
+                    
+                    3.3 babel
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    production 生产环境
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="系统部署流程.html">
+            
+                <a href="系统部署流程.html">
+            
+                    
+                    4.1  系统部署流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.15  服务端推送技术eventSource</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x670D;&#x52A1;&#x7AEF;&#x4E8B;&#x4EF6;eventsource"><a href="https://www.cnblogs.com/accordion/p/7764460.html" target="_blank">&#x670D;&#x52A1;&#x7AEF;&#x4E8B;&#x4EF6;EventSource</a></h1>
+<p><strong>&#x9605;&#x8BFB;&#x76EE;&#x5F55;</strong></p>
+<ul>
+<li><a href="https://www.cnblogs.com/accordion/p/7764460.html#_label0" target="_blank">&#x670D;&#x52A1;&#x7AEF;&#x63A8;&#x9001;&#x6280;&#x672F;</a></li>
+<li><a href="https://www.cnblogs.com/accordion/p/7764460.html#_label1" target="_blank">EventSource&#x89C4;&#x8303;&#x7B80;&#x6790;</a></li>
+<li><a href="https://www.cnblogs.com/accordion/p/7764460.html#_label2" target="_blank">&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li>
+</ul>
+<h2 id="&#x670D;&#x52A1;&#x7AEF;&#x63A8;&#x9001;">&#x670D;&#x52A1;&#x7AEF;&#x63A8;&#x9001;</h2>
+<p>&#x670D;&#x52A1;&#x7AEF;&#x63A8;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x7531;&#x670D;&#x52A1;&#x5668;&#x4E3B;&#x52A8;&#x7684;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF08;&#x54CD;&#x5E94;&#xFF09;&#x3002;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x7684;HTTP&#x534F;&#x8BAE;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x201C;&#x8BF7;&#x6C42;-&#x54CD;&#x5E94;&#x201D;&#x662F;&#x4E00;&#x4E2A;round trip&#xFF0C;&#x5B83;&#x7684;&#x8D77;&#x70B9;&#x6765;&#x81EA;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x5E94;&#x7528;&#x5C42;&#x4E4B;&#x4E0A;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x7B80;&#x6613;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x63A8;&#x529F;&#x80FD;&#x3002;&#x5F53;&#x524D;&#x89E3;&#x51B3;&#x670D;&#x52A1;&#x7AEF;&#x63A8;&#x9001;&#x7684;&#x65B9;&#x6848;&#x6709;&#x8FD9;&#x51E0;&#x4E2A;&#xFF1A;</p>
+<ol>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x957F;&#x8F6E;&#x8BE2;</li>
+<li>websocket&#x53CC;&#x5411;&#x8FDE;&#x63A5;</li>
+<li>iframe&#x6C38;&#x4E45;&#x5E27;</li>
+</ol>
+<p>&#x957F;&#x8F6E;&#x8BAD;&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x77ED;&#x8F6E;&#x8BAD;&#x9020;&#x6210;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x8FC7;&#x8F7D;&#xFF0C;&#x4F46;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x540E;&#x4ECD;&#x9700;&#x8981;&#x5BA2;&#x6237;&#x7AEF;&#x4E3B;&#x52A8;&#x53D1;&#x8D77;&#x4E0B;&#x4E00;&#x4E2A;&#x957F;&#x8F6E;&#x8BAD;&#x8BF7;&#x6C42;&#xFF0C;&#x7B49;&#x5F85;&#x670D;&#x52A1;&#x7AEF;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x6837;&#x4ECD;&#x9700;&#x8981;&#x5E95;&#x5C42;&#x7684;&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x800C;&#x4E14;&#x670D;&#x52A1;&#x7AEF;&#x5904;&#x7406;&#x903B;&#x8F91;&#x9700;&#x8981;&#x76F8;&#x5E94;&#x5904;&#x7406;&#xFF0C;&#x4E0D;&#x7B26;&#x5408;&#x903B;&#x8F91;&#x4E0A;&#x7684;&#x6D41;&#x7A0B;&#x7B80;&#x5355;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x63A8;&#x9001;&#xFF1B;</p>
+<p>websocket&#x8FDE;&#x63A5;&#x76F8;&#x5BF9;&#x800C;&#x8A00;&#x529F;&#x80FD;&#x6700;&#x5F3A;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x5BF9;&#x670D;&#x52A1;&#x5668;&#x7684;&#x7248;&#x672C;&#x6709;&#x8981;&#x6C42;&#xFF0C;&#x5728;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;websocket&#x534F;&#x8BAE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x5C3D;&#x91CF;&#x91C7;&#x7528;&#x6B64;&#x79CD;&#x65B9;&#x5F0F;&#xFF1B;</p>
+<p>iframe&#x6C38;&#x4E45;&#x5E27;&#x5219;&#x662F;&#x5728;&#x5728;&#x9875;&#x9762;&#x5D4C;&#x5165;&#x4E00;&#x4E2A;&#x4E13;&#x7528;&#x6765;&#x63A5;&#x53D7;&#x6570;&#x636E;&#x7684;iframe&#x9875;&#x9762;&#xFF0C;&#x8BE5;&#x9875;&#x9762;&#x7531;&#x670D;&#x52A1;&#x5668;&#x8F93;&#x51FA;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x505C;&#x7684;&#x5411;iframe&#x4E2D;&#x5199;&#x5165;&#x7C7B;&#x4F3C;&#x7684;script&#x6807;&#x7B7E;&#x548C;&#x6570;&#x636E;&#xFF0C;&#x5B9E;&#x73B0;&#x53E6;&#x4E00;&#x79CD;&#x5F62;&#x5F0F;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x63A8;&#x9001;&#x3002;&#x4E0D;&#x8FC7;&#x6C38;&#x4E45;&#x5E27;&#x7684;&#x6280;&#x672F;&#x4F1A;&#x5BFC;&#x81F4;&#x4E3B;&#x9875;&#x9762;&#x7684;&#x52A0;&#x8F7D;&#x6761;&#x59CB;&#x7EC8;&#x5904;&#x4E8E;&#x201C;loading&#x201D;&#x72B6;&#x6001;&#xFF0C;&#x4F53;&#x9A8C;&#x5F88;&#x5DEE;&#x3002;</p>
+<p>HTML5&#x89C4;&#x8303;&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x670D;&#x52A1;&#x7AEF;&#x4E8B;&#x4EF6;EventSource&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x5728;&#x5B9E;&#x73B0;&#x4E86;&#x8BE5;&#x89C4;&#x8303;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;EventSource&#x8FDE;&#x63A5;&#x540E;&#xFF0C;&#x4FBF;&#x53EF;&#x6536;&#x5230;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x53D1;&#x9001;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x8FD9;&#x4E9B;&#x6D88;&#x606F;&#x9700;&#x8981;&#x9075;&#x5FAA;&#x4E00;&#x5B9A;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x5BF9;&#x4E8E;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x800C;&#x8A00;&#xFF0C;&#x53EA;&#x9700;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x4FA6;&#x542C;&#x5BF9;&#x5E94;&#x7684;&#x4E8B;&#x4EF6;&#x7686;&#x53EF;&#x3002;</p>
+<p>&#x76F8;&#x6BD4;&#x8F83;&#x4E0A;&#x6587;&#x4E2D;&#x63D0;&#x5230;&#x7684;3&#x4E2D;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;EventSource&#x6D41;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x5BF9;&#x5BA2;&#x6237;&#x7AEF;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x800C;&#x8A00;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x517C;&#x5BB9;&#x6027;&#x4E0A;&#x51FA;&#x4E86;IE&#x7CFB;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#xFF08;IE&#x3001;Edge&#xFF09;&#x5916;&#x5176;&#x4ED6;&#x90FD;&#x826F;&#x597D;&#xFF1B;&#x5BF9;&#x4E8E;&#x670D;&#x52A1;&#x7AEF;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x517C;&#x5BB9;&#x8001;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x65E0;&#x9700;upgrade&#x4E3A;&#x5176;&#x4ED6;&#x534F;&#x8BAE;&#xFF0C;&#x5728;&#x7B80;&#x5355;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x63A8;&#x9001;&#x7684;&#x573A;&#x666F;&#x4E0B;&#x53EF;&#x4EE5;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x3002;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x9700;&#x8981;&#x5F3A;&#x4EA4;&#x4E92;&#x7684;&#x573A;&#x666F;&#x4E0B;&#xFF0C;websocket&#x4ECD;&#x662F;&#x4E0D;&#x4E8C;&#x7684;&#x9009;&#x62E9;&#x3002;</p>
+<h2 id="eventsource&#x89C4;&#x8303;&#x7B80;&#x6790;">EventSource&#x89C4;&#x8303;&#x7B80;&#x6790;</h2>
+<h3 id="&#x6D4F;&#x89C8;&#x5668;&#x7AEF;">&#x6D4F;&#x89C8;&#x5668;&#x7AEF;</h3>
+<p>&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#xFF0C;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;EventSource&#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x4E14;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x63A5;&#x53E3;URI&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;</p>
+<pre><code>var evtSource = new EventSource(&apos;http://localhost:9111/es&apos;);
+</code></pre><p>&#x5176;&#x4E2D;&#xFF0C;&apos;<a href="http://localhost:9111/es&apos;%E4%B8%BA%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%90%90%E5%87%BA%E6%95%B0%E6%8D%AE%E7%9A%84%E6%8E%A5%E5%8F%A3%E3%80%82%E7%9B%AE%E5%89%8D%EF%BC%8CEventSource%E5%9C%A8%E5%A4%A7%E5%A4%9A%E6%95%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E4%B8%8D%E6%94%AF%E6%8C%81" target="_blank">http://localhost:9111/es&apos;&#x4E3A;&#x670D;&#x52A1;&#x7AEF;&#x5410;&#x51FA;&#x6570;&#x636E;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x76EE;&#x524D;&#xFF0C;EventSource&#x5728;&#x5927;&#x591A;&#x6570;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x4E0D;&#x652F;&#x6301;</a>
+&#x8DE8;&#x57DF;&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x8DE8;&#x57DF;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;EventSource&#x5BF9;&#x8C61;&#x901A;&#x8FC7;&#x4FA6;&#x542C;&#x201C;message&#x201D;&#x4E8B;&#x4EF6;&#x83B7;&#x53D6;&#x670D;&#x52A1;&#x7AEF;&#x4F20;&#x6765;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x201C;open&#x201D;&#x4E8B;&#x4EF6;&#x5219;&#x5728;http&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x540E;&#x89E6;&#x53D1;&#xFF0C;&#x201D;error&#x201C;&#x4E8B;&#x4EF6;&#x4F1A;&#x5728;&#x901A;&#x4FE1;&#x9519;&#x8BEF;&#xFF08;&#x8FDE;&#x63A5;&#x4E2D;&#x65AD;&#x3001;&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x5931;&#x8D25;&#xFF09;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x89E6;&#x53D1;&#x3002;&#x540C;&#x65F6;&#xFF0C;EventSource&#x89C4;&#x8303;&#x5141;&#x8BB8;&#x670D;&#x52A1;&#x7AEF;&#x6307;&#x5B9A;&#x81EA;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4FA6;&#x542C;&#x8BE5;&#x4E8B;&#x4EF6;&#x5373;&#x53EF;&#x3002;</p>
+<pre><code>evtSource.addEventListener(&apos;message&apos;,function(e){
+    console.log(e.data);
+});
+evtSource.addEventListener(&apos;error&apos;,function(e){
+    console.log(e);
+})
+</code></pre><h3 id="&#x670D;&#x52A1;&#x7AEF;">&#x670D;&#x52A1;&#x7AEF;</h3>
+<p>&#x4E8B;&#x4EF6;&#x6D41;&#x7684;&#x5BF9;&#x5E94;MIME&#x683C;&#x5F0F;&#x4E3A;<strong>text/event-stream</strong>&#xFF0C;&#x800C;&#x4E14;&#x5176;&#x57FA;&#x4E8E;HTTP&#x957F;&#x8FDE;&#x63A5;&#x3002;&#x9488;&#x5BF9;HTTP1.1&#x89C4;&#x8303;&#x9ED8;&#x8BA4;&#x91C7;&#x7528;&#x957F;&#x8FDE;&#x63A5;&#xFF0C;&#x9488;&#x5BF9;HTTP1.0&#x7684;&#x670D;&#x52A1;&#x5668;&#x9700;&#x8981;&#x7279;&#x6B8A;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p>&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x9700;&#x8981;&#x7279;&#x6B8A;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x5B83;&#x5206;&#x4E3A;&#x56DB;&#x79CD;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#xFF1A;</p>
+<pre><code>event, data, id, retry
+</code></pre><p>&#x5176;&#x4E2D;&#xFF0C;event&#x6307;&#x5B9A;&#x81EA;&#x5B9A;&#x4E49;&#x6D88;&#x606F;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x5982;<strong>event: customMessage\n</strong>;</p>
+<p>data&#x6307;&#x5B9A;&#x5177;&#x4F53;&#x7684;&#x6D88;&#x606F;&#x4F53;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x5BF9;&#x8C61;&#x6216;&#x8005;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;<strong>data: JSON.stringify(jsonObj)\n\n</strong>,&#x5728;&#x6D88;&#x606F;&#x4F53;&#x540E;&#x9762;&#x6709;&#x4E24;&#x4E2A;&#x6362;&#x884C;&#x7B26;\n&#xFF0C;&#x4EE3;&#x8868;&#x5F53;&#x524D;&#x6D88;&#x606F;&#x4F53;&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#xFF0C;&#x4E00;&#x4E2A;&#x6362;&#x884C;&#x7B26;&#x6807;&#x8BC6;&#x5F53;&#x524D;&#x6D88;&#x606F;&#x5E76;&#x672A;&#x7ED3;&#x675F;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x540E;&#x9762;&#x6570;&#x636E;&#x7684;&#x5230;&#x6765;&#x540E;&#x518D;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF1B;</p>
+<p>id&#x4E3A;&#x5F53;&#x524D;&#x6D88;&#x606F;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0D;&#x8BBE;&#x7F6E;&#x3002;&#x4E00;&#x65E6;&#x8BBE;&#x7F6E;&#x5219;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x7684;eventSource&#x5BF9;&#x8C61;&#x4E2D;&#x5C31;&#x4F1A;&#x6709;&#x4F53;&#x73B0;(&#x5047;&#x8BBE;&#x670D;&#x52A1;&#x7AEF;&#x8FD4;&#x56DE;<strong>id: 369\n</strong>)&#xFF0C;<code>eventSource.lastEventId == 369</code>&#x3002;&#x8BE5;&#x5B57;&#x6BB5;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E0D;&#x5927;;</p>
+<p>retry&#x8BBE;&#x7F6E;&#x5F53;&#x524D;http&#x8FDE;&#x63A5;&#x5931;&#x8D25;&#x540E;&#xFF0C;&#x91CD;&#x65B0;&#x8FDE;&#x63A5;&#x7684;&#x95F4;&#x9694;&#x3002;EventSource&#x89C4;&#x8303;&#x89C4;&#x5B9A;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5728;http&#x8FDE;&#x63A5;&#x5931;&#x8D25;&#x540E;&#x9ED8;&#x8BA4;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x8FDE;&#x63A5;&#xFF0C;&#x91CD;&#x8FDE;&#x95F4;&#x9694;&#x4E3A;3s&#xFF0C;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;retry&#x5B57;&#x6BB5;&#x53EF;&#x6307;&#x5B9A;&#x91CD;&#x8FDE;&#x95F4;&#x9694;;</p>
+<p>&#x6BCF;&#x4E2A;&#x5B57;&#x6BB5;&#x90FD;&#x6709;&#x540D;&#x79F0;&#xFF0C;&#x7D27;&#x63A5;&#x7740;&#x6709;&#x4E2A;&#x201D;:&#x201C;&#x3002;&#x5F53;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x540D;&#x79F0;&#x7684;&#x5B57;&#x6BB5;&#x800C;&#x53EA;&#x6709;&#x201D;:&#x201C;&#x65F6;&#xFF0C;&#x8FD9;&#x5C31;&#x4F1A;&#x88AB;&#x670D;&#x52A1;&#x7AEF;&#x7406;&#x89E3;&#x4E3A;&#x201D;&#x6CE8;&#x91CA;&#x201C;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x88AB;&#x53D1;&#x9001;&#x81F3;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#xFF0C;&#x5982;<em>: commision</em>&#x3002;</p>
+<p>&#x7531;&#x4E8E;EventSource&#x662F;&#x57FA;&#x4E8E;HTTP&#x8FDE;&#x63A5;&#x4E4B;&#x4E0A;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x4E00;&#x6BB5;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x7684;&#x65F6;&#x671F;&#x4F1A;&#x51FA;&#x73B0;&#x8D85;&#x65F6;&#x95EE;&#x9898;&#x3002;<strong>&#x670D;&#x52A1;&#x5668;&#x9ED8;&#x8BA4;HTTP&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x4E3A;2&#x5206;&#x949F;&#xFF0C;&#x5728;node&#x7AEF;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;response.connection.setTimeou(0)&#x8BBE;&#x7F6E;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;2min&#x8D85;&#x65F6;</strong>&#xFF0C; &#x56E0;&#x6B64;&#x9700;&#x8981;&#x670D;&#x52A1;&#x7AEF;&#x505A;&#x5FC3;&#x8DF3;&#x4FDD;&#x6D3B;&#xFF0C;&#x5426;&#x5219;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x8FDE;&#x63A5;&#x8D85;&#x65F6;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x51FA;&#x73B0;<strong>net::ERR_INCOMPLETE_CHUNKED_ENCODING</strong>&#x9519;&#x8BEF;&#x3002;&#x901A;&#x8FC7;&#x9605;&#x8BFB;&#x76F8;&#x5173;&#x89C4;&#x8303;&#xFF0C;&#x53D1;&#x73B0;&#x6CE8;&#x91CA;&#x884C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x9632;&#x6B62;&#x8FDE;&#x63A5;&#x8D85;&#x65F6;,&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x5B9A;&#x671F;&#x53D1;&#x9001;&#x4E00;&#x6761;&#x6D88;&#x606F;&#x6CE8;&#x91CA;&#x884C;,&#x4EE5;&#x4FDD;&#x6301;&#x8FDE;&#x63A5;&#x4E0D;&#x65AD;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x63D0;&#x4F9B;koa&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>var fs = require(&apos;fs&apos;);
+var path = require(&apos;path&apos;);
+var PassThrough = require(&apos;stream&apos;).PassThrough;
+var Readable = require(&apos;stream&apos;).Readable;
+var koa = require(&apos;koa&apos;);
+var Router = require(&apos;koa-router&apos;);
+var app = new koa();
+var router = new Router();
+
+function RR(){
+    Readable.call(this,arguments);
+}
+RR.prototype = new Readable();
+RR.prototype._read = function(data){
+}
+
+router.get(&apos;/&apos;,function(ctx,next){
+    ctx.set(&apos;content-type&apos;,&apos;text/html&apos;);
+    ctx.body = fs.readFileSync(path.join(process.cwd(),&apos;eventServer.html&apos;));
+});
+
+const sse = (stream,event, data) =&gt; {
+    return stream.push(`event:${ event }\ndata: ${ JSON.stringify(data) }\n\n`)
+//    return stream.write(`event:${ event }\ndata: ${ JSON.stringify(data) }\n\n`);
+}
+router.get(&apos;/es&apos;,function(ctx,next){
+    var stream = new RR()//PassThrough();
+    ctx.set({
+        &apos;Content-Type&apos;:&apos;text/event-stream&apos;,
+        &apos;Cache-Control&apos;:&apos;no-cache&apos;,
+        Connection: &apos;keep-alive&apos;
+    });
+    sse(stream,&apos;test&apos;,{a: &quot;yango&quot;,b: &quot;tango&quot;});
+    ctx.body = stream;
+    setInterval(()=&gt;{
+        sse(stream,&apos;test&apos;,{a: &quot;yango&quot;,b: Date.now()});
+    },3000); 
+});
+
+app.use(router.routes());
+app.listen(9111,function(){
+    console.log(&apos;listening port 9111&apos;);
+});
+</code></pre><p>&#x6B64;&#x5904;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;koa-router&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;Stream&#xFF08;Readable&#xFF09;&#xFF0C;&#x8FD9;&#x662F;&#x7531;&#x4E8E;koa&#x7684;&#x7279;&#x6B8A;&#x6027;&#x9020;&#x6210;&#x7684;&#x3002;&#x5982;&#x679C;context.body&#x4E0D;&#x662F;Stream&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x8005;Buffer&#x5B9E;&#x4F8B;&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x5728;node&#x539F;&#x751F;&#x4E2D;&#x8C03;&#x7528;res.end(buffer),&#x7ED3;&#x675F;&#x4E86;HTTP&#x54CD;&#x5E94;&#xFF1A;</p>
+<pre><code>koa lib/application.js
+
+// responses
+if (Buffer.isBuffer(body)) return res.end(body);
+if (&apos;string&apos; == typeof body) return res.end(body);
+if (body instanceof Stream) return body.pipe(res);
+</code></pre><p>&#x56E0;&#x6B64;&#x9020;&#x6210;&#x4E86;&#x670D;&#x52A1;&#x7AEF;&#x4E8B;&#x4EF6;&#x6D41;&#x65E0;&#x6CD5;&#x6B63;&#x786E;&#x54CD;&#x5E94;&#x3002;&#x800C;&#x8FD4;&#x56DE;Stream&#x7C7B;&#x578B;&#x7684;&#x65B9;&#x5F0F;&#x6709;&#x51E0;&#x79CD;&#xFF0C;&#x5982;&#x901A;&#x8FC7;&#x6269;&#x5C55;stream&#x6A21;&#x5757;&#x7684;Readable&#x53EF;&#x8BFB;&#x6D41;&#x8FD4;&#x56DE;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x91C7;&#x7528;PassThrough&#x6D41;&#x8FD4;&#x56DE;&#xFF0C;&#x4EA6;&#x53EF;&#x901A;&#x8FC7;through2&#x6A21;&#x5757;&#x6216;&#x8005;Transform&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#xFF0C;&#x5F52;&#x6839;&#x5230;&#x5E95;&#x4FDD;&#x8BC1;&#x53EF;&#x4EE5;&#x4ECE;&#x8BE5;stream&#x5BF9;&#x8C61;&#x4E2D;pipe&#x51FA;&#x6570;&#x636E;&#x81F3;http.ServerResponse&#x5BF9;&#x8C61;&#x4E2D;&#x3002;</p>
+<p>&#x9644;&#x9875;&#x9762;&#x4EE3;&#x7801;</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        hello world
+    &lt;/div&gt;
+    &lt;p id=&quot;info&quot;&gt;&lt;/p&gt;
+    &lt;script&gt;
+        var infoShow = document.querySelector(&apos;#info&apos;);
+        var se = new EventSource(&apos;http://localhost:9111/es&apos;);
+        se.addEventListener(&apos;test&apos;,function(e){
+            infoShow.textContent += e.data+&apos;\n&apos;;
+        });  //&#x6CE8;&#x610F;&#x5FC5;&#x987B;&#x7528;addEventListener&#x76D1;&#x542C;&#x4E8B;&#x4EF6;
+        se.addEventListener(&apos;error&apos;,function(e){
+            console.log(e);
+        })
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="集成eventSource和websocket.html" class="navigation navigation-prev " aria-label="Previous page: 2.14  集成eventSource和websocket">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="inline-block3像素问题.html" class="navigation navigation-next " aria-label="Next page: 2.16  inline-block3像素问题">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.15  服务端推送技术eventSource","level":"1.2.14","depth":2,"next":{"title":"2.16  inline-block3像素问题","level":"1.2.15","depth":2,"path":"note/inline-block3像素问题.md","ref":"note/inline-block3像素问题.md","articles":[]},"previous":{"title":"2.14  集成eventSource和websocket","level":"1.2.13","depth":2,"path":"note/集成eventSource和websocket.md","ref":"note/集成eventSource和websocket.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/服务端推送技术eventSource.md","mtime":"2019-04-03T02:17:13.208Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-12T02:39:48.324Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

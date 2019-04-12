@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>4.1  系统部署流程 · GitBook</title>
+        <title>2.17  redux说明 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,6 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="react-context.html" />
+    
+    
+    <link rel="prev" href="inline-block3像素问题.html" />
     
 
     </head>
@@ -339,7 +343,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.16" data-path="redux.html">
+        <li class="chapter active" data-level="1.2.16" data-path="redux.html">
             
                 <a href="redux.html">
             
@@ -481,7 +485,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.1" data-path="系统部署流程.html">
+        <li class="chapter " data-level="1.4.1" data-path="系统部署流程.html">
             
                 <a href="系统部署流程.html">
             
@@ -529,7 +533,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >4.1  系统部署流程</a>
+        <a href=".." >2.17  redux说明</a>
     </h1>
 </div>
 
@@ -544,48 +548,78 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="1&#x5B89;&#x88C5;node-&#x4E0B;&#x8F7D;&#x5730;&#x5740;">1.&#x5B89;&#x88C5;node &#x4E0B;&#x8F7D;&#x5730;&#x5740;:</h2>
-<blockquote>
-<p>&#x4E0B;&#x8F7D;&#x5730;&#x5740;: <a href="https://nodejs.org/zh-cn/download/" target="_blank">https://nodejs.org/zh-cn/download/</a></p>
-<ul>
-<li><a href="https://nodejs.org/zh-cn/download/" target="_blank">&#x4E0B;&#x8F7D;&#x9875;&#x9762;</a>     --&#x7248;&#x672C;&#x9009;&#x62E9;  node-v10.15.3-linux-x64.tar</li>
-</ul>
-</blockquote>
-<p><img src="../images/download.png" alt="&#x4E0B;&#x8F7D;&#x9875;&#x9762;"></p>
-<p>&#x4E0B;&#x8F7D; node-v10.15.3-linux-x64.tar.xz &#x81F3; /user/src &#x76EE;&#x5F55;&#x4E0B;
-<img src="../images/anzhangdizhi.png" alt="&#x4E0B;&#x8F7D;&#x9875;&#x9762;"></p>
-<h2 id="2&#x521B;&#x5EFA;&#x8F6F;&#x94FE;&#x63A5;&#xFF0C;&#x4F7F;node&#x548C;npm&#x547D;&#x4EE4;&#x5168;&#x5C40;&#x6709;&#x6548;&#x901A;&#x8FC7;&#x521B;&#x5EFA;&#x8F6F;&#x94FE;&#x63A5;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F97;&#x5728;&#x4EFB;&#x610F;&#x76EE;&#x5F55;&#x4E0B;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;node&#x548C;npm&#x547D;&#x4EE4;--&#x5206;&#x522B;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x4E24;&#x6761;&#x547D;&#x4EE4;">2.&#x521B;&#x5EFA;&#x8F6F;&#x94FE;&#x63A5;&#xFF0C;&#x4F7F;node&#x548C;npm&#x547D;&#x4EE4;&#x5168;&#x5C40;&#x6709;&#x6548;(&#x901A;&#x8FC7;&#x521B;&#x5EFA;&#x8F6F;&#x94FE;&#x63A5;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F97;&#x5728;&#x4EFB;&#x610F;&#x76EE;&#x5F55;&#x4E0B;&#x90FD;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;node&#x548C;npm&#x547D;&#x4EE4;)  &#x5206;&#x522B;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x4E24;&#x6761;&#x547D;&#x4EE4;</h2>
-<pre><code>ln -s /usr/src/node-v10.15.3-linux-x64/bin/node /usr/local/bin/node
-ln -s /usr/src/node-v10.15.3-linux-x64/bin/npm /usr/local/bin/npm
-</code></pre><h2 id="3&#x5C06;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x79FB;&#x52A8;&#x5230;&#x76F8;&#x5173;&#x76EE;&#x5F55;&#x4E0B;">3.&#x5C06;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x79FB;&#x52A8;&#x5230;&#x76F8;&#x5173;&#x76EE;&#x5F55;&#x4E0B;</h2>
-<p>1.&#x5229;&#x7528;ftp&#x4F20;&#x6587;&#x4EF6;
-2.&#x5229;&#x7528;git&#x62C9;&#x4EE3;&#x7801;&#x5230;&#x672C;&#x5730;</p>
-<h2 id="4&#x5B89;&#x88C5;&#x9879;&#x76EE;&#x4F9D;&#x8D56;">4.&#x5B89;&#x88C5;&#x9879;&#x76EE;&#x4F9D;&#x8D56;</h2>
-<pre><code>cd /usr/src/xcentzNodeServer
+                                <h2 id="store-redux&#x5206;&#x4E3A;--action-reducer-state---&#x6539;&#x53D8;state&#x7684;&#x552F;&#x4E00;&#x65B9;&#x5F0F;&#x662F;dispatch&#x4E00;&#x4E2A;action">store redux&#x5206;&#x4E3A;  action reducer state   &#x6539;&#x53D8;state&#x7684;&#x552F;&#x4E00;&#x65B9;&#x5F0F;&#x662F;dispatch&#x4E00;&#x4E2A;action</h2>
+<pre><code class="lang-javascript">actionCreator: () =&gt; {
+  <span class="hljs-keyword">return</span> {
+    type:<span class="hljs-string">&apos;actionName&apos;</span>,
+    payload:<span class="hljs-string">&apos;&#x8F7D;&#x8377; &#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x901A;&#x5E38;&#x4E3A;&#x4E00;&#x4E2A;promise&#x5BF9;&#x8C61;&apos;</span>  <span class="hljs-comment">// redux-promise-middleware&#x4F7F;payload&#x53D8;&#x4E3A;&#x4E00;&#x4E2A;promise&#x5BF9;&#x8C61;</span>
+  }
+}
 
-npm i //&#x5B89;&#x88C5;&#x4F9D;&#x8D56;
-npm run build //&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x6784;&#x5EFA;
-node server/app.js //&#x9879;&#x76EE;&#x5165;&#x53E3;&#x6587;&#x4EF6; &#x542F;&#x52A8;&#x670D;&#x52A1; 
+action (redux-thunk): 
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getUserInfo = () =&gt; (dispatch, getState) =&gt; {
+    <span class="hljs-keyword">return</span> dispatch({
+        type: <span class="hljs-string">&apos;API_GET_USER_INFO&apos;</span>,
+        payload: getList(),
+    });
+};
 
-open in http://localhost:8080/
-</code></pre><h4 id="&#x5982;&#x679C;&#x9047;&#x5230;8080&#x7AEF;&#x53E3;&#x88AB;&#x5360;&#x7528;---&#x6740;&#x6B7B;&#x76F8;&#x5173;&#x8FDB;&#x7A0B;&#x5373;&#x53EF;">&#x5982;&#x679C;&#x9047;&#x5230;8080&#x7AEF;&#x53E3;&#x88AB;&#x5360;&#x7528;   &#x6740;&#x6B7B;&#x76F8;&#x5173;&#x8FDB;&#x7A0B;&#x5373;&#x53EF;</h4>
-<ol>
-<li><p>&#x67E5;&#x627E;&#x5360;&#x7528;&#x7684;&#x7A0B;&#x5E8F;
-netstat -apn | grep 8080</p>
-</li>
-<li><p>&#x6740;&#x6389;&#x5BF9;&#x5E94;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5F7B;&#x5E95;&#x6740;&#x6B7B;&#x8FDB;&#x7A0B;</p>
-</li>
-</ol>
-<p><img src="../images/kill.png" alt="&#x6740;&#x6B7B;&#x8FDB;&#x7A0B;"></p>
-<h4 id="&#x542F;&#x52A8;&#x9879;&#x76EE;doc&#x5E93;">&#x542F;&#x52A8;&#x9879;&#x76EE;doc&#x5E93;</h4>
-<ol>
-<li>&#x5B89;&#x88C5;gitbook&#x4E0E;gitbook&#x811A;&#x624B;&#x67B6;
-<code>npm i gitbook gitbook-cli -g</code></li>
-<li>&#x6784;&#x5EFA;gitbook
-<code>npm run doc</code></li>
-</ol>
-<h2 id="&#x4F7F;&#x7528;forever&#x5B88;&#x62A4;node&#x8FDB;&#x7A0B;">&#x4F7F;&#x7528;forever&#x5B88;&#x62A4;node&#x8FDB;&#x7A0B;</h2>
-<p> &#x8BE6;&#x60C5;&#x89C1; <a href="&#x7CFB;&#x7EDF;&#x90E8;&#x7F72;&#x6D41;&#x7A0B;.html">&#x4E0A;&#x4E00;&#x7AE0;</a></p>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reducer</span> (<span class="hljs-params">state = init_state, action</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;dispatchAction&quot;</span>, action);
+    <span class="hljs-keyword">switch</span> (action.type) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;API_GET_USER_INFO_FULFILLED&apos;</span>:
+            <span class="hljs-keyword">return</span> {
+                ...state,
+                name: <span class="hljs-string">&quot;action.payload.message&quot;</span>,
+            };
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">return</span> state;
+    }
+}
+
+connect&#x89E3;&#x91CA;&#x5668; &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;mapStateToProps,&#x5C06;reducer&#x4E2D;&#x7684;state&#x6620;&#x5C04;&#x5230;&#x7EC4;&#x4EF6;&#x7684;props&#x4E0A;
+  &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;mapDispatchToProps &#x5C06;reducer&#x4E2D;&#x7684;dispatch&#x65B9;&#x6CD5;&#x6620;&#x5C04;&#x5230;&#x7EC4;&#x4EF6;&#x7684;props&#x4E0A;
+</code></pre>
+<h2 id="redux-thunk">redux-thunk</h2>
+<p>redux-thunk&#x662F;&#x7528;&#x6765;&#x505A;&#x5F02;&#x6B65;&#x7684;
+&#x4ED6;&#x5141;&#x8BB8;&#x4F60;&#x7684;action&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x51FD;&#x6570;, &#x5E26;&#x6709;dispatch&#x548C;getState&#x4E24;&#x4E2A;&#x53C2;&#x6570;, &#x5728;&#x8FD9;&#x4E2A;action&#x51FD;&#x6570;&#x91CC;, &#x5F02;&#x6B65;&#x7684;dispatch action;
+action&#x90E8;&#x5206;:</p>
+<p>export const getFetchData = () =&gt; (dispatch, getState) =&gt; {
+  //&#x5148;&#x53BB;&#x8BF7;&#x6C42;&#x6570;&#x636E;
+    fetch(&apos;<a href="http://localhost:1234/api/test/user/users" target="_blank">http://localhost:1234/api/test/user/users</a>&apos;)
+        .then(res =&gt; {
+            return res.json();
+        })
+        .then(data =&gt; {
+            //&#x8BF7;&#x6C42;&#x6570;&#x636E;&#x5B8C;&#x6210;&#x540E;&#x518D;dispatch
+            dispatch(getFetch(data))
+        })
+        .catch(e =&gt; {
+            console.log(e)
+        })
+}</p>
+<h2 id="redux-promise-middleware">redux-promise-middleware</h2>
+<pre><code>redux-promise-middleware &#x5173;&#x4E8E; redux &#x7684;&#x4E2D;&#x95F4;&#x4EF6;,&#x6211;&#x4EEC;&#x5E38;&#x7528;&#x7684;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x4E3A; redux-promise-middleware ,&#x76F8;&#x6BD4;&#x8F83; redux-promise &#x5B83;&#x4FDD;&#x7559;&#x4E86;&#x4E50;&#x89C2;&#x66F4;&#x65B0;&#x7684;&#x80FD;&#x529B;&#x3002;&#x5728;&#x542F;&#x7528;&#x5B83;&#x4E4B;&#x540E;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;&#x4E00;&#x4E2A; payload &#x5C5E;&#x6027;&#x4E3A; promise &#x5BF9;&#x8C61;&#x7684; action
+
+const foo = () =&gt; ({
+  type: &apos;FOO&apos;,
+  payload: new Promise()
+})
+&#x4E2D;&#x95F4;&#x4EF6;&#x4F1A;&#x7ACB;&#x5373;&#x89E6;&#x53D1;&#x4E00;&#x4E2A; action&#xFF0C;&#x7C7B;&#x578B;&#x4E3A;&#x6211;&#x4EEC;&#x58F0;&#x660E;&#x7684;&#x7C7B;&#x578B;&#x52A0;&#x4E0A;_PENDING(&#x540E;&#x7F00;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x914D;&#x7F6E;).
+
+{ type: &apos;FOO_PENDING&apos; }
+&#x7B49; promise &#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x6539;&#x53D8;(resolved &#x6216;&#x8005; rejected ), &#x4E2D;&#x95F4;&#x4EF6;&#x4F1A;&#x89E6;&#x53D1;&#x53E6;&#x5916;&#x4E00;&#x4E2A; action&#xFF0C;&#x5E76;&#x4E14;&#x5E26;&#x7740; promise &#x7684;&#x4FE1;&#x606F;&#x3002;
+
+{
+  type: &apos;FOO_FULFILLED&apos;
+  payload: { ... }
+}
+
+{
+  type: &apos;FOO_REJECTED&apos;
+  payload: { ... }
+}
+</code></pre><p>&#x8D4B;&#x4E88;&#x4E86;action  promise&#x548C;&#x5F02;&#x6B65;&#x7ED3;&#x679C;&#x81EA;&#x52A8;dispatch&#x5230;&#x5BF9;&#x5E94;&#x7684;reducer&#x80FD;&#x529B;</p>
 
                                 
                                 </section>
@@ -613,6 +647,14 @@ netstat -apn | grep 8080</p>
 
             
                 
+                <a href="inline-block3像素问题.html" class="navigation navigation-prev " aria-label="Previous page: 2.16  inline-block3像素问题">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="react-context.html" class="navigation navigation-next " aria-label="Next page: 2.18  react-context">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -621,7 +663,7 @@ netstat -apn | grep 8080</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.1  系统部署流程","level":"1.4.1","depth":2,"previous":{"title":"production 生产环境","level":"1.4","depth":1,"ref":"","articles":[{"title":"4.1  系统部署流程","level":"1.4.1","depth":2,"path":"note/系统部署流程.md","ref":"note/系统部署流程.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/系统部署流程.md","mtime":"2019-03-26T10:55:49.656Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-12T02:39:48.324Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.17  redux说明","level":"1.2.16","depth":2,"next":{"title":"2.18  react-context","level":"1.2.17","depth":2,"path":"note/react-context.md","ref":"note/react-context.md","articles":[]},"previous":{"title":"2.16  inline-block3像素问题","level":"1.2.15","depth":2,"path":"note/inline-block3像素问题.md","ref":"note/inline-block3像素问题.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"note/redux.md","mtime":"2019-03-26T08:20:54.513Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-12T02:39:48.324Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
