@@ -78,8 +78,12 @@ const Login = Form.create()(
 							})(
 								<Input
 									prefix={
-										<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
+										<Icon
+											type="user"
+											style={{ color: 'rgba(0,0,0,.25)' }}
+										/>
 									}
+									autocomplete="on"
 									placeholder="Username"
 								/>
 							)}
@@ -90,8 +94,12 @@ const Login = Form.create()(
 							})(
 								<Input
 									prefix={
-										<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
+										<Icon
+											type="lock"
+											style={{ color: 'rgba(0,0,0,.25)' }}
+										/>
 									}
+									autocomplete="current-password"
 									type="password"
 									placeholder="Password"
 								/>

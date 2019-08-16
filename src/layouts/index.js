@@ -4,7 +4,7 @@ import { HashRouter as Router } from 'react-router-dom'
 import LayoutIndex from './layoutIndex.js'
 import styles from './index.less'
 import store from '../store/store'
-import { LocaleProvider } from 'antd'
+import { ConfigProvider } from 'antd'
 import zh_CN from 'antd/lib/locale-provider/zh_CN'
 import PropTypes from 'prop-types'
 import moment from 'moment'
@@ -17,11 +17,11 @@ class Index extends Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<LocaleProvider locale={zh_CN}>
+				<ConfigProvider locale={zh_CN}>
 					<Router>
 						<LayoutIndex />
 					</Router>
-				</LocaleProvider>
+				</ConfigProvider>
 			</Provider>
 		)
 	}
