@@ -251,7 +251,7 @@ const Lottery = Form.create()(
 					title: 'red2',
 					align: 'center',
 					key: '3',
-					dataIndex: 'red3',
+					dataIndex: 'red2',
 				},
 				{
 					title: 'red3',
