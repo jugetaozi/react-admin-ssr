@@ -3,14 +3,16 @@ import { Route, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { getStorage } from '../../utils/utils'
 import { connect } from 'react-redux'
-import { getSystemTime, establishEvtSource, establishSocket } from 'store/reducers/getSystemInfo'
+import {
+	establishEvtSource,
+	establishSocket,
+} from 'store/reducers/getSystemInfo'
 
 @connect(
 	state => {
 		return {}
 	},
 	{
-		getSystemTime,
 		establishEvtSource,
 		establishSocket,
 	}

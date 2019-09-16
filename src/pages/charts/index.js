@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Menu, Icon, Tabs, Button, Upload, message } from 'antd'
 import classnames from 'classnames'
 import styles from './charts.less'
+import { getList, newCustomer } from 'api/keyword'
 import store from 'store/store'
 import { open, getFileType } from 'utils/utils'
 import { connect } from 'react-redux'
@@ -138,6 +139,11 @@ class charts extends Component {
 		})
 		this.setState({
 			dv: dvTr,
+		})
+		getList().then(res => {
+			this.setState({
+				listData: res.data,
+			})
 		})
 	}
 	render() {

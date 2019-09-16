@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styles from './index.less'
 import moment from 'moment'
-import { getSystemTime, establishEvtSource } from 'store/reducers/getSystemInfo'
+import {  establishEvtSource } from 'store/reducers/getSystemInfo'
 // import { } from 'utils/utils'
 // import { } from 'api/keyword'
 // import { } from 'store/reducers/userReducer'
@@ -17,7 +17,7 @@ import { getSystemTime, establishEvtSource } from 'store/reducers/getSystemInfo'
 		}
 	},
 	{
-		getSystemTime,
+		
 		establishEvtSource,
 	}
 )

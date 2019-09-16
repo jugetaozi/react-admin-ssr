@@ -8,6 +8,7 @@ import PrivateRoute from '../components/privateRoute'
 import Coolpad from '../pages/coolpad'
 import Upload from '../pages/upload'
 import Charts from '../pages/charts'
+import Lottery from '../pages/lottery'
 
 class LayoutIndex extends Component {
 	render() {
@@ -19,6 +20,7 @@ class LayoutIndex extends Component {
 					<PrivateRoute path="/home" exact component={Coolpad} />
 					<PrivateRoute path="/upload" exact component={Upload} />
 					<PrivateRoute path="/charts" exact component={Charts} />
+					<PrivateRoute path="/lottery" exact component={Lottery} />
 					<PrivateRoute path="/login" exact component={Login} notRequiredAuth />
 					<Redirect from="/" exact to="/home" />
 					<PrivateRoute component={ErrorPage} notRequiredAuth />

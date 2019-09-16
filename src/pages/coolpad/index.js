@@ -29,6 +29,47 @@ class coolpadList extends Component {
 			this.setState({
 				data: res.data,
 			})
+			let _obj = {}
+			res.data.forEach(item => {
+				for (let k in item) {
+					if (
+						'red1 red2 red3 red4 red5 red6 blue order1 order2 order3 order4 order5 order6'.indexOf(
+							k
+						) >= 0
+					) {
+						typeof _obj[k] === 'undefined'
+							? (_obj[k] = {})
+							: typeof _obj[k][item[k]] === 'undefined'
+							? (_obj[k][item[k]] = 0)
+							: _obj[k][item[k]]++
+					}
+				}
+			})
+			for (let k in _obj) {
+				_obj[k]['maxCount'] = Math.max.apply(Math, Object.values(_obj[k]))
+				_obj[k]['minCount'] = Math.min.apply(Math, Object.values(_obj[k]))
+				for (var key in _obj[k]) {
+					if (key !== 'maxCount' && _obj[k][key] === _obj[k]['maxCount']) {
+						_obj[k]['max'] = key
+					} else if (
+						key !== 'minCount' &&
+						_obj[k][key] === _obj[k]['minCount']
+					) {
+						_obj[k]['min'] = key
+					}
+				}
+			}
+
+			for (let k in _obj) {
+				if ('red1 red2 red3 red4 red5 red6'.indexOf(k) >= 0) {
+					for (let key in _obj[k]) {
+						typeof _obj[key] === 'undefined' ? (_obj[key] = 0) : null
+						_obj[key] += _obj[k][key]
+					}
+				}
+            }
+            // SELECT * from `data` WHERE SUBSTR(dateNumber,1,4)='2016' and (red6=33 OR red5=33 OR red4=33 OR red3=33 OR red2=33 OR red1=33)
+			console.log(_obj)
 		})
 		// const res = await this.props.getUserInfo()
 		// newCustomer().then((res) => {

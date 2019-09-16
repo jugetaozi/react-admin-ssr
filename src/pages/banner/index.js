@@ -69,6 +69,9 @@ class Banner extends Component {
 			case '/charts':
 				_key = ['3']
 				break
+			case '/lottery':
+				_key = ['5']
+				break
 			default:
 				_key = ['1']
 				break
@@ -107,6 +110,9 @@ class Banner extends Component {
 					</Menu.Item>
 					<Menu.Item key="4" onClick={this.linkToDoc.bind(this)}>
 						AppDoc
+					</Menu.Item>
+					<Menu.Item key="5">
+						<Link to="/lottery">lottery</Link>
 					</Menu.Item>
 				</Menu>
 				<SystemTime />
