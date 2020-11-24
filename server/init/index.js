@@ -31,15 +31,15 @@ const createAllTables = async () => {
 					item.name
 				)}', nick = '${item.nick}', detail_info = '${
 					item.detail_info
-				}', email = '${item.email}', level = ${item.level}, role = item.role, password = '${aesEncrypt(item.password)}';`
+				}', email = '${item.email}', level = ${item.level}, role = ${
+					item.role
+				}, password = '${aesEncrypt(item.password)}';`
 			})
 		}
 		sqlContentMap['user_info.sql'] = _tempStr
 	}
-	console.log('user_info.sql', 'user_info.sqluser_info.sqluser_info.sql')
 
 	for (let key in sqlContentMap) {
-		console.log(sqlContentMap, 'sqlContentMapsqlContentMap')
 		let sqlShell = sqlContentMap[key]
 		let sqlShellList = sqlShell.split(';')
 

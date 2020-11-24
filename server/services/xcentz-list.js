@@ -18,6 +18,34 @@ const XcentzList = {
 		let result = await ListInfo.getExistList(options)
 		return result
 	},
+	
+	/**
+	 * 获取基金持仓
+	 * @param  {object} options 
+	 * @return {object}      
+	 */
+
+	async getJiJinChiCang(options) {
+		// await delay(3000)
+		let result = await ListInfo.getJiJinChiCang(options)
+		return result
+	},
+
+	
+	/**
+	 * 获取股票信息
+	 * @param  {object} options 
+	 * @return {object}      
+	 */
+
+	async getGPinfo(options) {
+		// await delay(3000)
+		let result = await ListInfo.getGPinfo(options)
+		return result
+	},
+
+
+
 	/**
 	 * 创建用户
 	 * @param {object}

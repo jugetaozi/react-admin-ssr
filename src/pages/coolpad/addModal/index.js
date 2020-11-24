@@ -46,7 +46,7 @@ const addModal = Form.create()(
 				},
 			}
 			return (
-				<div className="addModal">
+				<div className={styles['addModal']}>
 					<Modal
 						title="添加信息"
 						width="900px"

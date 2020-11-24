@@ -15,6 +15,16 @@ export function getList(params) {
 	return result
 }
 
+export function getJiJinChiCang(params) {
+	const result = post('/api/getJiJinChiCang')
+	return result
+}
+
+export function getGPinfo(params) {
+	const result = post('/api/getGPinfo', params)
+	return result
+}
+
 export function newCustomer(params) {
 	const result = post('/api/createUser')
 	return result

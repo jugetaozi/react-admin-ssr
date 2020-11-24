@@ -46,7 +46,7 @@ const modifyModal = Form.create()(
 				},
 			}
 			return (
-				<div className="modifyModal">
+				<div className={styles['modifyModal']}>
 					<Modal
 						title="修改信息"
 						width="900px"

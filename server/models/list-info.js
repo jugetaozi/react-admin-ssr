@@ -1,3 +1,4 @@
+const axios = require('axios')
 const dbUtils = require('./../utils/db-util')
 
 const getList = {
@@ -22,6 +23,65 @@ const getList = {
 		}
 		return result
 	},
+
+	/**
+	 * 基金持仓
+	 * @param  {obejct} options
+	 * @return {object|null}
+	 */
+	async getJiJinChiCang(options) {
+		// let _sql = `SELECT * FROM v_amz_asin_review `
+		// let result = await dbUtils.query(_sql)
+		// console.log(result);
+		let result
+		await axios
+			.get('https://api.doctorxiong.club/v1/fund/position?code=513050')
+			.then(res => {
+				result = res.data.data
+			})
+			.catch(err => {
+				console.log(err, '失败')
+				result = err
+			})
+		return result
+	},
+	/**
+	 * 股票信息
+	 * @param  {Array} [{ gpCode: '123', gpMarket: 'US' }]
+	 * @return {object|null}
+	 */
+	async getGPinfo(params) {
+		let _temStr = 'list='
+		let result
+		for (let index = 0; index < params.length; index++) {
+			console.log(params[index])
+		}
+		params.gpList.forEach(item => {
+			if (item.gpMarket === 'US') {
+				_temStr += 'gb_' + item.gpCode+','
+			} else if (item.gpMarket === 'HK') {
+				_temStr += 'hk' + item.gpCode + ','
+			} else if (item.gpMarket === 'ZS') {
+				_temStr += 'int' + item.gpCode + ','
+			} else {
+				result = null
+			}
+		})
+		// console.log(_temStr, {}.toString.call(params.gpList))
+		await axios
+			.get('http://hq.sinajs.cn/' + _temStr)
+			.then(res => {
+				// console.log(res.data, 'res')
+				let data = res.data
+				result = data
+			})
+			.catch(err => {
+				console.log(err, '失败')
+				result = err
+			})
+		return result
+	},
+
 	async createUser() {
 		let _sql = `CREATE TABLE  User_Info_N (
   id int(11) NOT NULL AUTO_INCREMENT,
