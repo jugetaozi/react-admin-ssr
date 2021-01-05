@@ -21,7 +21,7 @@
     "@antv/data-set": "^0.10.2",
     "@babel/polyfill": "^7.0.0",
     "antd": "^3.13.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bizcharts": "^3.4.5",
     "crypto": "^1.0.1",
     "eventsource-polyfill": "^0.9.6",
